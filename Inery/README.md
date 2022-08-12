@@ -84,4 +84,12 @@ untuk mengonfigurasi node dengan informasi IP server Anda, buka `inery-node/iner
 cd tools
 nano config.json
 ```
-
+temukan `"LITE_NODE"` dan ganti placeholder
+IP = IP atau alamat DNS server
+```
+ "LITE_NODE" : {
+        "PEER_ADDRESS" : "IP:9010",
+        "HTTP_ADDRESS": "0.0.0.0:8888",
+        "HOST_ADDRESS": "0.0.0.0:9010"
+    },
+```
