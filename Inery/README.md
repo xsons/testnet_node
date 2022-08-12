@@ -53,11 +53,11 @@ git clone  https://github.com/inery-blockchain/inery-node
 - Ekspor jalur bin
 Setelah unduhan selesai, buka direktori `inery.node`
 ```
-cd inery-node 
+cd inery-node
 ```
 Di dalam inery-node ada direktori inery dan `inery.setup` direktori inery berisi semua binari agar protokol blockchain berfungsi, jalur binari tersebut harus diekspor ke lingkungan OS
 ```
-ls    
+ls
 inery inery.setup
 ```
 Buka direktori `inery.setup`
