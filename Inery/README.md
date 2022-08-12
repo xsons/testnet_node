@@ -46,7 +46,34 @@ autoconf libtool curl zlib1g-dev sudo ruby libusb-1.0-0-dev \
 libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses5
 ```
 ## Install Node
-Unduh paket Inery Node
+- Unduh paket Inery Node
 ```
 git clone  https://github.com/inery-blockchain/inery-node
+```
+- Ekspor jalur bin
+Setelah unduhan selesai, buka direktori inery.node
+```
+cd inery-node 
+```
+Di dalam inery-node ada direktori inery dan inery.setup direktori inery berisi semua binari agar protokol blockchain berfungsi, jalur binari tersebut harus diekspor ke lingkungan OS
+```
+ls    
+inery inery.setup
+```
+Buka direktori inery.setup
+```
+cd inery.setup
+```
+Di dalam inery.setup ada direktori ine.py dan tools
+Berikan izin skrip ine.py untuk dieksekusi dengan perintah "chmod":
+```
+chmod +x ine.py
+```
+Untuk mengekspor jalur ke lingkungan os lokal untuk binari inery, di dalam inery.setup jalankan skrip ine.py dengan opsi --export
+```
+./ine.py --export
+```
+Skrip telah menulis jalur ke file .bashrc, sekarang agar dapat berfungsi, Anda menempelkan baris ini di terminal, itu akan menyegarkan variabel jalur lingkungan untuk sesi terminal saat ini
+```
+cd; source .bashrc; cd -
 ```
