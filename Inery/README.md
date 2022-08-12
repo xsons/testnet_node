@@ -36,7 +36,7 @@
 | OS | Ubuntu 16.04 | 
 
 ## Sebelum Menjalankan Node Register Akun Testnet
-Register: 
+>- [Register](https://github.com/xsons/TestnetNode/blob/main/Inery/Register%20Testnet)
 
 ## Open Port
 ```
