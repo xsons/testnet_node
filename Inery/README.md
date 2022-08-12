@@ -55,11 +55,6 @@ Setelah unduhan selesai, buka direktori `inery.node`
 ```
 cd inery-node
 ```
-Di dalam inery-node ada direktori inery dan `inery.setup` direktori inery berisi semua binari agar protokol blockchain berfungsi, jalur binari tersebut harus diekspor ke lingkungan OS
-```
-ls
-inery inery.setup
-```
 Buka direktori `inery.setup`
 ```
 cd inery.setup
@@ -81,6 +76,7 @@ cd; source .bashrc; cd -
 - Konfigurasikan IP
 untuk mengonfigurasi node dengan informasi IP server Anda, buka `inery-node/inery.setup/tools/` buka `config.json`
 ```
+cd ~/inery-node/inery.setup/
 cd tools
 nano config.json
 ```
