@@ -38,6 +38,11 @@
 ## Sebelum Menjalankan Node Register Akun Testnet
 Register: 
 
+## Open Port
+```
+ufw allow 22 && ufw allow ssh && ufw allow 8888 && ufw allow 9010 && ufw enable
+```
+
 ## Mengisntall Dependencies
 ```
 sudo apt-get install -y make bzip2 automake libbz2-dev libssl-dev doxygen graphviz libgmp3-dev \
@@ -95,6 +100,8 @@ buka direktori `"inery-setup"` sebelumnya dan jalankan skrip `ine.py`
 
 skrip `ine.py` akan memulai protokol blockchain, jalankan dengan opsi `"--lite"`
 ```
+cd inery-node/inery.setup
+screen -R lite
 ./ine.py --lite
 ```
 Jika semuanya sudah diatur dengan benar, setelah menjalankan perintah di atas Anda seharusnya dapat melihat replay blok, mungkin hingga beberapa jam hingga sinkronisasi selesai. Setelah blockchain diputar ulang, Anda akan melihat blok baru yang dibuat.
