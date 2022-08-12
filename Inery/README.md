@@ -93,3 +93,8 @@ IP = IP atau alamat DNS server
         "HOST_ADDRESS": "0.0.0.0:9010"
     },
 ```
+Simpan (ctrl+S), Ketik "Y" dan keluar (ctrl+X)
+- Mulai protokol blockchain
+buka direktori `"inery-setup"` sebelumnya dan jalankan skrip `ine.py`
+
+skrip `ine.py` akan memulai protokol blockchain, jalankan dengan opsi `"--lite"`
