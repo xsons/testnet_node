@@ -34,3 +34,8 @@
 |Komponen | Persyaratan Minimum |
 | ------------ | ------------ |
 | OS | Ubuntu 16.04 | 
+
+## Sebelum Menjalankan Node Register Akun Testnet
+Register: 
+
+## Mengisntall Dependencies
