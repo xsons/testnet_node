@@ -106,7 +106,7 @@ screen -R lite
 ```
 Jika semuanya sudah diatur dengan benar, setelah menjalankan perintah di atas Anda seharusnya dapat melihat replay blok, mungkin hingga beberapa jam hingga sinkronisasi selesai. Setelah blockchain diputar ulang, Anda akan melihat blok baru yang dibuat.
 
-Buka direktori lite.node dan jalankan skrip `./start.sh`
+Buka direktori `lite.node` dan jalankan skrip `./start.sh`
 ```
 ./start.sh
 ```
