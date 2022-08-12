@@ -77,7 +77,7 @@ Skrip telah menulis jalur ke file `.bashrc`, sekarang agar dapat berfungsi, Anda
 ```
 cd; source .bashrc; cd -
 ```
-Menjadi Simpul Ringan
+## Menjadi Simpul Ringan
 - Konfigurasikan IP
 untuk mengonfigurasi node dengan informasi IP server Anda, buka `inery-node/inery.setup/tools/` buka `config.json`
 ```
