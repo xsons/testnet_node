@@ -1,0 +1,81 @@
+echo '{
+  "body": {
+    "messages": [
+      {
+        "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
+        "creator": "PASTE_ADDRESS_SEI_KALIAN",
+        "orders": [
+          {
+            "id": "0",
+            "status": "PLACED",
+            "account": "GANTI_ADDRESS_SEI_KALIAN",
+            "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+            "price": "1.000000000000000000",
+            "quantity": "0.000010000000000000",
+            "priceDenom": "USDC",
+            "assetDenom": "ATOM",
+            "orderType": "LIMIT",
+            "positionDirection": "LONG",
+            "data": "{\"position_effect\":\"Open\",\"leverage\":\"1\"}",
+            "statusDescription": ""
+          }
+        ],
+        "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+        "funds": [
+          {
+            "denom": "uusdc",
+            "amount": "10"
+          }
+        ],
+        "autoCalculateDeposit": false
+      },
+      {
+        "@type": "/seiprotocol.seichain.dex.MsgPlaceOrders",
+        "creator": "GANTI_ADDRESS_SEI_KALIAN",
+        "orders": [
+          {
+            "id": "0",
+            "status": "PLACED",
+            "account": "GANTI_ADDRESS_SEI_KALIAN",
+            "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+            "price": "1.000000000000000000",
+            "quantity": "0.000010000000000000",
+            "priceDenom": "USDC",
+            "assetDenom": "ATOM",
+            "orderType": "LIMIT",
+            "positionDirection": "LONG",
+            "data": "{\"position_effect\":\"Open\",\"leverage\":\"1\"}",
+            "statusDescription": ""
+          }
+        ],
+        "contractAddr": "sei14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sh9m79m",
+        "funds": [
+          {
+            "denom": "uusdc",
+            "amount": "10"
+          }
+        ],
+        "autoCalculateDeposit": false
+      }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [],
+    "fee": {
+      "amount": [
+        {
+          "denom": "usei",
+          "amount": "0"
+        }
+      ],
+      "gas_limit": "0",
+      "payer": "",
+      "granter": ""
+    }
+  },
+  "signatures": []
+}' > $HOME/gen_tx.json
