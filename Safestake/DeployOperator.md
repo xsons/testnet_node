@@ -49,6 +49,8 @@ sudo docker compose -f docker-compose-operator.yml up -d
 ```
 sudo docker compose -f docker-compose-operator.yml logs -f operator | grep "node public key"
 ```
+***SIMPAN `node public key`***
+
 ## Back up your operator private key file
 
 ```
