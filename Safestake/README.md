@@ -39,7 +39,9 @@ The duty agreement (using Hotstuff) among operators requires that these operator
 
 
 ## Installation
-
+```
+sudo apt update && sudo apt upgrade -y
+```
 Clone this repository:
 ```
 git clone --recurse-submodules https://github.com/ParaState/SafeStakeOperator
