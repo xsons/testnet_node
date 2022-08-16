@@ -7,12 +7,14 @@
   <img height="150" height="auto" src="https://user-images.githubusercontent.com/38981255/184852284-08b36261-236b-4027-bdc3-487858eb09c7.png">
 </p>
 
+# Safestake Incentivized Testnet By ParaState
+
 ### Membuat direktori volume lokal
 
 ```
 cd
- sudo mkdir -p /data/geth
- sudo mkdir -p /data/lighthouse
- sudo mkdir -p /data/jwt
- sudo mkdir -p /data/operator
+sudo mkdir -p /data/geth
+sudo mkdir -p /data/lighthouse
+sudo mkdir -p /data/jwt
+sudo mkdir -p /data/operator
 ```
