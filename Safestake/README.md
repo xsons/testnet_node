@@ -77,5 +77,7 @@ docker-compose -f docker-compose-boot.yml logs -f dvf_root_node | grep enr
 #### Output
 > dvf-dvf_root_node-1  | Base64 ENR: *enr:-IS4QNa-kpJM1eWfueeEnY2iXlLAL0QY2gAWAhmsb4c8VmrSK9J7N5dfXS_DgSASCDrUTHMqMUlP4OXSYEVh-Z7zFHkBgmlkgnY0gmlwhAMBnbWJc2VjcDI1NmsxoQPKY0yuDUmstAHYpMa2_oxVtw0RW_QAdpzBQA8yWM0xOIN1ZHCCIy0*
 
+***SALIN DAN SIMPAN OUTPUT YANG KELUAR***
+
 CATATAN: ***SafeStake harus memelihara ENR node root tersebut di situs webnya, sehingga pengguna yang mendaftar sebagai operator dapat menggunakannya untuk memulai node operator.***
 ## Deploy Operator
