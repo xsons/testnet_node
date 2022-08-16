@@ -32,3 +32,7 @@ vim .env
 ```
 Check lagi apakah sudah sama, dengan `Output` yang ada di step sebelumnya, kalau sudah sama keluar dari mode ini tekan `ESC`, lalu masukkan perintah `:wq` lalu `ENTER`
 
+## Build operator image 
+```
+sudo docker compose -f  docker-compose-operator.yml build
+```
