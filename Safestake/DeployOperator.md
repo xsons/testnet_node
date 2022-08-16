@@ -36,3 +36,17 @@ Check lagi apakah sudah sama, dengan `Output` yang ada di step sebelumnya, kalau
 ```
 sudo docker compose -f  docker-compose-operator.yml build
 ```
+
+```
+sudo docker compose -f docker-compose-operator.yml up -d
+```
+
+```
+sudo docker compose -f docker-compose-operator.yml logs -f operator | grep "node public key"
+```
+## Back up your operator private key file
+
+```
+/data/operator/ropsten/node_key.json
+```
+
