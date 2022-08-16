@@ -37,6 +37,11 @@ Check lagi apakah sudah sama, dengan `Output` yang ada di step sebelumnya, kalau
 sudo docker compose -f  docker-compose-operator.yml build
 ```
 
+![Screenshot_46](https://user-images.githubusercontent.com/108946833/184956197-faffdbef-1e13-4bb4-987e-c39e6d08830a.png)
+
+
+**Ditahap ini membutuhkan waktu Sekitar 1 Jam Lebih**
+
 ```
 sudo docker compose -f docker-compose-operator.yml up -d
 ```
