@@ -81,3 +81,5 @@ docker-compose -f docker-compose-boot.yml logs -f dvf_root_node | grep enr
 
 CATATAN: ***SafeStake harus memelihara ENR node root tersebut di situs webnya, sehingga pengguna yang mendaftar sebagai operator dapat menggunakannya untuk memulai node operator.***
 ## Deploy Operator
+
+> https://github.com/xsons/TestnetNode/blob/main/Safestake/DeployOperator.md
