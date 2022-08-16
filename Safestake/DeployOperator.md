@@ -54,6 +54,6 @@ sudo docker compose -f docker-compose-operator.yml logs -f operator | grep "node
 ## Back up your operator private key file
 
 ```
-/data/operator/ropsten/node_key.json
+cat /data/operator/ropsten/node_key.json
 ```
 
