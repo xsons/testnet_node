@@ -22,3 +22,8 @@ sudo mkdir -p /data/operator
 ```
 openssl rand -hex 32 | tr -d "\n" | sudo tee /data/jwt/jwtsecret
 ```
+### Isi dan Ganti enr yang dengan enr yang anda dapatkan di Step Sebelumnya
+```
+cd SafeStakeOperator
+vim .env
+```
