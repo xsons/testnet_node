@@ -24,10 +24,11 @@ openssl rand -hex 32 | tr -d "\n" | sudo tee /data/jwt/jwtsecret
 ```
 ![Screenshot_45](https://user-images.githubusercontent.com/108946833/184942966-ed7ed81d-9df4-4a23-9338-de0f10769c2c.png)
 
-****SIMPAN BUAT JAGA-JAGA****
+***SIMPAN BUAT JAGA-JAGA***
 
-### Isi dan Ganti enr yang dengan enr yang anda dapatkan di Step Sebelumnya
 ```
 cd SafeStakeOperator
 vim .env
 ```
+Check lagi apakah sudah sama, dengan `Output` yang ada di step sebelumnya, kalau sudah sama keluar dari mode ini tekan `ESC`, lalu masukkan perintah `:wq` lalu `ENTER`
+
