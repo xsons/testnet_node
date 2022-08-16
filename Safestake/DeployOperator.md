@@ -18,3 +18,7 @@ sudo mkdir -p /data/lighthouse
 sudo mkdir -p /data/jwt
 sudo mkdir -p /data/operator
 ```
+### Hasilkan rahasia jwt Anda ke direktori jwt
+```
+openssl rand -hex 32 | tr -d "\n" | sudo tee /data/jwt/jwtsecret
+```
