@@ -59,6 +59,14 @@ cat /data/operator/ropsten/node_key.json
 ## Daftar Menjadi Operator
 
 - Ubah Jaringan ke Ropsten ETH
-- Claim Faucet: [https://faucet.egorfine.com/](https://faucet.egorfine.com/ "https://faucet.egorfine.com/")
+- Claim Faucet: [https://faucet.egorfine.com/]( "https://faucet.egorfine.com/")
 - Buka Web Testnet Operator : [https://testnet.safestake.xyz/](https://testnet.safestake.xyz/ "https://testnet.safestake.xyz/")
-
+- Connect Wallet
+- Klik `Join As Operator`
+- Klik `Regist Operator`
+- Display Name (Masukan Nama Operator Bebas)
+- Publik Key (Masukan Publik Key yang Sudah di Simpan)
+- Klik Next dan Register Operator
+- Approve Transaksi
+- Check di Explorer: https://explorer-testnet.safestake.xyz/
+- Done
