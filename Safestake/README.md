@@ -67,6 +67,7 @@ sudo chown $USER /var/run/docker.sock
 ```
 sudo docker compose -f docker-compose-boot.yml build
 ```
+**Ditahai ini membutuhkan waktu Sekitar 1 Jam Lebih**
 ```
 sudo docker compose build -f docker-compose-boot.yml up -d
 ```
