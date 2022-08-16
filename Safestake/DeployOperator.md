@@ -56,4 +56,9 @@ sudo docker compose -f docker-compose-operator.yml logs -f operator | grep "node
 ```
 cat /data/operator/ropsten/node_key.json
 ```
+## Daftar Menjadi Operator
+
+- Ubah Jaringan ke Ropsten ETH
+- Claim Faucet: [https://faucet.egorfine.com/](https://faucet.egorfine.com/ "https://faucet.egorfine.com/")
+- Buka Web Testnet Operator : [https://testnet.safestake.xyz/](https://testnet.safestake.xyz/ "https://testnet.safestake.xyz/")
 
