@@ -3,8 +3,9 @@
 <a href="https://twitter.com/BeritaCryptoo" target="_blank">Join our twitter <img src="https://user-images.githubusercontent.com/108946833/184274157-08210464-fa03-493d-b01c-2420c67a524f.jpg" width="30"/></a>
 </p>
  
-
-
+<p align="center">
+  <img height="150" height="auto" src="https://user-images.githubusercontent.com/38981255/184852284-08b36261-236b-4027-bdc3-487858eb09c7.png">
+</p>
 
 # Safestake Incentivized Testnet By ParaState
 ## Get Started
