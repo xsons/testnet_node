@@ -22,6 +22,10 @@ sudo mkdir -p /data/operator
 ```
 openssl rand -hex 32 | tr -d "\n" | sudo tee /data/jwt/jwtsecret
 ```
+![Screenshot_45](https://user-images.githubusercontent.com/108946833/184942966-ed7ed81d-9df4-4a23-9338-de0f10769c2c.png)
+
+****SIMPAN BUAT JAGA-JAGA****
+
 ### Isi dan Ganti enr yang dengan enr yang anda dapatkan di Step Sebelumnya
 ```
 cd SafeStakeOperator
