@@ -70,10 +70,18 @@ sudo docker compose -f docker-compose-boot.yml build
 ![Screenshot_43](https://user-images.githubusercontent.com/108946833/184940055-b3fca6cc-96df-4cab-96d7-937c372682a4.png)
 
 
-**Ditahai ini membutuhkan waktu Sekitar 1 Jam Lebih**
+**Ditahap ini membutuhkan waktu Sekitar 1 Jam Lebih**
 ```
 sudo docker compose -f docker-compose-boot.yml up -d
 ```
+***KALAU ADA ERROR SEPERTI INI***
+
+![Screenshot_44](https://user-images.githubusercontent.com/108946833/184941577-7c4044d9-21ef-463e-84ed-458d675a89c0.png)
+
+```
+apt install docker-compose
+```
+
 ```
 docker-compose -f docker-compose-boot.yml logs -f dvf_root_node | grep enr
 ```
