@@ -74,7 +74,7 @@ Di mana `[myvalidator]` adalah nama kustom validator Anda yang akan terlihat sec
 ```console
 evmosd keys add validatorkey --keyring-backend file
 ```
-Jika Ingin Recover wallet
+- Jika address faucet kalian ingin di pakai silahkan gunakan cara ini:
 ```console
 evmosd keys add validatorkey --recover
 ```
