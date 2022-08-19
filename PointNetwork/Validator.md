@@ -36,7 +36,7 @@ SYMBOL: XPOINT
 ## Mempersiapkan server
 ```console 
 sudo apt update && sudo apt upgrade -y && \
-sudo apt install curl tar wget clang pkg-config libssl-dev libleveldb-dev jq build-essential bsdmainutils git make ncdu htop screen unzip bc fail2ban htop -y
+sudo apt install curl build-essential git wget jq make gcc tmux -y
 ```
 ## Install GO
 ```console 
@@ -90,12 +90,90 @@ mv config.toml genesis.json ~/.evmosd/config/
 ```console
 evmosd validate-genesis
 ```
-## Jalankan Node
+## membuat Service
 ```console
-screen -R Point
-evmosd start
+sudo tee /etc/systemd/system/evmosd.service > /dev/null <<EOF
+[Unit]
+Description=evmos
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which evmosd) start --home $HOME/.evmosd
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
-Untuk Kembali ke screen 
+## Daftar dan Mulai Layanan
 ```console
-screen -Rd Point
+sudo systemctl daemon-reload && \
+sudo systemctl enable evmosd && \
+sudo systemctl restart evmosd && \
+sudo journalctl -u evmosd -f -o cat
 ```
+- Check SyncInfo
+
+```console
+evmosd status 2>&1 | jq .SyncInfo
+```
+Anda akan mendapatkan `"latest_block_height"` dari node Anda.
+
+### Tambahkan dompet dengan 1024 XPOINT Anda
+
+Ingat dompet yang Anda kirimkan kepada kami untuk didanai? Di formulir? Sekarang dompet tersebut memiliki 1024 XPOINT.
+
+Impor dompet dengan kunci pribadi ke dalam dompet Anda (misalnya Metamask), dan Anda akan melihat 1024 XPOINT di sana. Tapi ini adalah dompet dana Anda, bukan dompet validator.
+
+### Cari tahu alamat mana yang merupakan dompet validator Anda
+
+Evmos memiliki dua format dompet: Format Cosmos, dan format Ethereum. Format Cosmos dimulai dengan awalan `evmos`, dan format Ethereum dimulai dengan `0x`. Kebanyakan orang tidak perlu tahu tentang format Cosmos, tetapi validator harus memiliki cara untuk mengubah dari satu format ke format lainnya.
+
+Jalankan ```evmosd keys list --keyring-backend file```, dan Anda akan melihat daftar key yang terpasang pada node Anda. Lihatlah salah satu yang memiliki nama `validatorkey``, dan catat alamatnya (harus dalam format Cosmos dan dimulai dengan awalan `evmos`).
+
+(Dalam kebanyakan kasus, hal ini tidak diperlukan, tetapi jika terjadi kesalahan dan jika anda ingin mengimpor dompet validator anda di Metamask anda, anda akan memerlukan private key. Anda bisa mendapatkannya dengan perintah ini: `evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file`)
+
+Gunakan alat ini untuk mengubahnya ke format Ethereum: https://evmos.me/utils/tools
+
+Ini adalah alamat validator Anda dalam format Ethereum.
+
+### Danai validator
+
+Terakhir, gunakan dompet untuk mengirim berapa pun yang Anda butuhkan dari alamat dana Anda ke alamat validator (Anda dapat mengirim semua 1024 atau memilih strategi yang berbeda).
+
+## Stake XPOINT dan Bergabunglah sebagai Validator
+
+Sekarang Anda harus menunggu node untuk sepenuhnya tersinkronisasi, karena jika tidak, node tidak akan menemukan Anda.
+
+Setelah node sepenuhnya disinkronkan, dan Anda punya beberapa XPOINT untuk dipertaruhkan, periksa saldo Anda di node, Anda akan melihat saldo Anda di Metamask. 
+Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda dengan perintah ini:
+
+- Untuk Check Saldo
+```console
+evmosd query bank balances <evmosaddress>
+```
+## Membuat Validator
+```console
+evmosd tx staking create-validator \
+  --amount 1000000000000000000000apoint \
+  --from $WALLET \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.07" \
+  --min-self-delegation "1000000000000000000000" \
+  --pubkey  $(evmosd tendermint show-validator) \
+  --moniker $NODENAME \
+  --chain-id $POINT_CHAIN_ID
+```
+## Menghapus Node
+```console
+sudo systemctl stop evmosd
+sudo systemctl disable evmosd
+sudo rm /etc/systemd/system/evmos* -rf
+sudo rm $(which evmosd) -rf
+sudo rm $HOME/.evmosd -rf
+sudo rm $HOME/point-chain -rf
+````
