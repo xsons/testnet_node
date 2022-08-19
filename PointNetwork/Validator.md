@@ -76,7 +76,7 @@ evmosd keys add validatorkey --keyring-backend file
 ```
 Jika Ingin Recover wallet
 ```console
-evmosd keys add <walletName> --recover
+evmosd keys add validatorkey --recover
 ```
 Rubah `validatorkey` dengan nama `validator` kalian.
 
