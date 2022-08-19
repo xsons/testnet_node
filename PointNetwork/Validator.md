@@ -67,7 +67,7 @@ evmosd config chain-id point_10721-1
 ```console
 evmosd init [myvalidator] --chain-id point_10721-1
 ```
-Di mana [myvalidator] adalah nama kustom validator Anda yang akan terlihat secara publik.
+Di mana `[myvalidator]` adalah nama kustom validator Anda yang akan terlihat secara publik.
 ## Membuat Wallet 
 ```console
 evmosd keys add validatorkey --keyring-backend file
