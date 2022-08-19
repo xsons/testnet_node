@@ -124,32 +124,18 @@ Anda akan mendapatkan `"latest_block_height"` dari node Anda.
 
 ### Tambahkan dompet dengan 1024 XPOINT Anda
 
-Ingat dompet yang Anda kirimkan kepada kami untuk didanai? Di formulir? Sekarang dompet tersebut memiliki 1024 XPOINT.
+Supaya wallet evmos kita bisa di import ke metamask, gunakan perintah ini:
+```console
+evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
+```
+Ubah `validatorkey` dengan nama validator kalian.
+![Screenshot_57](https://user-images.githubusercontent.com/108946833/185661523-a65e0667-13d5-4be7-b4ea-870405734b38.png)
 
-Impor dompet dengan kunci pribadi ke dalam dompet Anda (misalnya Metamask), dan Anda akan melihat 1024 XPOINT di sana. Tapi ini adalah dompet dana Anda, bukan dompet validator.
+Import `privatekey` yang di hasilkan ke metamask.
+Selanjutnya kalian bisa send address dari address faucet ke address yang sudah di import ke metamask.
+![Screenshot_58](https://user-images.githubusercontent.com/108946833/185662187-4098dbde-c35f-4015-94a2-7689c837bac9.png)
 
-### Cari tahu alamat mana yang merupakan dompet validator Anda
-
-Evmos memiliki dua format dompet: Format Cosmos, dan format Ethereum. Format Cosmos dimulai dengan awalan `evmos`, dan format Ethereum dimulai dengan `0x`. Kebanyakan orang tidak perlu tahu tentang format Cosmos, tetapi validator harus memiliki cara untuk mengubah dari satu format ke format lainnya.
-
-Jalankan ```evmosd keys list --keyring-backend file```, dan Anda akan melihat daftar key yang terpasang pada node Anda. Lihatlah salah satu yang memiliki nama `validatorkey``, dan catat alamatnya (harus dalam format Cosmos dan dimulai dengan awalan `evmos`).
-
-(Dalam kebanyakan kasus, hal ini tidak diperlukan, tetapi jika terjadi kesalahan dan jika anda ingin mengimpor dompet validator anda di Metamask anda, anda akan memerlukan private key. Anda bisa mendapatkannya dengan perintah ini: `evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file`)
-
-Gunakan alat ini untuk mengubahnya ke format Ethereum: https://evmos.me/utils/tools
-
-Ini adalah alamat validator Anda dalam format Ethereum.
-
-### Danai validator
-
-Terakhir, gunakan dompet untuk mengirim berapa pun yang Anda butuhkan dari alamat dana Anda ke alamat validator (Anda dapat mengirim semua 1024 atau memilih strategi yang berbeda).
-
-## Stake XPOINT dan Bergabunglah sebagai Validator
-
-Sekarang Anda harus menunggu node untuk sepenuhnya tersinkronisasi, karena jika tidak, node tidak akan menemukan Anda.
-
-Setelah node sepenuhnya disinkronkan, dan Anda punya beberapa XPOINT untuk dipertaruhkan, periksa saldo Anda di node, Anda akan melihat saldo Anda di Metamask. 
-Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda dengan perintah ini:
+Jika sudah false kalian bisa check balance, dengan menggunkan cara ini:
 
 - Untuk Check Saldo
 ```console
