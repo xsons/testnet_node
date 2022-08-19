@@ -137,7 +137,7 @@ Selanjutnya kalian bisa send address dari address faucet ke address yang sudah d
 
 Jika sudah false kalian bisa check balance, dengan menggunkan cara ini:
 
-- Untuk Check Saldo
+- Untuk Check balances
 ```console
 evmosd query bank balances <evmosaddress>
 ```
