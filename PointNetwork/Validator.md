@@ -157,7 +157,7 @@ evmosd tx staking create-validator \
   --pubkey  $(evmosd tendermint show-validator) \
   --moniker $NODENAME \
   --chain-id $POINT_CHAIN_ID
-``
+```
 
 ## Menghapus Node
 ```console
