@@ -86,5 +86,10 @@ evmosd validate-genesis
 ```
 ## Jalankan Node
 ```console
+screen -R Point
 evmosd start
+```
+Untuk Kembali ke screen 
+```console
+screen -Rd Point
 ```
