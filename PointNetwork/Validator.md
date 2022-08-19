@@ -129,10 +129,13 @@ Supaya wallet evmos kita bisa di import ke metamask, gunakan perintah ini:
 evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
 ```
 Ubah `validatorkey` dengan nama validator kalian.
+
 ![Screenshot_57](https://user-images.githubusercontent.com/108946833/185661523-a65e0667-13d5-4be7-b4ea-870405734b38.png)
 
 Import `privatekey` yang di hasilkan ke metamask.
+
 Selanjutnya kalian bisa send address dari address faucet ke address yang sudah di import ke metamask.
+
 ![Screenshot_58](https://user-images.githubusercontent.com/108946833/185662187-4098dbde-c35f-4015-94a2-7689c837bac9.png)
 
 Jika sudah false kalian bisa check balance, dengan menggunkan cara ini:
