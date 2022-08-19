@@ -74,3 +74,17 @@ evmosd keys add validatorkey --keyring-backend file
 ```
 Rubah `validatorkey` dengan nama `validator` kalian.
 
+## Unduh genesis dan addrbook
+```console
+wget https://raw.githubusercontent.com/pointnetwork/point-chain-config/main/testnet-xNet-Triton-1/config.toml
+wget https://raw.githubusercontent.com/pointnetwork/point-chain-config/main/testnet-xNet-Triton-1/genesis.json
+mv config.toml genesis.json ~/.evmosd/config/
+```
+## Validasi
+```console
+evmosd validate-genesis
+```
+## Jalankan Node
+```console
+evmosd start
+```
