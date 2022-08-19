@@ -155,6 +155,10 @@ Anda akan melihat saldo Anda di Metamask atau Anda dapat memeriksa saldo Anda de
 ```console
 evmosd query bank balances <evmosaddress>
 ```
+- Untuk Melihat Wallet
+```console
+evmosd keys list
+```
 ## Membuat Validator
 ```console
 evmosd tx staking create-validator \
