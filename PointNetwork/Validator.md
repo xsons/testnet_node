@@ -74,6 +74,10 @@ Di mana `[myvalidator]` adalah nama kustom validator Anda yang akan terlihat sec
 ```console
 evmosd keys add validatorkey --keyring-backend file
 ```
+Jika Ingin Recover wallet
+```console
+evmosd keys add <walletName> --recover
+```
 Rubah `validatorkey` dengan nama `validator` kalian.
 
 ## Unduh genesis dan addrbook
