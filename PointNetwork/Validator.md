@@ -158,6 +158,8 @@ evmosd tx staking create-validator \
   --moniker $NODENAME \
   --chain-id $POINT_CHAIN_ID
 ```
+## Explorer
+https://explorer-xnet-triton.point.space/
 
 ## Menghapus Node
 ```console
