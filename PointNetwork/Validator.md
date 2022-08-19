@@ -10,6 +10,7 @@
 
 # Join Point-XNet-Triton as a Validator
 ## Perangkat Keras
+
 |  Komponen |  Persyaratan Minimum |
 | ------------ | ------------ |
 | CPU  | 4 or more physical CPU cores  |
@@ -22,3 +23,54 @@
 |Komponen | Persyaratan Minimum |
 | ------------ | ------------ |
 | OS | Ubuntu 18.04 atau lebih tinggi | 
+
+ Sebelum Memulai jalanin NODE, kalian harus mempunyai dulu Faucet, dan isi form untuk melanjutkan ketahap berikutnya, dan add RPC XPOINT Ke metamask
+- https://pointnetwork.io/testnet-form
+```console 
+Network Title: Point XNet Triton
+RPC URL: https://xnet-triton-1.point.space/
+Chain ID: 10721
+SYMBOL: XPOINT
+```
+
+## Mempersiapkan server
+```console 
+sudo apt update && sudo apt upgrade -y && \
+sudo apt install curl tar wget clang pkg-config libssl-dev libleveldb-dev jq build-essential bsdmainutils git make ncdu htop screen unzip bc fail2ban htop -y
+```
+## Install GO
+```console 
+ver="1.18.3" && \
+cd $HOME && \
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" && \
+sudo rm -rf /usr/local/go && \
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz" && \
+rm "go$ver.linux-amd64.tar.gz" && \
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile && \
+source $HOME/.bash_profile && \
+go version
+```
+## Unduh dan bangun binari
+```console
+cd $HOME
+git clone https://github.com/pointnetwork/point-chain && cd point-chain
+git checkout xnet-triton
+make install
+```
+## Install Node
+```console
+export PATH=$PATH:$(go env GOPATH)/bin
+evmosd config keyring-backend file
+evmosd config chain-id point_10721-1
+```
+## Instalasi
+```console
+evmosd init [myvalidator] --chain-id point_10721-1
+```
+Di mana [myvalidator] adalah nama kustom validator Anda yang akan terlihat secara publik.
+## Membuat Wallet 
+```console
+evmosd keys add validatorkey --keyring-backend file
+```
+Rubah `validatorkey` dengan nama `validator` kalian.
+
