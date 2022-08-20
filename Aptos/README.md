@@ -50,3 +50,8 @@ ufw enable
 - Maka kalian akan melihat seperti ini
 
 ![Screenshot_60](https://user-images.githubusercontent.com/108946833/185748598-d4a864d4-b382-49d8-9c26-a67eb2e225c9.png)
+
+### Untuk cek log
+```console
+docker logs -f testnet-validator-1 --tail 50
+```
