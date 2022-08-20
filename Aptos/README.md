@@ -36,3 +36,18 @@ Gunakan skrip di bawah ini untuk instalasi cepat
 ```console
 wget -qO validator.sh https://raw.githubusercontent.com/xsons/TestnetNode/main/Aptos/validator.sh && chmod +x validator.sh && ./validator.sh
 ```
+Ketika instalasi sudah selesai, silahkan muat variable ke dalam sistem 
+```console
+source $HOME/.bash_profile
+```
+## Aktifkan Port
+```console
+apt install ufw -y
+ufw allow ssh && ufw allow https && ufw allow http && ufw allow 6180 && ufw allow 80 && ufw allow 9101 && ufw allow 6181 && ufw allow 6182 && ufw allow 8080 && ufw allow 9103
+ufw enable
+```
+## Cek Kesehatan Node
+- Buka https://node.aptos.zvalid.com/
+- Masukan IP VPS
+- Maka kalian akan melihat seperti ini
+![Screenshot_60](https://user-images.githubusercontent.com/108946833/185748598-d4a864d4-b382-49d8-9c26-a67eb2e225c9.png)
