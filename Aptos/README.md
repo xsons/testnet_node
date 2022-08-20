@@ -58,4 +58,8 @@ docker logs -f testnet-validator-1 --tail 50
 ### Setelah penginstalan kalian harus daftar AIT3
 > https://aptoslabs.com/it3
 
+Berikan data yang diminta, semua kunci publik berada di `~/$WORKSPACE/keys/public-keys.yaml`
+```console
+cat ~/$WORKSPACE/keys/public-keys.yaml
+```
 
