@@ -55,3 +55,7 @@ ufw enable
 ```console
 docker logs -f testnet-validator-1 --tail 50
 ```
+### Setelah penginstalan kalian harus daftar AIT3
+> https://aptoslabs.com/it3
+
+
