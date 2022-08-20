@@ -25,3 +25,14 @@
 
 # Pendaftaran Aptos AIT3
 Untuk berpartisipasi dalam program AIT-3, ikuti langkah-langkah di bawah ini. Gunakan langkah-langkah ini sebagai daftar periksa untuk melacak kemajuan Anda. Klik tautan di setiap langkah untuk dokumentasi terperinci.
+
+## Pendaftaran Komunitas Aptos 
+> https://aptoslabs.com/incentivized-testnet
+## Buat Wallet di Petra
+> https://github.com/aptos-labs/aptos-core/releases/tag/wallet-v0.1.6
+
+## Install Aptos Validator 
+Gunakan skrip di bawah ini untuk instalasi cepat
+```console
+wget -qO validator.sh https://raw.githubusercontent.com/xsons/TestnetNode/main/Aptos/validator.sh && chmod +x validator.sh && ./validator.sh
+```
