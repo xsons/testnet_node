@@ -64,17 +64,13 @@ docker logs -f testnet-validator-1 --tail 50
 ### Setelah penginstalan kalian harus daftar AIT3
 > https://aptoslabs.com/it3
 
-Berikan data yang diminta, semua kunci publik berada di `~/$WORKSPACE/keys/public-keys.yaml`
+Berikan data yang diminta, Untuk `CONSENSUS KEY`, `CONSENSUS POP`, `ACCOUNT KEY`, dan `VALIDATOR NETWORK KEY`, kalian bisa menemukan nya di `/root/testnet/keys/public-keys.yaml`, atau bisa menggunakan cara ini:
+
 ```console
 cat ~/$WORKSPACE/keys/public-keys.yaml
 ```
-Cara Mendapatkan KEY
+- OWNNER KEY: Dari wallet Petra `Settings -> Credentials` 
 
-- OWNNER KEY: Dari wallet Petra `Settings -> Credentials`
-Untuk `CONSENSUS KEY`, `CONSENSUS POP`, `ACCOUNT KEY`, dan `VALIDATOR NETWORK KEY`, kalian bisa menemukan nya di `/root/testnet/keys/public-keys.yaml`, atau bisa menggunakan cara ini:
-```console
-cat /root/testnet/keys/public-keys.yaml
-```
 ## Hapus Aptos
 ```console
 cd ~/WORKSPACE && docker-compose down -v
