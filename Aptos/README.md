@@ -24,7 +24,6 @@
 # Pendaftaran Aptos AIT3
 Untuk berpartisipasi dalam program AIT-3, ikuti langkah-langkah di bawah ini. Gunakan langkah-langkah ini sebagai daftar periksa untuk melacak kemajuan Anda. Klik tautan di setiap langkah untuk dokumentasi terperinci.
 
-## Pendaftaran Komunitas Aptos 
 > https://aptoslabs.com/incentivized-testnet
 ## Buat Wallet di Petra
 - Instal ekstensi Petra (Aptos Wallet)
