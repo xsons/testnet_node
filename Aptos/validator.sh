@@ -1,5 +1,4 @@
 #!/bin/bash
-clear
 
 echo -e "\033[0;35m"
 echo " __  ______   ___  _   _ ____  ";
