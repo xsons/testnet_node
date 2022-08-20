@@ -69,6 +69,8 @@ cat ~/$WORKSPACE/keys/public-keys.yaml
 ```
 - OWNNER KEY: Dari wallet Petra `Settings -> Credentials` 
 
+![Screenshot_62](https://user-images.githubusercontent.com/108946833/185756834-8613b9da-a7ec-408a-9c0c-184e82e0f337.png)
+
 ## Hapus Aptos
 ```console
 cd ~/WORKSPACE && docker-compose down -v
