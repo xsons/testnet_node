@@ -53,7 +53,8 @@ ufw enable
 - Masukan IP VPS
 - Maka kalian akan melihat seperti ini
 
-![Screenshot_60](https://user-images.githubusercontent.com/108946833/185748598-d4a864d4-b382-49d8-9c26-a67eb2e225c9.png)
+![Screenshot_63](https://user-images.githubusercontent.com/108946833/185758988-98ceaaad-c4af-4c0d-a410-f45cf68818a8.png)
+
 
 ### Untuk cek log
 ```console
