@@ -27,7 +27,14 @@ Untuk berpartisipasi dalam program AIT-3, ikuti langkah-langkah di bawah ini. Gu
 ## Pendaftaran Komunitas Aptos 
 > https://aptoslabs.com/incentivized-testnet
 ## Buat Wallet di Petra
+- Instal ekstensi Petra (Aptos Wallet)
 > https://github.com/aptos-labs/aptos-core/releases/tag/wallet-v0.1.6
+- Extract file yang sudah di download
+- Buka jendela Chrome dan navigasikan ke Ekstensi menggunakan salah satu metode di bawah ini:
+   - Di pojok kanan atas jendela browser, klik tiga titik vertikal, lalu Alat lainnya, lalu Ekstensi, atau
+   - Pada tab baru atau jendela ketik chrome://extensions di bidang URL dan tekan kembali.
+- Aktifkan mode Pengembang di kanan atas halaman Ekstensi.
+- Klik Load unpacked di kiri atas, dan arahkan ke folder tempat Anda baru saja membuka ritsleting rilis Wallet yang diunduh.
 
 ## Install Aptos Validator 
 Gunakan skrip di bawah ini untuk instalasi cepat
@@ -62,4 +69,7 @@ Berikan data yang diminta, semua kunci publik berada di `~/$WORKSPACE/keys/publi
 ```console
 cat ~/$WORKSPACE/keys/public-keys.yaml
 ```
-
+## Hapus Aptos
+```console
+cd ~/WORKSPACE && docker-compose down -v
+```
