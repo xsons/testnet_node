@@ -7,8 +7,6 @@
   <img width="100" height="auto" src="https://user-images.githubusercontent.com/50621007/165930080-4f541b46-1ae3-461c-acc9-de72d7ab93b7.png">
 </p>
 
-![image](https://user-images.githubusercontent.com/50621007/185746675-68afb222-02c7-4759-be04-930116c9745e.png)
-
 ## Perangkat Keras
 
 |  Komponen |  Persyaratan Minimum |
@@ -50,4 +48,5 @@ ufw enable
 - Buka https://node.aptos.zvalid.com/
 - Masukan IP VPS
 - Maka kalian akan melihat seperti ini
+
 ![Screenshot_60](https://user-images.githubusercontent.com/108946833/185748598-d4a864d4-b382-49d8-9c26-a67eb2e225c9.png)
