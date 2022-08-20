@@ -68,6 +68,13 @@ Berikan data yang diminta, semua kunci publik berada di `~/$WORKSPACE/keys/publi
 ```console
 cat ~/$WORKSPACE/keys/public-keys.yaml
 ```
+Cara Mendapatkan KEY
+
+- OWNNER KEY: Dari wallet Petra `Settings -> Credentials`
+Untuk `CONSENSUS KEY`, `CONSENSUS POP`, `ACCOUNT KEY`, dan `VALIDATOR NETWORK KEY`, kalian bisa menemukan nya di `/root/testnet/keys/public-keys.yaml`, atau bisa menggunakan cara ini:
+```console
+cat /root/testnet/keys/public-keys.yaml
+```
 ## Hapus Aptos
 ```console
 cd ~/WORKSPACE && docker-compose down -v
