@@ -49,12 +49,11 @@ ufw allow ssh && ufw allow https && ufw allow http && ufw allow 6180 && ufw allo
 ufw enable
 ```
 ## Cek Kesehatan Node
-- Buka https://node.aptos.zvalid.com/
+- Buka https://ait.aptos-node.info/ dan rubah ke v1 
 - Masukan IP VPS
 - Maka kalian akan melihat seperti ini
 
-![Screenshot_63](https://user-images.githubusercontent.com/108946833/185758988-98ceaaad-c4af-4c0d-a410-f45cf68818a8.png)
-
+![Screenshot_64](https://user-images.githubusercontent.com/108946833/185759982-7dc47140-603f-4258-aa43-b5c77f4148be.png)
 
 ### Untuk cek log
 ```console
