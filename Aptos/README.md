@@ -72,6 +72,10 @@ cat ~/$WORKSPACE/keys/public-keys.yaml
 ![Screenshot_62](https://user-images.githubusercontent.com/108946833/185756834-8613b9da-a7ec-408a-9c0c-184e82e0f337.png)
 
 ## Hapus Aptos
+Sebelum menghapus aptos, pastikan kalian sudah membackup!!
 ```console
-cd ~/WORKSPACE && docker-compose down -v
+cd ~/$WORKSPACE && docker-compose down; cd
+rm ~/$WORKSPACE -rf
+docker volume rm aptos-validator
+unset NODENAME
 ```
