@@ -40,6 +40,7 @@
 
 ## Open Port
 ```
+sudo apt-get update && sudo apt install git && sudo apt install screen \
 ufw allow 22 && ufw allow ssh && ufw allow 8888 && ufw allow 9010 && ufw enable
 ```
 
@@ -104,7 +105,7 @@ cd inery-node/inery.setup
 screen -R lite
 ./ine.py --lite
 ```
-`Tekan CTRL A+D` untuk keluar dari screen 
+`Tekan CTRL A+D` untuk keluar dari screen, untuk kembali ke screen `screen -Rd lite`
 
 Jika semuanya sudah diatur dengan benar, setelah menjalankan perintah di atas Anda seharusnya dapat melihat replay blok, mungkin hingga beberapa jam hingga sinkronisasi selesai. Setelah blockchain diputar ulang, Anda akan melihat blok baru yang dibuat.
 
