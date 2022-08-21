@@ -19,7 +19,7 @@
 
 |Komponen | Persyaratan Minimum |
 | ------------ | ------------ |
-| OS | Ubuntu 18.04 atau lebih tinggi | 
+| OS | Ubuntu 20.04 | 
 
 # Pendaftaran Aptos AIT3
 > https://aptoslabs.com/incentivized-testnet
