@@ -184,6 +184,13 @@ evmosd query tx <txhash>
 ```
 `txhash` ganti dengan output yang di hasilkan
 
+Untuk Sekarang belum bisa cek di website apakah validator kalian aktif atau tidak, yang bisa di lihat `voting power` jika lebih besar dari 0 maka validator kalian sudah terdaftar, untuk melihat nya:
+```console
+evmosd status
+```
+![Screenshot_65](https://user-images.githubusercontent.com/108946833/185779191-4e3c516d-4f41-4433-bfba-8c20e804596c.png)
+
+
 ## Explorer
 https://explorer-xnet-triton.point.space/
 
