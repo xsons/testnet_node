@@ -103,10 +103,13 @@ buka direktori `"inery-setup"` sebelumnya dan jalankan skrip `ine.py`
 
 skrip `ine.py` akan memulai protokol blockchain, jalankan dengan opsi `"--lite"`
 ```
-cd inery-node/inery.setup
+cd ~/inery-node/inery.setup/
 screen -R lite
 ./ine.py --lite
 ```
+
+![Screenshot_68](https://user-images.githubusercontent.com/108946833/185790914-f0345c7c-5ece-4105-8277-ac9442cafc49.png)
+
 `Tekan CTRL A+D` untuk keluar dari screen, untuk kembali ke screen `screen -Rd lite`
 
 Jika semuanya sudah diatur dengan benar, setelah menjalankan perintah di atas Anda seharusnya dapat melihat replay blok, mungkin hingga beberapa jam hingga sinkronisasi selesai. Setelah blockchain diputar ulang, Anda akan melihat blok baru yang dibuat.
