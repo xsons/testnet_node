@@ -32,7 +32,19 @@ RPC URL: https://xnet-triton-1.point.space/
 Chain ID: 10721
 SYMBOL: XPOINT
 ```
-
+## Menyiapkan vars
+```console
+NODENAME=NAMA_MONIKER
+```
+Ganti `NAMA_MONIKER` dengan nama validator kalian
+```console
+echo "export NODENAME=$NODENAME" >> $HOME/.bash_profile
+if [ ! $WALLET ]; then
+	echo "export WALLET=wallet" >> $HOME/.bash_profile
+fi
+echo "export EVMOS_CHAIN_ID=point_10721-1" >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
 ## Mempersiapkan server
 ```console 
 sudo apt update && sudo apt upgrade -y && \
