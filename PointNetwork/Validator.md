@@ -163,19 +163,27 @@ evmosd keys list
 ## Membuat Validator
 ```console
 evmosd tx staking create-validator \
---amount=100000000000000000000apoint \
+--amount=1000000000000000000000apoint \
 --pubkey=$(evmosd tendermint show-validator) \
---moniker="NAMA_VALIDATOR" \
+--moniker="<myvalidator>" \
 --chain-id=point_10721-1 \
 --commission-rate="0.10" \
 --commission-max-rate="0.20" \
 --commission-max-change-rate="0.01" \
---min-self-delegation="100000000000000000000" \
+--min-self-delegation="1000000000000000000000" \
 --gas="400000" \
 --gas-prices="0.025apoint" \
---from=ADDRESS_EVMOS \
+--from=validatorkey \
 --keyring-backend file
 ```
+Rubah `<myvalidator>` dengan nama validator kalian, `from=validatorkey` dengan address evmos
+
+Untuk memeriksa txhash bisa menggunakan cara berikut:
+```console
+evmosd query tx <txhash>
+```
+`txhash` ganti dengan output yang di hasilkan
+
 ## Explorer
 https://explorer-xnet-triton.point.space/
 
