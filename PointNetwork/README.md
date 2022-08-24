@@ -65,6 +65,12 @@ Untuk mendapatkan kunci pribadi dompet validator
 evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
 ```
 Rubah `validatorkey` dengan nama `validator` kalian
+
+Untuk mengetahui dompet saat ini
+```console
+evmosd keys list
+```
+
 ## Simpan Wallet info
 ```console
 EVMOS_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
@@ -79,6 +85,13 @@ echo 'export EVMOSD_WALLET_ADDRESS='${EVMOSD_WALLET_ADDRESS} >> $HOME/.bash_prof
 echo 'export EVMOSD_VALOPER_ADDRESS='${EVMOSD_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
+
+## Check Saldo
+```console
+vmosd query bank balances evmos1
+```
+Ganti `evmos1` dengan address kalian
+
 
 ## Membuat Validator
 ```console
