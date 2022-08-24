@@ -56,10 +56,6 @@ evmosd keys add validatorkey --keyring-backend file
 ```console
 evmosd keys add validatorkey --recover
 ```
-Untuk mendapatkan daftar dompet saat ini
-```console
-evmosd keys list --keyring-backend file
-```
 Untuk mendapatkan kunci pribadi dompet validator
 ```console
 evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
