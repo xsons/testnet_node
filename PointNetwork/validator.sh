@@ -76,7 +76,29 @@ mv config.toml genesis.json ~/.evmosd/config/
 # validating genesis
 evmosd validate-genesis
 
-# starting point
-./start.sh
+echo -e "\e[1m\e[32m4. Starting service... \e[0m" && sleep 1
+# create service
+sudo tee /etc/systemd/system/evmosd.service > /dev/null <<EOF
+[Unit]
+Description=evmos
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which evmosd) start --home $HOME/.evmosd
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# start service
+sudo systemctl daemon-reload
+sudo systemctl enable evmosd
+sudo systemctl restart evmosd
 
 echo '=============== SETUP FINISHED ==================='
+echo -e 'To check logs: \e[1m\e[32mjournalctl -u evmosd -f -o cat\e[0m'
+echo -e "To check sync status: \e[1m\e[32mevmosd status 2>&1 | jq .SyncInfo\e[0m"
