@@ -123,6 +123,17 @@ evmosd status
 ```
 ![Screenshot_65](https://user-images.githubusercontent.com/108946833/185779191-4e3c516d-4f41-4433-bfba-8c20e804596c.png)
 
+## Claim reward hasil validator
+```console
+evmosd tx distribution withdraw-rewards VALOPER_ADDRESS-KALIAN --from=$WALLET --commission --chain-id=$EVMOS_CHAIN_ID
+````
+```console
+evmosd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$EVMOS_CHAIN_ID --gas=auto
+```
+Untuk mengetahui address VALOPER
+```console
+evmosd keys show validatorykey -a --bech val
+```
 ## Perintah yang Berguna
 Delegation
 ```console
