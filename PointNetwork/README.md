@@ -132,7 +132,7 @@ evmosd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$EVMOS_CHA
 ```
 Untuk mengetahui address VALOPER
 ```console
-evmosd keys show validatorykey -a --bech val
+evmosd debug addr <address evmos>
 ```
 ## Perintah yang Berguna
 Delegation
