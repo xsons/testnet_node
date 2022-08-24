@@ -25,7 +25,7 @@
 > https://aptoslabs.com/incentivized-testnet
 ## Buat Wallet di Petra
 - Instal ekstensi Petra (Aptos Wallet)
-> https://github.com/aptos-labs/aptos-core/releases/tag/wallet-v0.1.6
+> https://github.com/aptos-labs/aptos-core/releases/tag/wallet-v0.1.7
 - Extract file yang sudah di download
 - Buka jendela Chrome dan navigasikan ke Ekstensi menggunakan salah satu metode di bawah ini:
    - Di pojok kanan atas jendela browser, klik tiga titik vertikal, lalu Alat lainnya, lalu Ekstensi, atau
