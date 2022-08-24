@@ -56,11 +56,19 @@ evmosd keys add validatorkey --keyring-backend file
 ```console
 evmosd keys add validatorkey --recover
 ```
+Untuk mendapatkan daftar dompet saat ini
+```console
+evmosd keys list --keyring-backend file
+```
+Untuk mendapatkan kunci pribadi dompet validator
+```console
+evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
+```
 Rubah `validatorkey` dengan nama `validator` kalian
 ## Simpan Wallet info
 ```console
-EVMOSD_WALLET_ADDRESS=$(EVMOSD keys show $validatorkey -a)
-EVMOSD_VALOPER_ADDRESS=$(EVMOSD keys show $validatorkey --bech val -a)
+EVMOSD_WALLET_ADDRESS=$(evmosd keys show $validatorkey -a)
+EVMOSD_VALOPER_ADDRESS=$(evmosd keys show $validatorkey --bech val -a)
 echo 'export EVMOSD_WALLET_ADDRESS='${EVMOSD_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export EVMOSD_VALOPER_ADDRESS='${EVMOSD_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
