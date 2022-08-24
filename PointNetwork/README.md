@@ -67,8 +67,14 @@ evmosd keys unsafe-export-eth-key validatorkey --keyring-backend file
 Rubah `validatorkey` dengan nama `validator` kalian
 ## Simpan Wallet info
 ```console
-EVMOSD_WALLET_ADDRESS=$(evmosd keys show $validatorkey -a)
-EVMOSD_VALOPER_ADDRESS=$(evmosd keys show $validatorkey --bech val -a)
+EVMOS_WALLET_ADDRESS=$(evmosd keys show $WALLET -a)
+```
+Masukan Pharse/password
+```console
+EVMOS_VALOPER_ADDRESS=$(evmosd keys show $WALLET --bech val -a)
+```
+Masukan Pharse/password
+```console
 echo 'export EVMOSD_WALLET_ADDRESS='${EVMOSD_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export EVMOSD_VALOPER_ADDRESS='${EVMOSD_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
