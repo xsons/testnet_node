@@ -9,29 +9,7 @@
 
 
 # Join Point-XNet-Triton as a Validator
-## Perangkat Keras
 
-|  Komponen |  Persyaratan Minimum |
-| ------------ | ------------ |
-| CPU  | 4 or more physical CPU cores  |
-| RAM | At least 32GB of memory (RAM) |
-| Penyimpanan  | At least 500GB of SSD disk storage |
-| koneksi | At least 100mbps network bandwidth |
-
-## Perangkat Lunak
-
-|Komponen | Persyaratan Minimum |
-| ------------ | ------------ |
-| OS | Ubuntu 18.04 atau lebih tinggi | 
-
- Sebelum Memulai jalanin NODE, kalian harus mempunyai dulu Faucet, dan isi form untuk melanjutkan ketahap berikutnya, dan add RPC XPOINT Ke metamask
-- https://pointnetwork.io/testnet-form
-```console 
-Network Title: Point XNet Triton
-RPC URL: https://xnet-triton-1.point.space/
-Chain ID: 10721
-SYMBOL: XPOINT
-```
 ## Menyiapkan vars
 ```console
 NODENAME=NAMA_MONIKER
