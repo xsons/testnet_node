@@ -97,6 +97,10 @@ evmosd status
 ![Screenshot_65](https://user-images.githubusercontent.com/108946833/185779191-4e3c516d-4f41-4433-bfba-8c20e804596c.png)
 
 ## Perintah yang Berguna
+Delegation
+```console
+evmosd tx staking delegate $(evmosd tendermint show-address) <ammount>apoint --chain-id=point_10721-1 --from=<evmosvaloper> --gas=400000 --gas-prices=0.025apoint 
+```
 Periksa Log
 ```console
 journalctl -fu evmosd -o cat
@@ -114,10 +118,6 @@ Mulai Ulang Layanan
 sudo systemctl restart evmosd
 ```
 ## Node Info
-Informasi sinkronisasi
-```console
-evmosd status 2>&1 | jq .SyncInfo
-```
 Info Validator
 ```console
 evmosd status 2>&1 | jq .ValidatorInfo
