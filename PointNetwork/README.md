@@ -84,7 +84,7 @@ source $HOME/.bash_profile
 
 ## Check Saldo
 ```console
-vmosd query bank balances evmos1
+evmosd query bank balances evmos1
 ```
 Ganti `evmos1` dengan address kalian
 
