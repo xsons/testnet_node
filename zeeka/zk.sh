@@ -28,7 +28,7 @@ echo -e "\e[1m\e[32m3. Installing Git... \e[0m" && sleep 1
 # Instal Git
 sudo apt install git -y
 
-echo -e "\e[1m\e[32m4. Clone the bazuka repo... \e[0m" && sleep 1
+echo -e "\e[1m\e[32m4. Clone Repositori... \e[0m" && sleep 1
 # download binary
 git clone https://github.com/zeeka-network/bazuka && cd bazuka
 git pull origin master
