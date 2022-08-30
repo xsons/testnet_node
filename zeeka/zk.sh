@@ -29,7 +29,6 @@ sudo apt install git
 
 echo -e "\e[1m\e[32m4. Clone the bazuka repo... \e[0m" && sleep 1
 # download binary
-cd $HOME
 git clone https://github.com/zeeka-network/bazuka && cd bazuka
 git pull origin master
 cargo install --path .
