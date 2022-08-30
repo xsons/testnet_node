@@ -52,7 +52,7 @@ sudo systemctl restart zeeka
 ```
 ## Check Log
 ```console
-journalctl -fu zeeka -o cat
+sudo journalctl -fu zeeka -o cat
 ```
 - Paste IP Address Kalian di Discord: https://discord.gg/fPhwPzjs
 - Isi Form: https://s.id/1gad7
