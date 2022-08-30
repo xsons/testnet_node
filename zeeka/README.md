@@ -32,7 +32,14 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 ```
-Ganti `YOUR_IP_VPS` dengan `IP VPS KALIAN, dan ganti discord-handle `“YOUR DISCORD”` dengan user discord kalian
+Ganti `YOUR_IP_VPS` dengan `IP VPS KALIAN`, dan ganti discord-handle `"YOUR DISCORD"` dengan user discord kalian
+
+## Update Path
+```console
+cd bazuka
+git pull origin master
+cargo install --path .
+```
 
 ### start service
 ```console
@@ -57,4 +64,9 @@ Wallet address: 0x76fb6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx039c3
 
 Wallet zk address: 0x3402xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9aa55d
 ```
-
+## Hapus Node
+```console
+rustup self uninstall -y
+rm -rf bazuka
+rm -rf zk.sh
+```
