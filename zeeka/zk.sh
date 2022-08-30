@@ -10,7 +10,6 @@ echo -e "\e[0m"
 
 sleep 2
 
-
 # set vars
 if [ ! $PHARSE ]; then
 	read -p "YOUR PHARSE: " PHARSE
