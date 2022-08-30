@@ -13,8 +13,11 @@
 ```console
 wget -O zk.sh https://raw.githubusercontent.com/xsons/TestnetNode/main/zeeka/zk.sh && chmod +x zk.sh && ./zk.sh
 ```
-
-### create service
+## Tambah Wallet
+```
+bazuka init --seed 'PHARSE_WALLET' --network debug --node IP_VPS:8765
+```
+### Create service
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/zeeka.service
 [Unit]
@@ -41,7 +44,7 @@ git pull origin master
 cargo install --path .
 ```
 
-### start service
+### Start service
 ```console
 sudo systemctl daemon-reload
 sudo systemctl enable zeeka
