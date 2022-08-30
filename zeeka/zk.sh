@@ -23,6 +23,10 @@ echo -e "\e[1m\e[32m3. Installing Rupstup... \e[0m" && sleep 1
 # Instal Rupstup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+echo -e "\e[1m\e[32m3. Installing Git... \e[0m" && sleep 1
+# Instal Git
+sudo apt install git
+
 echo -e "\e[1m\e[32m4. Clone the bazuka repo... \e[0m" && sleep 1
 # download binary
 cd $HOME
