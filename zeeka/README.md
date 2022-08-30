@@ -17,6 +17,7 @@ wget -O zk.sh https://raw.githubusercontent.com/xsons/TestnetNode/main/zeeka/zk.
 ```
 bazuka init --seed 'PHARSE_WALLET' --network debug --node IP_VPS:8765
 ```
+
 ### Create service
 ```
 sudo tee <<EOF >/dev/null /etc/systemd/system/zeeka.service
