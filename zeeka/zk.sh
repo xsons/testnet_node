@@ -18,6 +18,7 @@ echo -e "\e[1m\e[32m2. Installing libssl dan cmake... \e[0m" && sleep 1
 # packages
 sudo apt-get install libssl-dev
 sudo apt install cmake -y
+sudo apt-get install build-essential gdb -y
 
 echo -e "\e[1m\e[32m3. Installing Rupstup... \e[0m" && sleep 1
 # Instal Rupstup
