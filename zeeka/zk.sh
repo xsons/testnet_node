@@ -31,4 +31,4 @@ git pull origin master
 cargo install --path .
 
 echo '=============== SETUP FINISHED ==================='
-echo -e 'To check logs: \e[1m\e[32msudo journalctl -fu zeeka -o cat\e[0m'
+echo -e 'N.B: \e[1m\e[32mJANGAN LUPA MAMPIR KE CHANEL BeritaCryptoo\e[0m'
