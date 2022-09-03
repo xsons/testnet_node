@@ -114,8 +114,8 @@ Explorer: https://exp.nodeist.net/Haqq/staking
 ```console
 haqqd tx staking edit-validator \
  --chain-id $HAQQ_CHAIN_ID \
- --identity=<your_keybase_id> \
- --details=<your_validator_description>" \
+ --identity="<your_keybase_id>" \
+ --details="<your_validator_description>" \
  --website="<your_website>" \
  --from $WALLET \
  --fees 0.025aISLM \
