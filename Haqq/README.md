@@ -81,3 +81,53 @@ Jalankan Perintah Untuk Mendapatkan Private Key
 ```console
 haqqd keys unsafe-export-eth-key $WALLET --keyring-backend file
 ```
+Import Private Key kalian ke metamask, dan gunakan wallet yang di bikin untuk meminta faucet
+- Open Web: https://testedge.haqq.network/
+
+## Membuat Validator
+Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 ISLM = 1000000 aISLM,dan node Anda tersinkronisasi
+
+Untuk memeriksa saldo dompet Anda:
+```console
+haqqd query bank balances $HAQQ_WALLET_ADDRESS
+```
+> Jika dompet Anda tidak menunjukkan saldo apa pun, kemungkinan simpul Anda masih disinkronkan. Silahkan tunggu sampai selesai untuk sinkronisasi lalu lanjutkan
+Untuk membuat perintah jalankan validator Anda di bawah ini
+```console
+haqqd tx staking create-validator \
+  --amount 1000000aISLM \
+  --pubkey $(haqqd tendermint show-validator) \
+  --moniker $NODENAME \
+  --chain-id $HAQQ_CHAIN_ID \
+  --commission-rate="0.10" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="1000000" \
+  --gas-prices="0.025aISLM" \
+  --from $WALLET \
+  --node https://rpc.tm.testedge.haqq.network:443
+  --keyring-backend file
+```
+Explorer: https://exp.nodeist.net/Haqq/staking
+
+## Edit Validator
+```console
+haqqd tx staking edit-validator \
+ --chain-id $HAQQ_CHAIN_ID \
+ --identity="EB7784D8888B8552" \
+ --details="Ente Emang Kadang Kadang Ente" \
+ --website="www.bangpateng.com" \
+ --from $WALLET \
+ --fees 0.025aISLM \
+ --keyring-backend file
+```
+## Hapus Node
+```console
+sudo systemctl stop haqqd
+sudo systemctl disable haqqd
+sudo rm /etc/systemd/system/haqq* -rf
+sudo rm $(which haqqd) -rf
+sudo rm $HOME/.haqqd* -rf
+sudo rm $HOME/haqq -rf
+sed -i '/HAQQ_/d' ~/.bash_profile
+```
