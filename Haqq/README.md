@@ -114,9 +114,9 @@ Explorer: https://exp.nodeist.net/Haqq/staking
 ```console
 haqqd tx staking edit-validator \
  --chain-id $HAQQ_CHAIN_ID \
- --identity="EB7784D8888B8552" \
- --details="Ente Emang Kadang Kadang Ente" \
- --website="www.bangpateng.com" \
+ --identity=<your_keybase_id> \
+ --details=<your_validator_description>" \
+ --website="<your_website>" \
  --from $WALLET \
  --fees 0.025aISLM \
  --keyring-backend file
