@@ -79,7 +79,7 @@ source $HOME/.bash_profile
 ## Faucet haqq
 Jalankan Perintah Untuk Mendapatkan Private Key
 ```console
-haqqd keys unsafe-export-eth-key $WALLET --keyring-backend file
+haqqd keys unsafe-export-eth-key $WALLET
 ```
 Import Private Key kalian ke metamask, dan gunakan wallet yang di bikin untuk meminta faucet
 - Open Web: https://testedge.haqq.network/
