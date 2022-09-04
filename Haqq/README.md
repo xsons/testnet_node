@@ -95,7 +95,7 @@ haqqd query bank balances $HAQQ_WALLET_ADDRESS
 Untuk membuat perintah jalankan validator Anda di bawah ini
 ```console
 haqqd tx staking create-validator \
-  --amount 1000000aISLM \
+  --amount 10000000aISLM \
   --pubkey $(haqqd tendermint show-validator) \
   --moniker $NODENAME \
   --chain-id $HAQQ_CHAIN_ID \
