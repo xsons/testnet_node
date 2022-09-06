@@ -140,54 +140,54 @@ Tampilkan id simpul
 ```console
 sourced tendermint show-node-id
 ```
-### Wallet operations
-List of wallets
+### Operasi dompet
+Daftar dompet
 ```console
 sourced keys list
 ```
-Recover wallet
+Pulihkan dompet
 ```console
 sourced keys add <wallet name> --recover
 ```
-Delete wallet
+Hapus dompet
 ```console
 sourced keys delete <wallet name>
 ```
-Backup Private Key
+Cadangan Kunci Pribadi
 ```console
 sourced keys export <wallet name> --unarmored-hex --unsafe
 ```
-Get wallet balance
+Dapatkan saldo dompet
 ```console
 sourced query bank balances <wallet address>
 ```
-Transfer funds
+Transfer dana
 ```console
 sourced tx bank send <wallet address> <to sei wallet address> 10000000usource
 ```
-Voting
+Pemungutan suara
 ```console
 sourced tx gov vote 1 yes --from <wallet name> --chain-id=sourcechain-testnet
 ```
-### Staking, Delegation and Rewards
-Delegate stake
+### Staking, Delegasi, dan Hadiah
+Delegasikan saham
 ```console
 sourced tx staking delegate <valoper address> 10000000usource --from=<waller name> --chain-id=sourcechain-testnet --gas=auto
 ```
-Redelegate stake from validator to another validator
+Delegasikan ulang stake dari validator ke validator lain
 ```console
 sourced tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000usource --from=<wallet name> --chain-id=sourcechain-testnet --gas=auto
 ```
-Withdraw all rewards
+Tarik semua hadiah
 ```console
 sourced tx distribution withdraw-all-rewards --from=<wallet name> --chain-id=sourcechain-testnet1 --gas=auto
 ```
-Withdraw rewards with commision
+Tarik hadiah dengan komisi
 ```console
 sourced tx distribution withdraw-rewards <your valoper address> --from=<wallet name> --commission --chain-id=sourcechain-testnet
 ```
 
-### Validator Management
+### Manajemen Validator
 Edit validator
 ```console
 sourced tx staking edit-validator \
@@ -206,8 +206,9 @@ sourced tx slashing unjail \
   --chain-id=sourcechain-testnet \
   --gas=auto
  ```
-Delete node
-This commands will completely remove node from server. Use at your own risk!
+## Hapus node
+
+Hapus node Perintah ini akan menghapus node sepenuhnya dari server. Gunakan dengan risiko Anda sendiri!
 ```console
 sudo systemctl stop sourced && \
 sudo systemctl disable sourced && \
