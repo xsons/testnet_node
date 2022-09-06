@@ -27,6 +27,7 @@
 wget -O haqq.shhttps://raw.githubusercontent.com/xsons/TestnetNode/main/Source/source.sh && chmod +x source.sh && ./source.sh
 ```
 Opsi 2 (manual)
+
 Anda dapat mengikuti panduan manual jika Anda lebih suka mengatur node secara manual
 
 ## Install Snapshots
