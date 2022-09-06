@@ -59,20 +59,20 @@ rm sourcedata.tar.gz
 # start the node
 sudo systemctl restart sourced && journalctl -u sourced -f -o cat
 ```
-### Create Wallet or Restore Wallet
+### Buat Dompet atau Pulihkan Dompet
 ```
 sourced keys add <wallet name>
   or
 sourced keys add <wallet name> --recover
 ```
-### Check Set Wallet
+### Periksa Set Dompet
 ```
 sourced debug addr <wallet address>
 ```
-Get Faucet Token On Discord 
+Dapatkan Token Faucet Di Discord
 >- [Discord Official Source](https://discord.gg/MgcfAgrD)
 
-### Create Validator
+### Buat Validator
 ```console
 sourced tx staking create-validator \
 --amount=1000000usource \
@@ -90,53 +90,53 @@ sourced tx staking create-validator \
 --details="" \
 -y
 ```
-### Get list of validators
-- For Active Validators
+### Dapatkan daftar validator
+- Untuk Validator Aktif
 ```console
 sourced q staking validators -o json --limit=3000 \
 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' \
 | jq -r '.tokens + " - " + .description.moniker' \
 | sort -gr | nl
 ```
-- For Inactive Validators
+- Untuk Validator Tidak Aktif
 ```console
 sourced q staking validators -o json --limit=3000 \
 | jq '.validators[] | select(.status=="BOND_STATUS_UNBONDED")' \
 | jq -r '.tokens + " - " + .description.moniker' \
 | sort -gr | nl
 ```
-## Usefull commands
-### Service management
-Check logs
+## Perintah yang berguna
+### Manajemen Pelayanan
+Periksa log
 ```console
 journalctl -fu sourced -o cat
 ```
-Start service
+Memulai layanan
 ```console
 sudo systemctl start sourced
 ```
-Stop service
+Hentikan layanan
 ```console
 sudo systemctl stop sourced
 ```
-Restart service
+Mulai ulang layanan
 ```console
 sudo systemctl restart sourced
 ```
-## Node info
-Synchronization info
+## Informasi simpul
+Informasi sinkronisasi
 ```console
 sourced status 2>&1 | jq .SyncInfo
 ```
-Validator info
+Info validator
 ```console
 seid status 2>&1 | jq .ValidatorInfo
 ```
-Node info
+Informasi simpul
 ```console
 sourced status 2>&1 | jq .NodeInfo
 ```
-Show node id
+Tampilkan id simpul
 ```console
 sourced tendermint show-node-id
 ```
