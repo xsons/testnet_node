@@ -53,7 +53,7 @@ sourced keys list
 Tambahkan alamat dompet dan valoper dan muat variabel ke dalam sistem
 ```console
 SRC_WALLET_ADDRESS=$(sourced keys show wallet -a)
-SRC_VALOPER_ADDRESS=$(sourced keys show wallet--bech val -a)
+SRC_VALOPER_ADDRESS=$(sourced keys show wallet --bech val -a)
 echo 'export SRC_WALLET_ADDRESS='${SRC_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export SRC_VALOPER_ADDRESS='${SRC_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
