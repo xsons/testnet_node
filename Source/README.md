@@ -121,11 +121,11 @@ sourced keys list
 ```
 Pulihkan dompet
 ```console
-sourced keys add <wallet name> --recover
+sourced keys add $SRC_WALLET --recover
 ```
 Hapus dompet
 ```console
-sourced keys delete <wallet name>
+sourced keys delete $SRC_WALLET
 ```
 Cadangan Kunci Pribadi
 ```console
@@ -133,52 +133,49 @@ sourced keys export <wallet name> --unarmored-hex --unsafe
 ```
 Dapatkan saldo dompet
 ```console
-sourced query bank balances <wallet address>
+sourced query bank balances $SRC_WALLET_ADDRESS
 ```
 Transfer dana
 ```console
-sourced tx bank send <wallet address> <to sei wallet address> 10000000usource
+sourced tx bank send $SRC_WALLET_ADDRESS <TO_WALLET_ADDRESS> 10000000usource
 ```
 Pemungutan suara
 ```console
-sourced tx gov vote 1 yes --from <wallet name> --chain-id=sourcechain-testnet
+sourced tx gov vote 1 yes --from $SRC_WALLET --chain-id=$SRC_ID
 ```
 ### Staking, Delegasi, dan Hadiah
 Delegasikan saham
 ```console
-sourced tx staking delegate <valoper address> 10000000usource --from=<waller name> --chain-id=sourcechain-testnet --gas=auto
+sourced tx staking delegate $SRC_VALOPER_ADDRESS 10000000usource --from=$SRC_WALLET --chain-id=$SRC_ID --gas=auto --fees 250usource
 ```
 Delegasikan ulang stake dari validator ke validator lain
 ```console
-sourced tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000usource --from=<wallet name> --chain-id=sourcechain-testnet --gas=auto
+sourced tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000usource --from=$SRC_WALLET --chain-id=$SRC_ID --gas=auto --fees 250usource
 ```
 Tarik semua hadiah
 ```console
-sourced tx distribution withdraw-all-rewards --from=<wallet name> --chain-id=sourcechain-testnet1 --gas=auto
+sourced tx distribution withdraw-all-rewards --from=$SRC_WALLET --chain-id=$SRC_ID --gas=auto --fees 250usource
 ```
 Tarik hadiah dengan komisi
 ```console
-sourced tx distribution withdraw-rewards <your valoper address> --from=<wallet name> --commission --chain-id=sourcechain-testnet
+sourced tx distribution withdraw-rewards $SRC_VALOPER_ADDRESS --from=$SRC_WALLET --commission --chain-id=$SRC_ID
 ```
 
 ### Manajemen Validator
 Edit validator
 ```console
 sourced tx staking edit-validator \
-  --moniker=<your moniker> \
-  --identity=<your_keybase_id> \
-  --website="<your_website>" \
-  --details="<your_validator_description>" \
-  --chain-id=sourcechain-testnet \
-  --from=<wallet name>
+--moniker=NEWNODENAME \
+--chain-id=$SRC_ID \
+--from=$SRC_WALLET
  ```
 Unjail validator
 ```console
 sourced tx slashing unjail \
   --broadcast-mode=block \
-  --from=<your wallet name> \
-  --chain-id=sourcechain-testnet \
-  --gas=auto
+  --from=$SRC_WALLET \
+  --chain-id=$SRC_ID \
+  --gas=auto --fees 250usource
  ```
 ## Hapus node
 
