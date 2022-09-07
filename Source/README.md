@@ -38,11 +38,11 @@ sourced status 2>&1 | jq .SyncInfo
 ## Membuat Wallet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
 ```console
-sourced keys add $SRC_WALLET
+sourced keys add wallet
 ```
 (OPSIONAL) Untuk memulihkan dompet Anda menggunakan frase seed
 ```console
-sourced keys add $SRC_WALLET --recover
+sourced keys add wallet --recover
 ```
 Untuk mendapatkan daftar dompet saat ini
 ```console
@@ -52,8 +52,8 @@ sourced keys list
 ## Simpan info dompet
 Tambahkan alamat dompet dan valoper dan muat variabel ke dalam sistem
 ```console
-SRC_WALLET_ADDRESS=$(sourced keys show $SRC_WALLET -a)
-SRC_VALOPER_ADDRESS=$(sourced keys show $SRC_WALLET --bech val -a)
+SRC_WALLET_ADDRESS=$(sourced keys show wallet -a)
+SRC_VALOPER_ADDRESS=$(sourced keys show wallet--bech val -a)
 echo 'export SRC_WALLET_ADDRESS='${SRC_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export SRC_VALOPER_ADDRESS='${SRC_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
