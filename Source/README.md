@@ -129,7 +129,7 @@ sourced keys delete $SRC_WALLET
 ```
 Cadangan Kunci Pribadi
 ```console
-sourced keys export <wallet name> --unarmored-hex --unsafe
+sourced keys export $SRC_WALLET --unarmored-hex --unsafe
 ```
 Dapatkan saldo dompet
 ```console
