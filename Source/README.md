@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img height="150" height="auto" src="https://user-images.githubusercontent.com/44331529/183239082-09722b8d-9cc7-49a1-9d93-15ce3ab8d752.png">
+  <img height="150" height="auto" src="https://user-images.githubusercontent.com/108946833/188787002-658bf009-a004-447d-979d-cf57e07b1ba1.jpg">
 </p>
 
 # Source Testnet
