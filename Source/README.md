@@ -30,80 +30,54 @@ Opsi 2 (manual)
 
 Anda dapat mengikuti [panduan manual](https://github.com/xsons/TestnetNode/blob/main/Source/Manual.md) jika Anda lebih suka mengatur node secara manual
 
-## Install Snapshots
-```bash
-# install the node as standard, but do not launch. Then we delete the .data directory and create an empty directory
-sudo systemctl stop sourced
-rm -rf $HOME/.source/data/
-mkdir $HOME/.source/data/
+## Pasca Instalasi
+Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat menggunakan perintah di bawah ini untuk memeriksa status sinkronisasi
+```console
+sourced status 2>&1 | jq .SyncInfo
+```
+## Membuat Wallet
+Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
+```console
+sourced keys add $SRC_WALLET
+```
+(OPSIONAL) Untuk memulihkan dompet Anda menggunakan frase seed
+```console
+sourced keys add $SRC_WALLET --recover
+```
+Untuk mendapatkan daftar dompet saat ini
+```console
+sourced keys list
+```
 
-# download archive
-cd $HOME
-wget http://116.202.236.115:8000/sourcedata.tar.gz
-
-# unpack the archive
-tar -C $HOME/ -zxvf sourcedata.tar.gz --strip-components 1
-# !! IMPORTANT POINT. If the validator was created earlier. Need to reset priv_validator_state.json  !!
-wget -O $HOME/.source/data/priv_validator_state.json "https://raw.githubusercontent.com/xsons/StateSync-snapshots/main/priv_validator_state.json"
-cd && cat .source/data/priv_validator_state.json
-{
-  "height": "0",
-  "round": 0,
-  "step": 0
-}
-
-# after unpacking, run the node
-# don't forget to delete the archive to save space
-cd $HOME
-rm sourcedata.tar.gz
-# start the node
-sudo systemctl restart sourced && journalctl -u sourced -f -o cat
-```
-### Buat Dompet atau Pulihkan Dompet
-```
-sourced keys add <wallet name>
-  or
-sourced keys add <wallet name> --recover
-```
-### Periksa Set Dompet
-```
-sourced debug addr <wallet address>
+## Simpan info dompet
+Tambahkan alamat dompet dan valoper dan muat variabel ke dalam sistem
+```console
+SRC_WALLET_ADDRESS=$(sourced keys show $SRC_WALLET -a)
+SRC_VALOPER_ADDRESS=$(sourced keys show $SRC_WALLET --bech val -a)
+echo 'export SRC_WALLET_ADDRESS='${SRC_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export SRC_VALOPER_ADDRESS='${SRC_VALOPER_ADDRESS} >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 Dapatkan Token Faucet Di Discord
 >- [Discord Official Source](https://discord.gg/MgcfAgrD)
 
+Untuk memeriksa saldo dompet Anda:
+```console
+sourced query bank balances $SRC_WALLET_ADDRESS
+```
 ### Buat Validator
 ```console
 sourced tx staking create-validator \
---amount=1000000usource \
---pubkey=$(sourced tendermint show-validator) \
---moniker=<moniker> \
---chain-id=sourcechain-testnet \
---commission-rate="0.10" \
---commission-max-rate="0.20" \
---commission-max-change-rate="0.1" \
---min-self-delegation="1" \
---fees=100usource \
---from=<walletName> \
---identity="" \
---website="" \
---details="" \
--y
-```
-### Dapatkan daftar validator
-- Untuk Validator Aktif
-```console
-sourced q staking validators -o json --limit=3000 \
-| jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' \
-| jq -r '.tokens + " - " + .description.moniker' \
-| sort -gr | nl
-```
-- Untuk Validator Tidak Aktif
-```console
-sourced q staking validators -o json --limit=3000 \
-| jq '.validators[] | select(.status=="BOND_STATUS_UNBONDED")' \
-| jq -r '.tokens + " - " + .description.moniker' \
-| sort -gr | nl
+  --amount 999750usource \
+  --from $SRC_WALLET \
+  --commission-max-change-rate "0.01" \
+  --commission-max-rate "0.2" \
+  --commission-rate "0.07" \
+  --min-self-delegation "1" \
+  --pubkey  $(sourced tendermint show-validator) \
+  --moniker $SRC_NODENAME \
+  --chain-id $SRC_ID \
+  --fees 250usource
 ```
 ## Perintah yang berguna
 ### Manajemen Pelayanan
@@ -210,13 +184,11 @@ sourced tx slashing unjail \
 
 Hapus node Perintah ini akan menghapus node sepenuhnya dari server. Gunakan dengan risiko Anda sendiri!
 ```console
-sudo systemctl stop sourced && \
-sudo systemctl disable sourced && \
-rm /etc/systemd/system/sourced.service && \
-sudo systemctl daemon-reload && \
-cd $HOME && \
-rm -rf .source && \
-rm -rf source && \
-rm -rf source.sh \
-rm -rf $(which sourced)
+sudo systemctl stop sourced
+sudo systemctl disable sourced
+sudo rm /etc/systemd/system/sourced* -rf
+sudo rm $(which sourced) -rf
+sudo rm $HOME/.source* -rf
+sudo rm $HOME/source -rf
+sed -i '/SRC_/d' ~/.bash_profile
 ```
