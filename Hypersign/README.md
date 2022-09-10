@@ -112,7 +112,7 @@ hid-noded gentx <key-name> 100000000000uhid \
 --security-contact="XXXXXXXX" \
 --website="XXXXXXXX"
 ```
-## Membuat PR
+## Membuat Pull requests
 - Fork the [repository](https://github.com/hypersign-protocol/networks)
 - Salin isi dari `${HOME}/.hid-node/config/gentx/gentx-XXXXXXXX.json`.
 - Buat file `gentx-<validator-name-without-spaces>.json`di bawah `testnet/jagrat/gentxs`folder di repo bercabang dan tempel teks yang disalin dari langkah terakhir ke dalam file.
