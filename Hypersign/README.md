@@ -24,7 +24,7 @@
 | ------------ | ------------ |
 | OS | Ubuntu 20.04 atau lebih tinggi | 
 
-## Preparing the server
+## Langkah-langkah Instalasi
 ```
 sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev libleveldb-dev jq build-essential bsdmainutils git make ncdu htop screen unzip bc fail2ban htop -y
@@ -42,43 +42,43 @@ go version
 ```
 ## Installation Steps
 
-- Clone the repository and Build the node
+- Kloning repositori dan Bangun node
 ```
 git clone https://github.com/hypersign-protocol/hid-node.git
 cd hid-node
 make install
 ```
 
-- Run the following to check if the node is successfully installed
+- Jalankan yang berikut ini untuk memeriksa apakah node berhasil diinstal
 ```
 hid-noded version
 ```
 
-## Generate Keys
+## Membuat wallet
 ```
 hid-noded keys add <key-name>
 ```
-or
+atau
 ```
 hid-noded keys add <key-name> --recover
 ```
-to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
+untuk membuat ulang kunci dengan mnemonic [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
 
-You can view the key address information using the command: 
+Anda dapat melihat informasi alamat kunci menggunakan perintah: 
 ```
 hid-noded keys list
 ```
-## Validator Setup (Pre Genesis Stage)
+## Penyiapan Validator (Tahap Pra Kejadian)
 
-> Note: Some directories mentioned in the below steps will be created soon.
+> Catatan: Beberapa direktori yang disebutkan dalam langkah-langkah di bawah ini akan segera dibuat.
 
-### Before Final Genesis Release
+### Sebelum Rilis Final Genesis
 
-- Initialize Node
+- Inisialisasi Node
 ```
 hid-noded init <validator-name> --chain-id jagrat
 ```
-- Run the following to change the coin denom from `stake` to `uhid` in the generated `genesis.json`
+- Jalankan yang berikut ini untuk mengubah denom koin dari `stake` menjadi `uhid` di yang dihasilkan `genesis.json`
 ```
 cat $HOME/.hid-node/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="uhid"' > $HOME/.hid-node/config/tmp_genesis.json && mv $HOME/.hid-node/config/tmp_genesis.json $HOME/.hid-node/config/genesis.json
 ```
@@ -91,15 +91,15 @@ cat $HOME/.hid-node/config/genesis.json | jq '.app_state["mint"]["params"]["mint
 ```
 cat $HOME/.hid-node/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="uhid"' > $HOME/.hid-node/config/tmp_genesis.json && mv $HOME/.hid-node/config/tmp_genesis.json $HOME/.hid-node/config/genesis.json
 ```
-- Specify the chain namespace by running the following command
+- Tentukan namespace rantai dengan menjalankan perintah berikut:
 ```
 cat $HOME/.hid-node/config/genesis.json | jq '.app_state["ssi"]["chain_namespace"]="jagrat"' > $HOME/.hid-node/config/tmp_genesis.json && mv $HOME/.hid-node/config/tmp_genesis.json $HOME/.hid-node/config/genesis.json
 ```
-- Create a gentx account
+- Buat akun gentx
 ```
 hid-noded add-genesis-account <key-name> 100000000000uhid
 ```
-- Create a gentx transaction. The `<stake-amount-in-uhid>` should be in `uhid`. Example: `100000000000uhid`
+- Buat transaksi gentx. `<stake-amount-in-uhid>` seharusnya di `uhid`. Contoh: `100000000000uhid`
 ```
 hid-noded gentx <key-name> 100000000000uhid \
 --chain-id jagrat \
@@ -113,73 +113,73 @@ hid-noded gentx <key-name> 100000000000uhid \
 --website="XXXXXXXX"
 ```
 - Fork the [repository](https://github.com/hypersign-protocol/networks)
-- Copy the contents of `${HOME}/.hid-node/config/gentx/gentx-XXXXXXXX.json`.
-- Create a file `gentx-<validator-name-without-spaces>.json` under the `testnet/jagrat/gentxs` folder in the forked repo and paste the copied text from the last step into the file.
-- Create a file `peers-<validator-name>.txt` under the `testnet/jagrat/peers` directory in the forked repo.
-- Run `hid-noded tendermint show-node-id` and copy your Node ID.
-- Run `ifconfig` or `curl ipinfo.io/ip` and copy your publicly reachable IP address.
-- Form the complete node address in the format: `<node-id>@<publicly-reachable-ip>:<p2p-port>`. Example: `31a2699a153e60fcdbed8a47e060c1e1d4751616@<publicly-reachable-ip>:26656`. Note: The default P2P port is 26656. If you want to change the port configuration, open `${HOME}/.hid-node/config/config.toml` and under `[p2p]`, change the port in `laddr` attribute.
-- Paste the complete node address from the last step into the file `testnet/jagrat/peers/peer-<validator-name-without-spaces>.txt`.
-- Create a Pull Request to the `main` branch of the [repository](https://github.com/hypersign-protocol/networks)
->**NOTE:** Pull Request will be merged by the maintainers to confirm the inclusion of the validator at the genesis. The final genesis file will be published under the file `testnet/jagrat/final_genesis.json`.
+- Salin isi dari `${HOME}/.hid-node/config/gentx/gentx-XXXXXXXX.json`.
+- Buat file `gentx-<validator-name-without-spaces>.json`di bawah `testnet/jagrat/gentxs`folder di repo bercabang dan tempel teks yang disalin dari langkah terakhir ke dalam file.
+- Buat file p`eers-<validator-name>`.txtdi bawah `testnet/jagrat/peers`direktori di repo bercabang.
+- Jalankan `hid-noded tendermint show-node-id`dan salin ID Node Anda.
+- Jalankan `ifconfig`atau curl `ipinfo.io/ip`dan salin alamat IP Anda yang dapat dijangkau secara publik.
+- Bentuk alamat simpul lengkap dalam format: `<node-id>@<publicly-reachable-ip>:<p2p-port>`. Contoh: `31a2699a153e60fcdbed8a47e060c1e1d4751616@<publicly-reachable-ip>:26656`. Catatan: Port P2P default adalah 26656. Jika Anda ingin mengubah konfigurasi port, buka `${HOME}/.hid-node/config/config.toml`dan di bawah , ubah atribut `[p2p]`port in .laddr
+- Tempel alamat simpul lengkap dari langkah terakhir ke dalam file `testnet/jagrat/peers/peer-<validator-name-without-spaces>.txt`.
+- Buat Permintaan Tarik ke `main` cabang [repository](https://github.com/hypersign-protocol/networks)
+>**CATATAN:** Pull Request akan digabungkan oleh pengelola untuk mengonfirmasi penyertaan validator di genesis. File genesis akhir akan diterbitkan di bawah file `testnet/jagrat/final_genesis.json`.
 
-### After Final Genesis Release
+### Setelah Rilis Genesis Terakhir
 
-> Cosmovisor is a tool which will enable automatic upgrade of a blockchain, once a software upgrade governance proposal is passed. More information on Cosmovisor [here](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html).
+> Cosmovisor adalah alat yang akan memungkinkan pemutakhiran otomatis blockchain, setelah proposal tata kelola pemutakhiran perangkat lunak disahkan. Informasi lebih lanjut tentang Cosmovisor [disini](https://docs.cosmos.network/v0.45/run-node/cosmovisor.html).
 
-- Download and Install Cosmovisor
+- Unduh dan Instal Cosmovisor
 ```
 wget https://github.com/cosmos/cosmos-sdk/releases/download/cosmovisor%2Fv1.2.0/cosmovisor-v1.2.0-linux-amd64.tar.gz && tar -C /usr/local/bin/ -xzf cosmovisor-v1.2.0-linux-amd64.tar.gz
 ```
-- Export the following environment variables
+- Ekspor variabel lingkungan berikut
 ```
 export DAEMON_PATH=<complete path of hid-noded binary>
 export DAEMON_HOME=$HOME/.hid-node
 ```
-- Create a `cosmovisor` directory and copy the existing blockchain binary to the following location
+- Buat `cosmovisor` direktori dan salin biner blockchain yang ada ke lokasi berikut
 ```
 mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
 cp $DAEMON_PATH $DAEMON_HOME/cosmovisor/genesis/bin
 ```
-- Once the `final_genesis.json` file is published, replace the contents of your `${HOME}/.hid-node/config/genesis.json` with `testnet/jagrat/final_genesis.json`.
-- Copy all the persistent peers present in `testnet/jagrat/final_peers.json` and paste it in the attribute `persistent_peers`, present in the `${HOME}/.hid-node/config/config.toml` file.
-- Set the `minimum-gas-price` in `${HOME}/.hid-node/config/app.toml`. Example value: `0.02uhid` 
-- Start node using Cosmovisor
+- Setelah `final_genesis.json`file diterbitkan, ganti konten Anda `${HOME}/.hid-node/config/genesis.json`dengan`testnet/jagrat/final_genesis.json.`
+- Salin semua rekan persisten yang ada `testnet/jagrat/final_peers.json`dan tempel di atribut `persistent_peers`, yang ada di `${HOME}/.hid-node/config/config.toml`file.
+- Setel minimum-gas-price di `${HOME}/.hid-node/config/app.toml`. Contoh nilai:0.02uhid
+- Mulai simpul menggunakan Cosmovisor
 ```sh
 cosmovisor run start
 ```
 
-## Validator Setup (Post Genesis Stage)
+## Penyiapan Validator (Tahap Pasca Kejadian)
 
-- Follow the steps to install `hid-node` binary [here](#installation-steps)
-- Initialize node
+- Ikuti langkah-langkah untuk menginstal `hid-node` binary [disini](#installation-steps)
+- Inisialisasi simpul
 ```sh
 hid-noded init <validator-name>
 ```
-- Replace the contents of your `${HOME}/.hid-noded/config/genesis.json` with that of `testnet/jagrat/final_genesis.json` from the `master` branch of [repository](https://github.com/hypersign-protocol/networks).
-- Add `persistent_peers` or `seeds` in `${HOME}/.hid-noded/config/config.toml` from `testnet/jagrat/final_peers.json` from the `master` branch of [repository](https://github.com/hypersign-protocol/networks).
-- Set the `minimum-gas-price` in `${HOME}/.hid-node/config/app.toml`. Example value: `0.02uhid`
-- Download and Install Cosmovisor
+- Ganti konten Anda ${HOME}/.hid-noded/config/genesis.jsondengan konten testnet/jagrat/final_genesis.jsondari mastercabang [repository](https://github.com/hypersign-protocol/networks).
+- Tambahkan persistent_peersatau seedsmasuk `${HOME}/.hid-noded/config/config.toml`dari `testnet/jagrat/final_peers.json`dari `master` cabang [repository](https://github.com/hypersign-protocol/networks).
+- Setel `minimum-gas-price`di `${HOME}/.hid-node/config/app.toml`. Contoh nilai:`0.02uhid`
+- Unduh dan Instal Cosmovisor
 ```
 wget https://github.com/cosmos/cosmos-sdk/releases/download/cosmovisor%2Fv1.2.0/cosmovisor-v1.2.0-linux-amd64.tar.gz && tar -C /usr/local/bin/ -xzf cosmovisor-v1.2.0-linux-amd64.tar.gz
 ```
-- Export the following environment variables
+- Ekspor variabel lingkungan berikut
 ```
 export DAEMON_PATH=<complete path of hid-noded binary>
 export DAEMON_HOME=$HOME/.hid-node
 ```
-- Create a `cosmovisor` directory and copy the existing blockchain binary to the following location
+- Buat `cosmovisor`direktori dan salin biner blockchain yang ada ke lokasi berikut
 ```
 mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
 cp $DAEMON_PATH $DAEMON_HOME/cosmovisor/genesis/bin
 ```
-- Start node using Cosmovisor
+- Mulai simpul menggunakan Cosmovisor
 ```shell
 cosmovisor run start
 ```
-- Generate keys by either running `hid-noded keys add <key-name>` or `hid-noded keys add <key-name> --recover` to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
-- Acquire some $HID
-- Send a validator creation transaction
+- Hasilkan kunci dengan menjalankan `hid-noded keys add <key-name>`atau `hid-noded keys add <key-name> --recover`membuat ulang kunci dengan mnemonik [BIP39 Anda](https://github.com/bitcoin/bips/tree/master/bip-0039)
+- Dapatkan beberapa $HID
+- Kirim transaksi pembuatan validator
 ```
 hid-noded tx staking create-validator \
 --from <key-name> \
