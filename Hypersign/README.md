@@ -59,15 +59,19 @@ hid-noded version
 ```
 
 ## Generate Keys
-
-`hid-noded keys add <key-name>`
-
+```
+hid-noded keys add <key-name>
+```
 or
+```
+hid-noded keys add <key-name> --recover
+```
+to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
 
-`hid-noded keys add <key-name> --recover` to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
-
-You can view the key address information using the command: `hid-noded keys list`
-
+You can view the key address information using the command: 
+```
+hid-noded keys list
+```
 ## Validator Setup (Pre Genesis Stage)
 
 > Note: Some directories mentioned in the below steps will be created soon.
