@@ -42,13 +42,9 @@ go version
 ```
 ## Installation Steps
 
-- Clone the repository
+- Clone the repository and Build the node
 ```
 git clone https://github.com/hypersign-protocol/hid-node.git
-```
-
-- Build the node
-```
 cd hid-node
 make install
 ```
