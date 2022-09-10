@@ -58,6 +58,7 @@ hid-noded version
 ```
 hid-noded keys add <key-name>
 ```
+Jangan lupa SIMPAN MNEMONIC
 atau
 ```
 hid-noded keys add <key-name> --recover
