@@ -101,7 +101,7 @@ hid-noded add-genesis-account <key-name> 100000000000uhid
 ```
 - Create a gentx transaction. The `<stake-amount-in-uhid>` should be in `uhid`. Example: `100000000000uhid`
 ```
-hid-noded gentx <key-name> <stake-amount-in-uhid> \
+hid-noded gentx <key-name> 100000000000uhid \
 --chain-id jagrat \
 --moniker="<validator-name>" \
 --commission-max-change-rate=0.01 \
