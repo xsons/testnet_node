@@ -30,6 +30,11 @@ Official documentation:
 Explorer:
 >-  https://dws.explorers.guru/
 
+## Siapkan fullnode deweb Anda
+```
+wget -O dwb.sh https://raw.githubusercontent.com/xsons/TestnetNode/main/deweb/dwb.sh && chmod +x dwb.sh && ./dwb.sh
+```
+
 ## Pasca instalasi
 
 Ketika instalasi selesai, silakan muat variabel ke dalam sistem
