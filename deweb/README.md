@@ -79,7 +79,7 @@ To top up your wallet join DWS discord server and navigate to:
 
 Untuk meminta faucet:
 ```
-$request <YOUR_WALLET_ADDRESS> menkar
+$request <YOUR_WALLET_ADDRESS> sirius
 ```
 
 ### Buat validator
