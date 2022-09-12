@@ -68,16 +68,20 @@ sourced query bank balances $SRC_WALLET_ADDRESS
 ### Buat Validator
 ```console
 sourced tx staking create-validator \
-  --amount 999750usource \
-  --from $SRC_WALLET \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "1" \
-  --pubkey  $(sourced tendermint show-validator) \
-  --moniker $SRC_NODENAME \
-  --chain-id $SRC_ID \
-  --fees 250usource
+--amount=1000000usource \
+--pubkey=$(sourced tendermint show-validator) \
+--moniker=<moniker> \
+--chain-id=sourcechain-testnet \
+--commission-rate="0.10" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.1" \
+--min-self-delegation="1" \
+--fees=100usource \
+--from=<walletName> \
+--identity="" \
+--website="" \
+--details="" \
+-y
 ```
 ## Perintah yang berguna
 ### Manajemen Pelayanan
