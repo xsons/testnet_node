@@ -46,6 +46,21 @@ Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat 
 ```
 dewebd status 2>&1 | jq .SyncInfo
 ```
+## (OPSIONAL) Sinkronisasi Status
+Anda dapat menyatakan sinkronisasi simpul Anda dalam hitungan menit dengan menjalankan perintah di bawah ini. Terima kasih khusus kepada`polkachu | polkachu.com#1249`
+```
+SNAP_RPC="https://deweb-testnet-rpc.polkachu.com:443"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.deweb/config/config.toml
+dewebd unsafe-reset-all
+systemctl restart dewebd && journalctl -fu dewebd -o cat
+```
 
 ### Buat dompet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
