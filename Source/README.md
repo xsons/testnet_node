@@ -35,6 +35,8 @@ Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat 
 ```console
 sourced status 2>&1 | jq .SyncInfo
 ```
+[Install Snapshoot](https://github.com/xsons/testnet_node/edit/main/Source/stateSync-snapshot.md)
+=
 ## Membuat Wallet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
 ```console
