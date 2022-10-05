@@ -83,18 +83,19 @@ chmod +x ine.py
 ```
 cd; source .bashrc; cd -
 ```
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/108946833/194111185-74b2ea9d-d3db-4b5f-879e-eabc4eb1aa63.png">
+</p>
+
 ## Konfigurasi Master Node
 
-```
-cd inery-node/inery.setup
-```
 ```
 cd tools
 ```
 ```
 nano config.json
 ```
-temukan "MASTER_NODE" dan ganti placeholder IP = IP atau alamat DNS server
+temukan "MASTER_ACCOUNT" dan ganti placeholder IP = IP atau alamat DNS server
 ```
 "MASTER_ACCOUNT":
 "NAME": "AccountName",
@@ -108,6 +109,7 @@ Kemudian ganti account name, publickey, privatekey, ip (sesuai kan dengan yang a
 
 **Simpan (ctrl+S), Ketik "Y" dan keluar (ctrl+X)**
 
+Jika kalian menggunakan [mobaxterm](https://mobaxterm.mobatek.net/download.html) bisa cari folder `/root/inery-node/inery.setup/tools/config.json`, Lalu simpan yang sudah di edit.
 ## Running Node
 ```
 cd inery-node/inery.setup
