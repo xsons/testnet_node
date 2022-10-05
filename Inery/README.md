@@ -36,7 +36,13 @@
 | OS | Ubuntu 16.04 | 
 
 ## Sebelum Menjalankan Node Register Akun Testnet
->- [Register](https://github.com/xsons/TestnetNode/blob/main/Inery/Register%20Testnet)
+>- [Register](https://testnet.inery.io/)
+
+Dokumen Official :
+> [Node Lite & Master](https://docs.inery.io/docs/category/lite--master-nodes)
+
+Explorer :
+> [Explorer Inary](https://explorer.inery.io/ "Explorer Inary")
 
 ## Open Port
 ```
@@ -58,63 +64,58 @@ libcurl4-gnutls-dev pkg-config patch llvm-7-dev clang-7 vim-common jq libncurses
 ```
 git clone  https://github.com/inery-blockchain/inery-node
 ```
-- Ekspor jalur bin
-Setelah unduhan selesai, buka direktori `inery.node`
+
+## Explorer BIN
 ```
 cd inery-node
 ```
-Buka direktori `inery.setup`
+## Beri Izin File
+
 ```
 cd inery.setup
 ```
-Di dalam inery.setup ada direktori ine.py dan tools
-Berikan izin skrip ine.py untuk dieksekusi dengan perintah `"chmod"`:
 ```
 chmod +x ine.py
 ```
-Untuk mengekspor jalur ke lingkungan os lokal untuk binari inery, di dalam inery.setup jalankan skrip `ine.py` dengan opsi `--export`
 ```
 ./ine.py --export
 ```
-Skrip telah menulis jalur ke file `.bashrc`, sekarang agar dapat berfungsi, Anda menempelkan baris ini di terminal, itu akan menyegarkan variabel jalur lingkungan untuk sesi terminal saat ini
 ```
 cd; source .bashrc; cd -
 ```
-## Menjadi Simpul Ringan
-- Konfigurasikan IP
-untuk mengonfigurasi node dengan informasi IP server Anda, buka `inery-node/inery.setup/tools/` buka `config.json`
+## Konfigurasi Master Node
+
 ```
-cd ~/inery-node/inery.setup/
+cd inery-node/inery.setup
+```
+```
 cd tools
+```
+```
 nano config.json
 ```
-temukan `"LITE_NODE"` dan ganti placeholder
-IP = IP atau alamat DNS server
+temukan "MASTER_NODE" dan ganti placeholder IP = IP atau alamat DNS server
 ```
- "LITE_NODE" : {
-        "PEER_ADDRESS" : "IP:9010",
-        "HTTP_ADDRESS": "0.0.0.0:8888",
-        "HOST_ADDRESS": "0.0.0.0:9010"
-    },
+"MASTER_ACCOUNT":
+"NAME": "AccountName",
+"PUBLIC_KEY": "PublicKey",
+"PRIVATE_KEY": "PrivateKey",
+"PEER_ADDRESS": "IP:9010",
+"HTTP_ADDRESS": "0.0.0.0:8888",
+"HOST_ADDRESS": "0.0.0.0:9010"
 ```
-Simpan (ctrl+S), Ketik "Y" dan keluar (ctrl+X)
-- Mulai protokol blockchain
-buka direktori `"inery-setup"` sebelumnya dan jalankan skrip `ine.py`
+Kemudian ganti account name, publickey, privatekey, ip (sesuai kan dengan yang ada di web testnetnya)
 
-skrip `ine.py` akan memulai protokol blockchain, jalankan dengan opsi `"--lite"`
-```
-cd ~/inery-node/inery.setup/
-screen -R lite
-./ine.py --lite
-```
+**Simpan (ctrl+S), Ketik "Y" dan keluar (ctrl+X)**
 
-![Screenshot_68](https://user-images.githubusercontent.com/108946833/185790914-f0345c7c-5ece-4105-8277-ac9442cafc49.png)
-
-`Tekan CTRL A+D` untuk keluar dari screen, untuk kembali ke screen `screen -Rd lite`
-
-Jika semuanya sudah diatur dengan benar, setelah menjalankan perintah di atas Anda seharusnya dapat melihat replay blok, mungkin hingga beberapa jam hingga sinkronisasi selesai. Setelah blockchain diputar ulang, Anda akan melihat blok baru yang dibuat.
-
-Buka direktori `lite.node` dan jalankan skrip `./start.sh`
+## Running Node
 ```
-./start.sh
+cd inery-node/inery.setup
 ```
+```
+screen -S inery
+```
+```
+./ine.py --master
+```
+**Ketik CTRL + A + D** Untuk jalan di Background dan Untuk Kembali lagi Ke Screen Gunakan Perintah `screen -rd inery`
