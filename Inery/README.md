@@ -167,7 +167,7 @@ Save CTRL X lalu Y dan Enter
 
 **Penting :** Peer di Atas, Jika Sudah Tidak Work Kalian Bisa Cari Peer Baru di Discord Inery.
 
-## 11. Restart Node
+## Restart Node
 ```
 ./stop.sh
 ```
