@@ -179,7 +179,7 @@ Tunggu Sekitar 5-10 Detik
 ```
 
 <p align="center">
-  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184370620-b73f5269-50ad-47aa-9b03-d55d8718c614.PNG">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/108946833/194226595-bdc1a188-48c2-42d8-bbeb-363458ff5263.png">
 </p>
 
 Jika Sudah Seperti Gambar di Atas, Artinya Sudah jalan dan Tunggu Sampai 8 Jam Untuk Mensinkronkan (Ngejar Block Yang Ada di Explorer)
