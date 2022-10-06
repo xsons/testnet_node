@@ -125,3 +125,114 @@ screen -S inery
 </p>
 
 **Ketik CTRL + A + D** Untuk jalan di Background dan Untuk Kembali lagi Ke Screen Gunakan Perintah `screen -rd inery`
+
+## Jika ada error maka kalian harus mengganti peers
+```
+cd inery-node/inery.setup/master.node/
+nano genesis_start.sh
+```
+Save CTRL X lalu Y dan Enter
+
+## Add Peer baru
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184370626-5b3dc227-3800-4140-a9c0-ce5b0b13e1e1.PNG">
+</p>
+
+**Isi Seperti Pada Contoh Gambar**
+
+- 62.210.245.223
+- 192.99.62.6
+- 15.235.133.9
+
+## Masukan Peer
+```
+--p2p-peer-address 15.235.133.9:9010 \
+--p2p-peer-address 147.78.0.168:9010 \
+--p2p-peer-address 38.242.229.50:9010 \
+--p2p-peer-address sys.blockchain-servers.world:9010 \
+--p2p-peer-address bis.blockchain-servers.world:9010 \
+--p2p-peer-address 167.235.71.28:9010 \
+--p2p-peer-address 62.210.245.223:9010 \
+--p2p-peer-address 192.99.62.6:9010 \
+--p2p-peer-address 5.199.139.117:9010 \
+--p2p-peer-address 151.139.87.56:9010 \
+--p2p-peer-address server3.inery.dev:9010 \
+--p2p-peer-address 15.235.133.9:9010 \
+--p2p-peer-address 5.161.96.50:9010 \
+--p2p-peer-address 198.244.241.210:9010 \
+--p2p-peer-address 15.235.133.9:9010 \
+--p2p-peer-address 147.78.0.168:9010 \
+--p2p-peer-address 147.78.3.186:9010 \
+```
+
+**Penting :** Peer di Atas, Jika Sudah Tidak Work Kalian Bisa Cari Peer Baru di Discord Inery.
+
+## 11. Restart Node
+```
+./stop.sh
+```
+
+Tunggu Sekitar 5-10 Detik
+
+```
+./genesis_start.sh
+```
+
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184370620-b73f5269-50ad-47aa-9b03-d55d8718c614.PNG">
+</p>
+
+Jika Sudah Seperti Gambar di Atas, Artinya Sudah jalan dan Tunggu Sampai 8 Jam Untuk Mensinkronkan (Ngejar Block Yang Ada di Explorer)
+
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184388159-4b0ebd21-8b4e-4f28-a10f-03b1626db075.PNG">
+</p>
+
+Jika Sudah Seperti gambar di atas, Arti nya Sudah Selesai Sinkron, Silahkan Lanjut Next Step
+
+## Start Node
+### Lakukan Ini Masih di TAB Baru
+```
+cd ~/inery-node/inery.setup/master.node/
+./start.sh
+```
+## Daftar dan setujui (Menghubungkan Wallet dengan Dasboard Akun)
+
+### Lakukan Ini Masih di TAB Baru
+
+```
+cline wallet create -n <your_name_wallet> -f file.txt
+```
+file.txt berisi Password Wallet kalian (Kalian membutuhkan itu Jika Wallet kalian dalam Keadaan Lock)
+```
+cline wallet import --private-key <your_private_key> -n <your_name_wallet>
+```
+Import Private Key kalian ke Wallet
+
+### Daftar sebagai produser dengan menjalankan perintah:
+
+```
+cline system regproducer <your_account> <your_public_key> 0.0.0.0:9010
+```
+```
+cline system makeprod approve <your_account> <your_account>
+```
+Semua Perintah di atas Jalankan tanpa tanda (<>)
+
+**Note :** Silahkan Check di Explorer Inery.
+
+# Perintah Berguna 
+
+## Check Saldo Wallet 
+```
+cline get currency balance inery.token ACCOUNT_NAME
+```
+## Delete Wallet di Node
+```
+cline wallet stop
+```
+```
+rm -rf inery-wallet
+rm -rf file.txt
+rm -rf defaultWallet.txt
+```
