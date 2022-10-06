@@ -127,6 +127,7 @@ screen -S inery
 **Ketik CTRL + A + D** Untuk jalan di Background dan Untuk Kembali lagi Ke Screen Gunakan Perintah `screen -rd inery`
 
 ## Jika ada error maka kalian harus mengganti peers
+Kalau muncul error nya ada 2, itu masih normal, bisa lanjut ke next step.
 ```
 cd inery-node/inery.setup/master.node/
 nano genesis_start.sh
