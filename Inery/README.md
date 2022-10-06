@@ -131,8 +131,6 @@ screen -S inery
 cd inery-node/inery.setup/master.node/
 nano genesis_start.sh
 ```
-Save CTRL X lalu Y dan Enter
-
 ## Add Peer baru
 <p align="center">
   <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184370626-5b3dc227-3800-4140-a9c0-ce5b0b13e1e1.PNG">
@@ -164,6 +162,7 @@ Save CTRL X lalu Y dan Enter
 --p2p-peer-address 147.78.0.168:9010 \
 --p2p-peer-address 147.78.3.186:9010 \
 ```
+**Save CTRL X lalu Y dan Enter**
 
 **Penting :** Peer di Atas, Jika Sudah Tidak Work Kalian Bisa Cari Peer Baru di Discord Inery.
 
