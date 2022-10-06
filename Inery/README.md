@@ -112,7 +112,7 @@ Kemudian ganti account name, publickey, privatekey, ip (sesuai kan dengan yang a
 Jika kalian menggunakan [mobaxterm](https://mobaxterm.mobatek.net/download.html) bisa cari folder `/root/inery-node/inery.setup/tools/config.json`, Lalu simpan yang sudah di edit.
 ## Running Node
 ```
-cd inery-node/inery.setup
+cd inery.setup
 ```
 ```
 screen -S inery
@@ -120,4 +120,8 @@ screen -S inery
 ```
 ./ine.py --master
 ```
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/108946833/194216311-9c4238d2-3a6a-4aaf-ab39-cb4eeb9c4265.png">
+</p>
+
 **Ketik CTRL + A + D** Untuk jalan di Background dan Untuk Kembali lagi Ke Screen Gunakan Perintah `screen -rd inery`
