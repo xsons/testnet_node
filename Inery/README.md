@@ -180,8 +180,9 @@ Tunggu Sekitar 5-10 Detik
 Jika Sudah Seperti Gambar di Atas, Artinya Sudah jalan dan Tunggu Sampai 8 Jam Untuk Mensinkronkan (Ngejar Block Yang Ada di Explorer)
 
 <p align="center">
-  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/38981255/184388159-4b0ebd21-8b4e-4f28-a10f-03b1626db075.PNG">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/108946833/194457432-25143e6f-5384-40e4-b1f6-40cbc1f9736e.png">
 </p>
+
 
 Jika Sudah Seperti gambar di atas, Arti nya Sudah Selesai Sinkron, Silahkan Lanjut Next Step
 
@@ -215,6 +216,21 @@ cline system makeprod approve <your_account> <your_account>
 Semua Perintah di atas Jalankan tanpa tanda (<>)
 
 **Note :** Silahkan Check di Explorer Inery.
+
+## Jika wallet kalian ke lock gunakan cara ini
+<p align="center">
+  <img height="auto" height="auto" src="https://user-images.githubusercontent.com/108946833/194457095-1b3b24c2-102d-4381-827d-629975b4e71d.png">
+</p>
+
+```
+cline wallet unlock -n namawallet
+```
+
+Untuk Melihat password
+```
+cat file.txt
+```
+
 
 # Perintah Berguna 
 
