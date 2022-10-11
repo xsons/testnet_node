@@ -29,11 +29,7 @@
 
 |Komponen | Persyaratan Minimum |
 | ------------ | ------------ |
-| OS | Ubuntu 18.04 atau lebih tinggi | 
-
-|Komponen | Persyaratan Minimum |
-| ------------ | ------------ |
-| OS | Ubuntu 16.04 | 
+| OS | Ubuntu 20.04 atau lebih tinggi | 
 
 ## Sebelum Menjalankan Node Register Akun Testnet
 >- [Register](https://testnet.inery.io/)
