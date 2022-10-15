@@ -21,6 +21,14 @@
 | ------------ | ------------ |
 | OS | Ubuntu 20.04 | 
 
+# ollo node setup for testnet — ollo-testnet-0
+
+Official documentation:
+>- [Validator setup instructions](https://docs.ollo.zone/validators/running_a_node)
+
+Explorer:
+>-  https://explorer.kjnodes.com/ollo
+
 
 ## Siapkan fullnode ollo Anda
 ```
