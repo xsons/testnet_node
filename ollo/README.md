@@ -22,7 +22,7 @@
 | OS | Ubuntu 20.04 | 
 
 
-## Siapkan fullnode deweb Anda
+## Siapkan fullnode ollo Anda
 ```
 wget -O ollo.sh https://raw.githubusercontent.com/xsons/testnet_node/main/ollo/ollo.sh && chmod +x dwb.sh && ./ollo.sh
 ```
