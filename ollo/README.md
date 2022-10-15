@@ -27,7 +27,7 @@ Official documentation:
 >- [Validator setup instructions](https://docs.ollo.zone/validators/running_a_node)
 
 Explorer:
->-  https://explorer.kjnodes.com/ollo
+>- https://ollo.explorers.guru/
 
 
 ## Siapkan fullnode ollo Anda
