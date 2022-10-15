@@ -119,7 +119,7 @@ ollod query bank balances $OLLO_WALLET_ADDRESS
 Untuk membuat perintah jalankan validator Anda di bawah ini
 ```
 ollod tx staking create-validator \
-  --amount 2000000utollo \
+  --amount 45000000utollo \
   --from $WALLET \
   --commission-max-change-rate "0.01" \
   --commission-max-rate "0.2" \
