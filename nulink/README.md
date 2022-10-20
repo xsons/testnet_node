@@ -59,7 +59,7 @@ cp /root/geth-linux-amd64-1.10.24-972007a5/keystore/key /root/nulink
 ```
 **CATATAN** : JIKA ERROR COBALAH MEMBUAT DIRECTORY NULINK DENGAN COMMAND BERIKUT , `cd /root`setelah `mkdir nulink`itu coba copy lagi file tersebut.
 
-## Izin
+## Berikan izin
 Berikan akses root, jika tidak, Anda akan mengalami kesalahan!
 ```
 chmod -R 777 /root/nulink
