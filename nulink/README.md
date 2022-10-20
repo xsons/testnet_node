@@ -111,6 +111,14 @@ nulink/nulink nulink ursula init \
 --operator-address 0xB045627Fd6c57577Bba32192d8EXXXXXXXXXXXXXXX \
 --max-gas-price 100
 ```
+
+<p align="center">
+  <img width="600" height="auto" src="https://user-images.githubusercontent.com/108946833/196959804-6e771ae0-ea90-40d6-905a-451f7a14dae3.png">
+</p>
+
+
+Yang ada di kotak itu harus di save.. Itu mnemonic punya sendiri.. 
+
 ## Penting!
 
 - Setelah itu Anda akan mendapatkan output dari frase benih Anda`DONT FORGET TO COPY AND SAVE IT` !!!
@@ -120,6 +128,12 @@ nulink/nulink nulink ursula init \
 Ini adalah output setelah Anda menyelesaikan Konfigurasi
 
 Anda dapat membagikan alamat Publik Anda dengan siapa pun
+<p align="center">
+  <img width="700" height="auto" src="https://user-images.githubusercontent.com/108946833/196960479-7644f448-8ab9-4f31-8d40-68fd4d99988b.png">
+</p>
+
+
+
 
 
 
