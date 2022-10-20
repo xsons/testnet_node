@@ -29,7 +29,7 @@
 Jalankan pertama sebagai pengguna Super dan buka port
 
 ```
-sudo su && sudo ufw enable &&sudo ufw allow 9151
+sudo su && sudo ufw enable && sudo ufw allow 9151
 ```
 ## Siapkan Nulink Fullnode Anda
 Anda dapat mengatur nulink fullnode Anda dalam beberapa menit dengan menggunakan skrip otomatis di bawah ini. Ini akan meminta Anda untuk memasukkan nama node validator Anda!
