@@ -113,7 +113,7 @@ nulink/nulink nulink ursula init \
 ```
 
 <p align="center">
-  <img width="600" height="auto" src="https://user-images.githubusercontent.com/108946833/196959804-6e771ae0-ea90-40d6-905a-451f7a14dae3.png">
+  <img width="900" height="auto" src="https://user-images.githubusercontent.com/108946833/196959804-6e771ae0-ea90-40d6-905a-451f7a14dae3.png">
 </p>
 
 
@@ -129,17 +129,78 @@ Ini adalah output setelah Anda menyelesaikan Konfigurasi
 
 Anda dapat membagikan alamat Publik Anda dengan siapa pun
 <p align="center">
-  <img width="700" height="auto" src="https://user-images.githubusercontent.com/108946833/196960479-7644f448-8ab9-4f31-8d40-68fd4d99988b.png">
+  <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196960479-7644f448-8ab9-4f31-8d40-68fd4d99988b.png">
 </p>
 
+## Start Node
+Kemudian kita memulai node dengan perintah berikut (One Command)
+```
+docker run --restart on-failure -d \
+--name ursula \
+-p 9151:9151 \
+-v /root/nulink:/code \
+-v /root/nulink:/home/circleci/.local/share/nulink \
+-e NULINK_KEYSTORE_PASSWORD \
+-e NULINK_OPERATOR_ETH_PASSWORD \
+nulink/nulink nulink ursula run --no-block-until-ready
+```
+## Keamanan
+### Keamanan Firewall Dasar
+Mulailah dengan memeriksa status ufw.
+```
+sudo ufw status
+```
+Setel default untuk mengizinkan koneksi keluar, tolak semua yang masuk kecuali ssh dan 26656. Batasi upaya login SSH
+```
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw allow ${GRAVITY_PORT}656,${GRAVITY_PORT}660/tcp
+sudo ufw enable
+```
+## Periksa log
+Untuk memeriksa log, kita dapat menggunakan layar untuk terus melihat log
+```
+apt install screen
+```
+```
+screen -S log
+```
+```
+docker logs -f ursula
+```
+keluaran:
+<p align="center">
+  <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196962686-1afddabd-760d-4530-a603-fe6c3179cc42.png">
+</p>
 
+Untuk keluar nya tekan `CTRL A+D`
 
+Setelah itu tugas Anda untuk menjalankan node selesai sekarang mari kita lanjutkan ke langkah berikutnya.
 
+## Mempertaruhkan
+- Buka halaman Staking https://test-staking.nulink.org/faucet
+- Hubungkan Metamask Anda, Anda dapat menggunakan akun Metamask apa pun
+- Dapatkan token BSC Testnet di [Faucet BNB](https://testnet.binance.org/faucet-smart)
+- Saat Anda mendapatkan tes BSC, sekarang minta faucet di Nulink Faucet
+- Buka Halaman [Staking](https://test-staking.nulink.org/) dan Taruh Nulink Anda dan Tekan Konfirmasi dan setujui transaksi di Metamask Anda
 
+<p align="center">
+  <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196966897-42296628-c89e-4619-a89a-86098e696c07.png">
+</p>
 
+## Bond Worker
+Gulir ke bawah dan klik `Bond Worker`
+<p align="center">
+  <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196967833-ff31b1ef-9832-439d-9496-8911adf8e7fc.png">
+</p>
 
+Isi formulir:
+- `Worker Adress`Harus menjadi alamat publik Anda
+- `Node Url`Harus menjadi `https://IP:9151/`Contoh Anda `https://12.452.36.234:9151/`(Pastikan untuk Menyalin semuanya! jangan lewatkan `/`atau Anda akan mendapatkan kesalahan)
+- Klik Bond dan Setujui Transaksi di Metamask Anda
 
+Setelah itu akan muncul node anda Online, jika masih muncul `Offline`Jangan khawatir akan `Online`segera muncul.
 
-
-
-
+![image](https://user-images.githubusercontent.com/108946833/196969560-6403f300-b26d-4973-8b92-4400eef4ca2f.png)
