@@ -32,7 +32,7 @@ Explorer:
 | OS | Ubuntu 20.04 | 
 
 
-## Siapkan fullnode ollo Anda
+## Siapkan fullnode Celestia Anda
 ```
 wget -O celestia.sh https://raw.githubusercontent.com/xsons/testnet_node/main/celestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
 ```
