@@ -95,7 +95,7 @@ source $HOME/.bash_profile
 
 ### Danai dompet Anda
 Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet.
-Anda dapat meminta token testnet dari faucet testnet OLLO di [CELESTIA DISCORD](https://discord.gg/TDBGZT29)
+Anda dapat meminta token testnet dari faucet testnet TIA di [CELESTIA DISCORD](https://discord.gg/TDBGZT29)
 - #faucet untuk meminta token uji
 
 Untuk meminta faucet:
