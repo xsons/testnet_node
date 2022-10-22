@@ -111,8 +111,6 @@ $balance <YOUR_WALLET_ADDRESS>
 Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 tia (1 tia sama dengan 1000000 utia) dan node Anda tersinkronisasi
 
 Untuk memeriksa saldo dompet Anda:
-
-To check your wallet balance:
 ```
 celestia-appd query bank balances $CELESTIA_WALLET_ADDRESS
 ```
