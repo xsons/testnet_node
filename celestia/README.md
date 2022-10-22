@@ -34,6 +34,7 @@ Explorer:
 Panduan Manual:
 - [Jalankan Validator dan Bridge Node di mesin yang sama](https://github.com/xsons/testnet_node/blob/main/celestia/manual_install.md)
 - [Jalankan Bridge Node secara terpisah](https://github.com/xsons/testnet_node/blob/main/celestia/manual_bridge.md)
+- [Jalankan Light Node secara terpisah](https://github.com/xsons/testnet_node/blob/main/celestia/manual_light.md)
 
 ## Siapkan fullnode Celestia Anda
 ```
