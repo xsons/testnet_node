@@ -31,11 +31,15 @@ Explorer:
 | ------------ | ------------ |
 | OS | Ubuntu 20.04 | 
 
+Panduan Manual:
+- [Jalankan Validator dan Bridge Node di mesin yang sama](https://github.com/xsons/testnet_node/blob/main/celestia/manual_install.md)
 
 ## Siapkan fullnode Celestia Anda
 ```
 wget -O celestia.sh https://raw.githubusercontent.com/xsons/testnet_node/main/celestia/celestia.sh && chmod +x celestia.sh && ./celestia.sh
 ```
+## Opsi 2 (manual)
+Anda dapat mengikuti [panduan manual](https://github.com/xsons/testnet_node/blob/main/celestia/manual_install.md) jika Anda lebih suka mengatur node secara manual
 
 ## Pasca instalasi
 
