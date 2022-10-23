@@ -47,7 +47,7 @@ Setelah menjalankan Instalasi otomatis, Anda harus memasang `Password`Twice. And
 ## Mempersiapkan
 Setelah menjalankan perintah instal otomatis, Anda akan melihat output bahwa file keystore Anda disimpan di`/root/geth-linux-amd64-1.10.24-972007a5/keystore/UTC-XXXXX`
 
-Ubah nama keystore `UTC-XXXX`menjadi keydengan perintah `mv`misalnya`mv UTC--2022-09-17T05-27-00.315775527Z--b045627fd6c57577bba32192d8XXXXXXXX key`
+Ubah nama keystore `UTC-XXXX`menjadi keydengan perintah `mv`misalnya`mv UTC--2022-10-20T13-04-13.493677917Z--04e0decdd3e9510964XXXXXXXXXXXXXXX key`
 
 Salin file keystore ke direktori nulink yang baru saja kita buat
 ```
@@ -55,7 +55,7 @@ cp <keystore path> /root/nulink
 ```
 Contoh :
 ```
-cp /root/geth-linux-amd64-1.10.24-972007a5/keystore/key /root/nulink
+cp /root/geth-linux-amd64-1.10.24-972007a5/keystore/UTC--2022-10-20T13-04-13.493677917Z--04e0decdd3e9510964XXXXXXXXXXXXXXX /root/nulink
 ```
 **CATATAN** : JIKA ERROR COBALAH MEMBUAT DIRECTORY NULINK DENGAN COMMAND BERIKUT , `cd /root`setelah `mkdir nulink`itu coba copy lagi file tersebut.
 
@@ -103,7 +103,7 @@ docker run -it --rm \
 -v /root/nulink:/home/circleci/.local/share/nulink \
 -e NULINK_KEYSTORE_PASSWORD \
 nulink/nulink nulink ursula init \
---signer keystore:///code/key \
+--signer keystore:///code/UTC--2022-10-20T13-04-13.493677917Z--04e0decdd3e9510964XXXXXXXXXXXXXXX \
 --eth-provider https://data-seed-prebsc-2-s2.binance.org:8545  \
 --network horus \
 --payment-provider https://data-seed-prebsc-2-s2.binance.org:8545 \
