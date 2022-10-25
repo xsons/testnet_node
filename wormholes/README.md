@@ -60,3 +60,18 @@ docker exec -it wormholes /usr/bin/cat /wm/.wormholes/wormholes/nodekey
 ![image](https://user-images.githubusercontent.com/108946833/197738085-2190f731-ea02-4803-b039-84fb2d6cda2f.png)
 
 Output yang dihasilkan harap di simpan, dan import ke web [wallet wormholes](https://www.limino.com/#/wallet)
+
+## Skrip Pemantauan
+```
+wget -O skrip.sh https://raw.githubusercontent.com/xsons/testnet_node/main/wormholes/skrip.sh && chmod +x skrip.sh && ./skrip.sh
+```
+Untuk keluar nya, tekan CTRL+C
+
+Untuk Memulainya kembali gunakan perintah ini:
+```
+bash ./skrip.sh
+```
+![image](https://user-images.githubusercontent.com/108946833/197741940-b06591e0-9c84-401e-9717-88e01e52f1a1.png)
+
+Screanshot output yang keluar dan kirim [email wormholes](market@wormholes.com)
+
