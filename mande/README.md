@@ -45,6 +45,27 @@ Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat 
 ```
 mande-chaind status 2>&1 | jq .SyncInfo
 ```
+### (OPSIONAL) Sinkronisasi Status
+```
+SNAP_RPC=http://209.182.239.169:28657
+peers="bd9929b9a2e8b5ad1581e4b01f85457e0d01cba3@209.182.239.169:28656"
+sed -i.bak -e  "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" ~/.mande-chain/config/config.toml
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 500)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.mande-chain/config/config.toml
+
+mande-chaind tendermint unsafe-reset-all --home /root/.mande-chain --keep-addr-book
+systemctl restart mande-chaind && journalctl -u mande-chaind -f -o cat
+```
+
 ### Buat dompet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
 ```
@@ -94,7 +115,25 @@ mande-chaind tx staking create-validator \
 --moniker="YOUR_MONIKER" \
 --fees 1000mand
 ```
+## Keamanan
+Untuk melindungi kunci Anda, pastikan Anda mengikuti aturan keamanan dasar
 
+### Siapkan kunci ssh untuk otentikasi
+Tutorial yang bagus tentang cara mengatur kunci ssh untuk otentikasi ke server Anda dapat ditemukan di sini
+
+### Keamanan Firewall Dasar
+Mulailah dengan memeriksa status ufw.
+```
+sudo ufw status
+```
+Setel default untuk mengizinkan koneksi keluar, tolak semua yang masuk kecuali ssh dan 26656. Batasi upaya login SSH
+```
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+sudo ufw allow ssh/tcp
+sudo ufw limit ssh/tcp
+sudo ufw enable
+```
 ## Perintah yang berguna
 ### Manajemen Pelayanan
 Periksa log
