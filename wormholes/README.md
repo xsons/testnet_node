@@ -26,7 +26,7 @@
 ```
 sudo apt-get update && apt-get install wget
 ```
-## Install Docker
+## Instal Docker untuk instalasi lebih cepat
 ```
 sudo apt-get install ca-certificates curl gnupg lsb-release -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -34,20 +34,29 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 ```
+## Instal komposisi Docker
 ```
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
 sudo chown $USER /var/run/docker.sock
 ```
+## Kloning wormholes dari repository
+```
+git clone https://github.com/wormholes-org/wormholes
+```
+## Memulai menjalankan node
+Pull the latest NuLink image
 ```
 docker pull wormholestech/wormholes:v1
 ```
 ```
 docker run -d -p 30303:30303 -p 8545:8545 --name wormholes wormholestech/wormholes:v1
 ```
-Jalankan perintah ini:
+Masukan Perintah ini:
 ```
 docker exec -it wormholes /usr/bin/cat /wm/.wormholes/wormholes/nodekey
 ```
+![image](https://user-images.githubusercontent.com/108946833/197738085-2190f731-ea02-4803-b039-84fb2d6cda2f.png)
 
+Output yang dihasilkan harap di simpan, dan import ke web [wallet wormholes](https://www.limino.com/#/wallet)
