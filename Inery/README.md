@@ -103,7 +103,7 @@ temukan "MASTER_ACCOUNT" dan ganti placeholder IP = IP atau alamat DNS server
 ```
 Kemudian ganti account name, publickey, privatekey, ip (sesuai kan dengan yang ada di web testnetnya)
 
-**Simpan (ctrl+S), Ketik "Y" dan keluar (ctrl+X)**
+**Simpan (ctrl+X), Ketik "Y" Enter**
 
 Jika kalian menggunakan [mobaxterm](https://mobaxterm.mobatek.net/download.html) bisa cari folder `/root/inery-node/inery.setup/tools/config.json`, Lalu simpan yang sudah di edit.
 ## Running Node
