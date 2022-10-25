@@ -73,5 +73,5 @@ bash ./skrip.sh
 ```
 ![image](https://user-images.githubusercontent.com/108946833/197741940-b06591e0-9c84-401e-9717-88e01e52f1a1.png)
 
-Screanshot output yang keluar dan kirim [email wormholes](market@wormholes.com)
+Screanshot output yang keluar dan kirim email wormholes market@wormholes.com
 
