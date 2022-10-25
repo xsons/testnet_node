@@ -36,45 +36,31 @@ Anda dapat mengatur nulink fullnode Anda dalam beberapa menit dengan menggunakan
 ```
 wget -O nulink.sh https://raw.githubusercontent.com/xsons/testnet_node/main/nulink/nulink.sh && chmod +x nulink.sh && ./nulink.sh
 ```
+Setelah selesai instalasi jangan lupa isi password,, dan simpan output yang keluar dan kirim BNB TESTNET ke `Public address of the key:  0x09F8D521efcdED0aeee152xxxxxxxxxxxxxxxxxx
+` 
+![image](https://user-images.githubusercontent.com/108946833/197748078-7244b4a0-eb71-46e3-9eb1-95172ffe9b17.png)
 
-## Pasca-Instalasi
-Ketika instalasi selesai, silakan muat variabel ke dalam sistem
-```
-source $HOME/.bash_profile
-```
-Setelah menjalankan Instalasi otomatis, Anda harus memasang `Password`Twice. Anda akan mendapatkan Informasi tentang kunci Anda jangan lupa SAVE IT ! Pertunjukannya hanya sekali.
-
-## Mempersiapkan
-Setelah menjalankan perintah instal otomatis, Anda akan melihat output bahwa file keystore Anda disimpan di`/root/geth-linux-amd64-1.10.24-972007a5/keystore/UTC-XXXXX`
-
-Ubah nama keystore `UTC-XXXX`menjadi keydengan perintah `mv`misalnya`mv UTC--2022-10-20T13-04-13.493677917Z--04e0decdd3e9510964XXXXXXXXXXXXXXX key`
-
-Salin file keystore ke direktori nulink yang baru saja kita buat
-```
-cp <keystore path> /root/nulink
-```
-Contoh :
-```
-cp /root/geth-linux-amd64-1.10.24-972007a5/keystore/UTC--2022-10-20T13-04-13.493677917Z--04e0decdd3e9510964XXXXXXXXXXXXXXX /root/nulink
-```
-**CATATAN** : JIKA ERROR COBALAH MEMBUAT DIRECTORY NULINK DENGAN COMMAND BERIKUT , `cd /root`setelah `mkdir nulink`itu coba copy lagi file tersebut.
-
-## Berikan izin
-Berikan akses root, jika tidak, Anda akan mengalami kesalahan!
+## Instalasi Pekerja NuLink
+- Salin file keystore akun Worker ke direktori host yang dipilih pada langkah di atas. File pribadi yang dihasilkan oleh NuLink Worker juga akan disimpan di direktori ini. Harap pastikan bahwa direktori ini memiliki 777 izin.
 ```
 chmod -R 777 /root/nulink
 ```
+- lalu ketik cp xxxxxxxx /root/nulink
+
+- Ganti `xxxxxxx`dengan Jalan Andasecret key file
+
+![image](https://user-images.githubusercontent.com/108946833/197749979-7acde69d-0a3d-4194-976b-95a311d994b9.png)
 
 ## Tetapkan variabel
 
 memuat variabel ke dalam sistem
 
 ```
-export NULINK_KEYSTORE_PASSWORD=<YOUR PASSWORD>
+export NULINK_KEYSTORE_PASSWORD=YOUR PASSWORD
 
-export NULINK_OPERATOR_ETH_PASSWORD=<YOUR PASSWORD>
+export NULINK_OPERATOR_ETH_PASSWORD=YOUR PASSWORD
 ```
-Ganti `<YOUR PASSWORD>`dengan kata sandi yang Anda masukkan sebelumnya agar Anda dapat mengingatnya.
+Ganti `YOUR PASSWORD`dengan kata sandi yang Anda masukkan sebelumnya agar Anda dapat mengingatnya.
 
 ## Konfigurasi
 Atur konfigurasi buruh pelabuhan
@@ -132,7 +118,7 @@ Anda dapat membagikan alamat Publik Anda dengan siapa pun
   <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196960479-7644f448-8ab9-4f31-8d40-68fd4d99988b.png">
 </p>
 
-## Start Node
+## Mulai Node
 Kemudian kita memulai node dengan perintah berikut (One Command)
 ```
 docker run --restart on-failure -d \
@@ -159,14 +145,13 @@ sudo ufw limit ssh/tcp
 sudo ufw allow ${GRAVITY_PORT}656,${GRAVITY_PORT}660/tcp
 sudo ufw enable
 ```
+
+## Update node
+```
+wget -O update.sh https://raw.githubusercontent.com/xsons/testnet_node/main/nulink/update.sh && chmod +x update.sh && ./update.sh
+```
+
 ## Periksa log
-Untuk memeriksa log, kita dapat menggunakan layar untuk terus melihat log
-```
-apt install screen
-```
-```
-screen -S log
-```
 ```
 docker logs -f ursula
 ```
@@ -174,8 +159,6 @@ keluaran:
 <p align="center">
   <img width="1000" height="auto" src="https://user-images.githubusercontent.com/108946833/196962686-1afddabd-760d-4530-a603-fe6c3179cc42.png">
 </p>
-
-Untuk keluar nya tekan `CTRL A+D`
 
 Setelah itu tugas Anda untuk menjalankan node selesai sekarang mari kita lanjutkan ke langkah berikutnya.
 
