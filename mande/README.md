@@ -89,7 +89,7 @@ Anda dapat meminta token testnet dari faucet testnet TIA di [MANDE DISCORD]([htt
 
 Untuk meminta faucet:
 ```
-$request <YOUR_WALLET_ADDRESS>
+$request <YOUR_WALLET_ADDRESS> theta
 ```
 Untuk memeriksa saldo dompet:
 ```
