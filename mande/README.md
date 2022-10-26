@@ -97,7 +97,7 @@ $balance <YOUR_WALLET_ADDRESS>
 ```
 
 ### Buat validator
-Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 tia (1 Cred sama dengan 1000000 Credo) dan node Anda tersinkronisasi
+Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 Cred (1 Cred sama dengan 1000000 Cred) dan node Anda tersinkronisasi
 
 Untuk memeriksa saldo dompet Anda:
 ```
@@ -200,7 +200,7 @@ mande-chaind query bank balances $MANDE_WALLET_ADDRESS
 
 Transfer dana
 ```
-mande-chaind tx bank send $MANDE_WALLET_ADDRESS <TO_MANDE_WALLET_ADDRESS> 10000000utia
+mande-chaind tx bank send $MANDE_WALLET_ADDRESS <TO_MANDE_WALLET_ADDRESS> 10000000cred
 ```
 
 ### Pemungutan suara
@@ -211,12 +211,12 @@ mande-chaind tx gov vote 1 yes --from $WALLET --chain-id=$MANDE_CHAIN_ID
 ### Staking, Delegasi, dan Hadiah
 Delegasikan saham
 ```
-mande-chaind tx staking delegate $MANDE_VALOPER_ADDRESS 10000000utia --from=$WALLET --chain-id=$MANDE_CHAIN_ID --gas=auto
+mande-chaind tx staking delegate $MANDE_VALOPER_ADDRESS 10000000cred --from=$WALLET --chain-id=$MANDE_CHAIN_ID --gas=auto
 ```
 
 Delegasikan ulang stake dari validator ke validator lain
 ```
-mande-chaind tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000utia --from=$WALLET --chain-id=$MANDE_CHAIN_ID --gas=auto
+mande-chaind tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000cred --from=$WALLET --chain-id=$MANDE_CHAIN_ID --gas=auto
 ```
 
 Tarik semua hadiah
