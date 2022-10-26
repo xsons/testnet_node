@@ -110,9 +110,12 @@ Untuk membuat perintah jalankan validator Anda di bawah ini
 mande-chaind tx staking create-validator \
 --chain-id mande-testnet-1 \
 --amount 0cred \
+--identity xxxxxxxx \
+--website "xxxxxxxx" \
+--details="xxxxxxxx" \
 --pubkey "$(mande-chaind tendermint show-validator)" \
---from <wallet> \
---moniker="YOUR_MONIKER" \
+--from wallet \
+--moniker="YOUR_MONIKUER" \
 --fees 1000mand
 ```
 ## Keamanan
@@ -229,16 +232,7 @@ Tarik hadiah dengan komisi
 mande-chaind tx distribution withdraw-rewards $MANDE_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$MANDE_CHAIN_ID
 ```
 
-### Manajemen validator
-Edit validator
-```
-mande-chaind tx staking edit-validator \
-    --identity="keybase identity"
-    --security-contact="XXXXXXXX" \
-    --website="XXXXXXXX"
-```
-
-Unjail validator
+## Unjail validator
 ```
 mande-chaind tx slashing unjail \
   --broadcast-mode=block \
