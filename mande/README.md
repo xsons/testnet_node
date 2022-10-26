@@ -121,9 +121,6 @@ mande-chaind tx staking create-validator \
 ## Keamanan
 Untuk melindungi kunci Anda, pastikan Anda mengikuti aturan keamanan dasar
 
-### Siapkan kunci ssh untuk otentikasi
-Tutorial yang bagus tentang cara mengatur kunci ssh untuk otentikasi ke server Anda dapat ditemukan di sini
-
 ### Keamanan Firewall Dasar
 Mulailah dengan memeriksa status ufw.
 ```
