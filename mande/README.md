@@ -115,7 +115,7 @@ mande-chaind tx staking create-validator \
 --details="xxxxxxxx" \
 --pubkey "$(mande-chaind tendermint show-validator)" \
 --from wallet \
---moniker="YOUR_MONIKUER" \
+--moniker="YOUR_MONIKER" \
 --fees 1000mand
 ```
 ## Keamanan
