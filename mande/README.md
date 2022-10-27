@@ -82,6 +82,16 @@ Untuk mendapatkan daftar dompet saat ini
 mande-chaind keys list
 ```
 
+## Simpan info dompet
+Tambahkan dompet dan alamat valoper ke dalam variabel
+```
+MANDE_WALLET_ADDRESS=$(mande-chaind keys show $WALLET -a)
+MANDE_VALOPER_ADDRESS=$(mande-chaind keys show $WALLET --bech val -a)
+echo 'export MANDE_WALLET_ADDRESS='${MANDE_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export MANDE_VALOPER_ADDRESS='${MANDE_VALOPER_ADDRESS} >> $HOME/.bash_profile
+source $HOME/.bash_profile
+```
+
 ### Danai dompet Anda
 Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet.
 Anda dapat meminta token testnet dari faucet testnet TIA di [MANDE DISCORD]([https://discord.gg/TDBGZT29](https://discord.gg/ZBgHwtWQ))
