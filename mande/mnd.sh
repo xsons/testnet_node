@@ -5,7 +5,7 @@ do
 
 # Logo
 
-curl -s https://raw.githubusercontent.com/xsons/testnet_node/main/logoxsons | bash
+curl -s https://raw.githubusercontent.com/xsons/testnet_node/main/logoBC | bash
 
 # Menu
 
