@@ -13,7 +13,7 @@
 | ------------ | ------------ |
 | CPU  | 8 cores (Intel Xeon Skylake or newer) |
 | RAM | 32GB RAM  |
-| Penyimpanan  | 300GB |
+| Penyimpanan  | 200GB |
 
 ## Perangkat Lunak
 
