@@ -187,3 +187,8 @@ Isi formulir:
 Setelah itu akan muncul node anda Online, jika masih muncul `Offline`Jangan khawatir akan `Online`segera muncul.
 
 ![image](https://user-images.githubusercontent.com/108946833/196969560-6403f300-b26d-4973-8b92-4400eef4ca2f.png)
+
+## Hapus Node
+```
+cd $HOME && docker stop ursula && docker rm ursula && rm -rf ~/{geth-linux-amd64-1.10.24-972007a5,geth-linux-amd64-1.10.24-972007a5.tar.gz,nulink,nulink.sh}
+```
