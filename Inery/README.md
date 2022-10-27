@@ -108,7 +108,8 @@ Kemudian ganti account name, publickey, privatekey, ip (sesuai kan dengan yang a
 Jika kalian menggunakan [mobaxterm](https://mobaxterm.mobatek.net/download.html) bisa cari folder `/root/inery-node/inery.setup/tools/config.json`, Lalu simpan yang sudah di edit.
 ## Running Node
 ```
-cd inery.setup
+cd
+cd inery-node/inery.setup
 ```
 ```
 screen -S inery
