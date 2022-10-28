@@ -117,16 +117,16 @@ mande-chaind query bank balances $MANDE_WALLET_ADDRESS
 
 Untuk membuat perintah jalankan validator Anda di bawah ini
 ```
-  mande-chaind tx staking create-validator \
-  --amount 1000000mand \
-  --from $WALLET \
-  --commission-max-change-rate "0.01" \
-  --commission-max-rate "0.2" \
-  --commission-rate "0.07" \
-  --min-self-delegation "1" \
-  --pubkey  $(mande-chaind tendermint show-validator) \
-  --moniker $NODENAME \
-  --chain-id $MANDE_CHAIN_ID
+mande-chaind tx staking create-validator \
+--chain-id mande-testnet-1 \
+--amount 0cred \
+--identity xxxxxxx \
+--website "xxxxxxx" \
+--details="xxxxxxx" \
+--pubkey "$(mande-chaind tendermint show-validator)" \
+--from mande1k3gfx4jxdpgffg27g0ra0qpxws63zfyx9uaf03 \
+--moniker="xbuntu" \
+--fees 1000mand
 ```
 ## Keamanan
 Untuk melindungi kunci Anda, pastikan Anda mengikuti aturan keamanan dasar
