@@ -20,3 +20,6 @@ echo -e '\e[33mTelegram Channel :\e[35m' https://t.meBeritaCryptoo
 echo -e '\e[33mTelegram Group :\e[35m' https://t.me/BeritaaCryptooGroup
 echo -e '\e[33mTwitter :\e[35m' https://twitter.com/BeritaCryptoo
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
+
+sleep 2
