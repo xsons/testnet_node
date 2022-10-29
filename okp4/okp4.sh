@@ -13,11 +13,11 @@ echo -e "\e[0m"
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++" 
 
-echo -e '\e[27mGarapan :\e[25m' Register okp4 Testnet
-echo -e '\e[27mAuthor :\e[25m' BeritaCryptoo
-echo -e '\e[27mTelegram Channel :\e[25m' @BeritaCryptoo
-echo -e '\e[27mTelegram Group :\e[25m' @BeritaaCryptooGroup
-echo -e '\e[27mTwitter :\e[25m' @BeritaCryptoo
+echo -e '\e[33mGarapan :\e[35m' Register okp4 Testnet
+echo -e '\e[33mAuthor :\e[35m' BeritaCryptoo
+echo -e '\e[33mTelegram Channel :\e[35m' https://t.me/BeritaCryptoo
+echo -e '\e[33mTelegram Group :\e[35m' https://t.me/BeritaaCryptooGroup
+echo -e '\e[33mTwitter :\e[35m' https://twitter.com/BeritaCryptoo
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
 sleep 2
