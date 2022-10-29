@@ -243,12 +243,10 @@ Tarik semua hadiah
 ```
 okp4d tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$OKP4D_CHAIN_ID --gas=auto
 ```
-
 Tarik hadiah dengan komisi
 ```
 okp4d tx distribution withdraw-rewards $OKP4D_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$OKP4D_CHAIN_ID
 ```
-
 ### Manajemen validator
 Edit validator
 ```
@@ -260,7 +258,6 @@ okp4d tx staking edit-validator \
   --chain-id=$OKP4D_CHAIN_ID \
   --from=$WALLET
 ```
-
 Unjail validator
 ```
 okp4d tx slashing unjail \
@@ -269,7 +266,6 @@ okp4d tx slashing unjail \
   --chain-id=$OKP4D_CHAIN_ID \
   --gas=auto
 ```
-
 ### Delete node
 Perintah ini akan sepenuhnya menghapus node dari server. Gunakan dengan risiko Anda sendiri!
 ```
