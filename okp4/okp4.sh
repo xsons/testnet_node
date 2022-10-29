@@ -13,7 +13,7 @@ echo -e "\e[0m"
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++" 
 
-echo -e '\e[27mGarapan :\e[25m' Register Deinfra Testnet
+echo -e '\e[27mGarapan :\e[25m' Register okp4 Testnet
 echo -e '\e[27mAuthor :\e[25m' BeritaCryptoo
 echo -e '\e[27mTelegram Channel :\e[25m' @BeritaCryptoo
 echo -e '\e[27mTelegram Group :\e[25m' @BeritaaCryptooGroup
