@@ -173,7 +173,7 @@ sudo systemctl stop okp4d
 
 Mulai ulang layanan
 ```
-sudo systemctl restart celestia-appd
+sudo systemctl restart okp4d
 ```
 
 ### Node info
