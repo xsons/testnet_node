@@ -43,7 +43,7 @@ Explorer:
 wget -O okp4.sh https://raw.githubusercontent.com/xsons/testnet_node/main/okp4/okp4.sh && chmod +x okp4.sh && ./okp4.sh
 ```
 ## Opsi 2 (manual)
-Anda dapat mengikuti [panduan manual]() jika Anda lebih suka mengatur node secara manual
+Anda dapat mengikuti [panduan manual](https://github.com/xsons/testnet_node/blob/main/okp4/manual_install.md) jika Anda lebih suka mengatur node secara manual
 
 ## Pasca instalasi
 
