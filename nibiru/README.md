@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/44331529/197152847-749c938c-c385-4698-bfa5-3f159297f391.png">
+  <img height="100" height="auto" src="https://user-images.githubusercontent.com/50621007/199199328-32dcdc7c-db06-4519-827f-6c6af09228f9.png">
 </p>
 
 # Okp4 node setup for testnet — Okp4 Nemeton
