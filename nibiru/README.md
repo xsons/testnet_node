@@ -7,7 +7,7 @@
   <img height="100" height="auto" src="https://user-images.githubusercontent.com/50621007/199199328-32dcdc7c-db06-4519-827f-6c6af09228f9.png">
 </p>
 
-# Okp4 node setup for testnet — Okp4 Nemeton
+# setup node nibiru untuk testnet — nibiru-testnet-1
 
 Guide Source :
 >- [Kj89]https://github.com/xsons/testnet_manuals/tree/main/nibiru)
