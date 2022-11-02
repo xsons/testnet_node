@@ -10,7 +10,7 @@
 # setup node nibiru untuk testnet — nibiru-testnet-1
 
 Guide Source :
->- [Kj89]https://github.com/xsons/testnet_manuals/tree/main/nibiru)
+>- [Kj89](https://github.com/xsons/testnet_manuals/tree/main/nibiru)
 
 Explorer:
 >- https://nibiru.explorers.guru/
