@@ -10,10 +10,10 @@
 # Okp4 node setup for testnet — Okp4 Nemeton
 
 Guide Source :
->- [Obajay](https://github.com/obajay/nodes-Guides/tree/main/OKP4)
+>- [Kj89]https://github.com/xsons/testnet_manuals/tree/main/nibiru)
 
 Explorer:
->- https://explorer.stavr.tech/okp4
+>- https://nibiru.explorers.guru/
 
 ## Perangkat Keras
 
@@ -40,10 +40,10 @@ Explorer:
 
 ## Siapkan fullnode okp4 Anda
 ```
-wget -O okp4.sh https://raw.githubusercontent.com/xsons/testnet_node/main/okp4/okp4.sh && chmod +x okp4.sh && ./okp4.sh
+wget -O nibiru.sh https://raw.githubusercontent.com/xsons/testnet_node/main/nibiru/nibiru.sh && chmod +x nibiru.sh && ./nibiru.sh
 ```
 ## Opsi 2 (manual)
-Anda dapat mengikuti [panduan manual](https://github.com/xsons/testnet_node/blob/main/okp4/manual_install.md) jika Anda lebih suka mengatur node secara manual
+Anda dapat mengikuti [panduan manual]() jika Anda lebih suka mengatur node secara manual
 
 ## Pasca instalasi
 
@@ -53,80 +53,93 @@ source $HOME/.bash_profile
 ```
 Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat menggunakan perintah di bawah ini untuk memeriksa status sinkronisasi
 ```
-okp4d status 2>&1 | jq .SyncInfo
+nibid status 2>&1 | jq .SyncInfo
 ```
 
-## (OPSIONAL) Gunakan Sinkronisasi Cepat dengan memulihkan data dari snapshot
+## (OPSIONAL) Gunakan Sinkronisasi Cepat dengan memulihkan data by PPNV Service
 ```
-sudo apt update
-sudo apt install lz4 -y
-
-sudo systemctl stop okp4d
-
-cp $HOME/.okp4d/data/priv_validator_state.json $HOME/.okp4d/priv_validator_state.json.backup
-okp4d tendermint unsafe-reset-all --home $HOME/.okp4d --keep-addr-book
-
-rm -rf $HOME/.okp4d/data 
-rm -rf $HOME/.okp4d/wasm
-
-SNAP_NAME=$(curl -s https://snapshots2-testnet.nodejumper.io/okp4-testnet/ | egrep -o ">okp4-nemeton.*\.tar.lz4" | tr -d ">")
-curl https://snapshots2-testnet.nodejumper.io/okp4-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf - -C $HOME/.okp4d
-
-mv $HOME/.okp4d/priv_validator_state.json.backup $HOME/.okp4d/data/priv_validator_state.json
-
-sudo systemctl restart okp4d
-sudo journalctl -u okp4d -f --no-hostname -o cat
+SNAP_RPC="http://rpc.nibiru.ppnv.space:10657"
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000))
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+#if there are no errors, then continue
+sudo systemctl stop nibid
+nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
+peers="ff597c3eea5fe832825586cce4ed00cb7798d4b5@rpc.nibiru.ppnv.space:10656"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.nibid/config/config.toml
+sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $HOME/.nibid/config/config.toml
+sudo systemctl restart nibid
+sudo journalctl -u nibid -f --no-hostname -o cat
+```
+## Perbarui parameter waktu blok
+```
+CONFIG_TOML="$HOME/.nibid/config/config.toml"
+sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
+sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
+sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
+sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $CONFIG_TOML
+sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $CONFIG_TOML
+sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $CONFIG_TOML
+sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $CONFIG_TOML
+sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
 ```
 ### Buat dompet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
 ```
-okp4d keys add $WALLET
+nibid keys add $WALLET
 ```
 
 (OPSIONAL) Untuk memulihkan dompet Anda menggunakan frase seed
 ```
-okp4d keys add $WALLET --recover
+nibid keys add $WALLET --recover
 ```
 
 Untuk mendapatkan daftar dompet saat ini
 ```
-okp4d keys list
+nibid keys list
 ```
 
 ### Simpan info dompet
 Tambahkan alamat dompet dan valoper dan muat variabel ke dalam sistem
 ```
-OKP4D_WALLET_ADDRESS=$(okp4d keys show $WALLET -a)
-OKP4D_VALOPER_ADDRESS=$(okp4d keys show $WALLET --bech val -a)
-echo 'export OKP4D_WALLET_ADDRESS='${OKP4D_WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export OKP4D_VALOPER_ADDRESS='${OKP4D_VALOPER_ADDRESS} >> $HOME/.bash_profile
+NIBIRU_WALLET_ADDRESS=$(nibid keys show $WALLET -a)
+NIBIRU_VALOPER_ADDRESS=$(nibid keys show $WALLET --bech val -a)
+echo 'export NIBIRU_WALLET_ADDRESS='${NIBIRU_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export NIBIRU_VALOPER_ADDRESS='${NIBIRU_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
 ### Danai dompet Anda
-Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet di sini https://faucet.okp4.network/
+Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet
+```
+curl -X POST -d '{"address": "'"$NIBIRU_WALLET_ADDRESS"'", "coins": ["10000000unibi","100000000000unusd"]}' https://faucet.testnet-1.nibiru.fi/
+```
 
 ### Buat validator
-Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 tia (1 okp4 sama dengan 1000000uknow) dan node Anda tersinkronisasi
+Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 nibi (1 nibi sama dengan 1000000unibi) dan node Anda tersinkronisasi
 
 Untuk memeriksa saldo dompet Anda:
 ```
-okp4d query bank balances $OKP4D_WALLET_ADDRESS
+nibid query bank balances $NIBIRU_WALLET_ADDRESS
 ```
 > Jika dompet Anda tidak menunjukkan saldo apa pun, kemungkinan simpul Anda masih disinkronkan. Silahkan tunggu sampai selesai untuk sinkronisasi lalu lanjutkan 
 
 Untuk membuat perintah jalankan validator Anda di bawah ini
 ```
-okp4d tx staking create-validator \
-  --amount 100000000uknow \
+nibid tx staking create-validator \
+  --amount 2000000unibi \
   --from $WALLET \
   --commission-max-change-rate "0.01" \
   --commission-max-rate "0.2" \
   --commission-rate "0.07" \
   --min-self-delegation "1" \
-  --pubkey  $(okp4d tendermint show-validator) \
+  --pubkey  $(nibid tendermint show-validator) \
   --moniker $NODENAME \
-  --chain-id okp4-nemeton
+  --chain-id $NIBIRU_CHAIN_ID
 ```
 
 ## Keamanan
@@ -142,139 +155,138 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
-sudo ufw allow ${OKP4_PORT}656,${OKP4_PORT}660/tcp
+sudo ufw allow ${NIBIRU_PORT}656,${NIBIRU_PORT}660/tcp
 sudo ufw enable
 ```
 ## Periksa kunci validator Anda
 ```
-[[ $(okp4d q staking validator $OKP4D_VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(okp4d status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+[[ $(nibid q staking validator $NIBIRU_VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(nibid status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
 ```
 ## Dapatkan daftar validator
 ```
-okp4d q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
+curl -sS http://localhost:${NIBIRU_PORT}657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
 
 ## Perintah yang berguna
 ### Manajemen Pelayanan
 Periksa log
 ```
-journalctl -fu okp4d -o cat
+journalctl -fu nibid -o cat
 ```
 
 Memulai layanan
 ```
-sudo systemctl start okp4d
+sudo systemctl start nibid
 ```
 
 Hentikan layanan
 ```
-sudo systemctl stop okp4d
+sudo systemctl stop nibid
 ```
 
 Mulai ulang layanan
 ```
-sudo systemctl restart okp4d
+sudo systemctl restart nibid
 ```
 
 ### Node info
 Informasi sinkronisasi
 ```
-sudo systemctl restart okp4d
+nibid status 2>&1 | jq .SyncInfo
 ```
 
 Info validator
 ```
-okp4d status 2>&1 | jq .SyncInfo
+nibid status 2>&1 | jq .ValidatorInfo
 ```
 
 Node info
 ```
-okp4d status 2>&1 | jq .ValidatorInfo
+nibid status 2>&1 | jq .NodeInfo
 ```
 
 Show node id
 ```
-okp4d status 2>&1 | jq .NodeInfo
+nibid tendermint show-node-id
 ```
 
 ### Operasi dompet
 Daftar dompet
 ```
-okp4d keys list
+nibid keys list
 ```
 
 Pulihkan dompet
 ```
-okp4d keys add $WALLET --recover
+nibid keys add $WALLET --recover
 ```
 
 Hapus dompet
 ```
-okp4d keys delete $WALLET
+nibid keys delete $WALLET
 ```
 
 Dapatkan saldo dompet
 ```
-okp4d query bank balances $OKP4D_WALLET_ADDRESS
+nibid query bank balances $NIBIRU_WALLET_ADDRESS
 ```
 
 Transfer dana
 ```
-okp4d tx bank send $OKP4D_WALLET_ADDRESS <TO_OKP4D_WALLET_ADDRESS> 10000000uknow
+nibid tx bank send $NIBIRU_WALLET_ADDRESS <TO_NIBIRU_WALLET_ADDRESS> 10000000unibi
 ```
 
 ### Pemungutan suara
 ```
-okp4d tx gov vote 1 yes --from $WALLET --chain-id=$OKP4D_CHAIN_ID
+nibid tx gov vote 1 yes --from $WALLET --chain-id=$NIBIRU_CHAIN_ID
 ```
 
 ### Staking, Delegasi, dan Hadiah
 Delegasikan saham
 ```
-okp4d tx staking delegate $OKP4D_VALOPER_ADDRESS 10000000uknow --from=$WALLET --chain-id=$OKP4D_CHAIN_ID --gas=auto
+nibid tx staking delegate $NIBIRU_VALOPER_ADDRESS 10000000unibi --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
 ```
 
 Delegasikan ulang stake dari validator ke validator lain
 ```
-okp4d tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000uknow --from=$WALLET --chain-id=$OKP4D_CHAIN_ID --gas=auto
+nibid tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000unibi --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
 ```
 
 Tarik semua hadiah
 ```
-okp4d tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$OKP4D_CHAIN_ID --gas=auto
+nibid tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$NIBIRU_CHAIN_ID --gas=auto
 ```
 Tarik hadiah dengan komisi
 ```
-okp4d tx distribution withdraw-rewards $OKP4D_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$OKP4D_CHAIN_ID
+nibid tx distribution withdraw-rewards $NIBIRU_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$NIBIRU_CHAIN_ID
 ```
 ### Manajemen validator
 Edit validator
 ```
-okp4d tx staking edit-validator \
+nibid tx staking edit-validator \
   --moniker=$NODENAME \
   --identity=<your_keybase_id> \
   --website="<your_website>" \
   --details="<your_validator_description>" \
-  --chain-id=$OKP4D_CHAIN_ID \
+  --chain-id=$NIBIRU_CHAIN_ID \
   --from=$WALLET
 ```
 Unjail validator
 ```
-okp4d tx slashing unjail \
+nibid tx slashing unjail \
   --broadcast-mode=block \
   --from=$WALLET \
-  --chain-id=$OKP4D_CHAIN_ID \
+  --chain-id=$NIBIRU_CHAIN_ID \
   --gas=auto
 ```
 ### Delete node
 Perintah ini akan sepenuhnya menghapus node dari server. Gunakan dengan risiko Anda sendiri!
 ```
-sudo systemctl stop okp4d && \
-sudo systemctl disable okp4d && \
-rm /etc/systemd/system/okp4d.service && \
-sudo systemctl daemon-reload && \
-cd $HOME && \
-rm -rf okp4d && \
-rm -rf .okp4d && \
-rm -rf $(which okp4d)
+sudo systemctl stop nibid
+sudo systemctl disable nibid
+sudo rm /etc/systemd/system/nibi* -rf
+sudo rm $(which nibid) -rf
+sudo rm $HOME/.nibid* -rf
+sudo rm $HOME/nibiru -rf
+sed -i '/NIBIRU_/d' ~/.bash_profile
 ```
