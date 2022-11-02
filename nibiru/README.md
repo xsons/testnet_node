@@ -38,7 +38,7 @@ Explorer:
 | OS | Ubuntu 20.04 atau lebih tinggi | 
 
 
-## Siapkan fullnode okp4 Anda
+## Siapkan fullnode nibiru Anda
 ```
 wget -O nibiru.sh https://raw.githubusercontent.com/xsons/testnet_node/main/nibiru/nibiru.sh && chmod +x nibiru.sh && ./nibiru.sh
 ```
