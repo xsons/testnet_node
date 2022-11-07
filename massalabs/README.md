@@ -45,6 +45,9 @@ Masukan IP VPS kalian dan password. Jika Muncul sleep... langsung aja CTRL A + D
 ```
 wget -O import.sh https://raw.githubusercontent.com/xsons/testnet_node/main/massalabs/import.sh && chmod +x import.sh && ./import.sh
 ```
+## Request faucet
+Join discord [MASSALABS](https://discord.gg/massa), masuk ke chanel **#testnet-faucet**, paste address kalian.
+
 ## Buka info wallet kalian
 ```
 cd massa/massa-client
@@ -52,5 +55,23 @@ cd massa/massa-client
 ```
 Ubah <password> menggunakan password kalian.
 
-## Request faucet
-Join discord [MASSALABS](https://discord.gg/massa), masuk ke chanel #testnet-faucet, paste address kalian.
+Setelah berada di folder `massa-client` jalankan perintah berikut:
+```
+wallet_generate_secret_key
+```
+Gunakan Perintah berikut untuk save SecretKeys, Public key, Address:
+```
+wallet_info
+```
+## Import wallet
+Jika kalian telah membuat wallet sebelumnya gunakan perintah ini:
+```
+wallet_add_secret_keys <your_secret_key>
+```
+```
+wallet_info
+```
+
+
+
+
