@@ -23,17 +23,17 @@ echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 sleep 1
 
 # set vars
-if [ ! $IP_SERVER ]; then
-read -p "Input IP Server Kamu: " IP_SERVER
-echo 'export IP_SERVER='\"${IP_SERVER}\" >> $HOME/.bash_profile
-read -p "Input Password Kamu: " PASSWORD
+if [ ! $IP_VPS ]; then
+read -p "Input IP VPS: " IP_VPS
+echo 'export IP_VPS='\"${IP_VPS}\" >> $HOME/.bash_profile
+read -p "Password: " PASSWORD
 echo 'export PASSWORD='\"${PASSWORD}\" >> $HOME/.bash_profile
 fi
 echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
 . $HOME/.bash_profile
 
-echo -e "IP Server Kamu: \e[1m\e[32m${IP_SERVER}\e[0m"
-echo -e "Password Kamu: \e[1m\e[32m${PASSWORD}\e[0m"
+echo -e "IP VPS: \e[1m\e[32m${IP_VPS}\e[0m"
+echo -e "Password: \e[1m\e[32m${PASSWORD}\e[0m"
 echo '================================================='
 sleep 1
 
@@ -99,7 +99,7 @@ echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
 
 echo -e "Private Key Kamu: \e[1m\e[32m${PRIVKEY}\e[0m"
 echo '================================================='
-PASSWORDKU=$PASSWORD
+PASSWORD=$PASSWORD
 KEY=$PRIVKEY
 sleep 1
 
@@ -107,9 +107,9 @@ sleep 1
 clear
 cd ~
 chmod +x $HOME/massa/massa-client/massa-client
-cd $HOME/massa/massa-client && wallet_pss=$(./massa-client -p $PASSWORDKU | grep Address )
-cd $HOME/massa/massa-client && wallet_priv_key=$(./massa-client wallet_add_secret_keys $KEY -p $PASSWORDKU | grep "Secret key" )
-# cd $HOME/massa/massa-client && generate_address=$(./massa-client wallet_add_secret_keys $PRIVKEY -p $PASSWORDKU | grep "Secret Key" | awk '{ print $2 }')
+cd $HOME/massa/massa-client && wallet_pss=$(./massa-client -p $PASSWORD | grep Address )
+cd $HOME/massa/massa-client && wallet_priv_key=$(./massa-client wallet_add_secret_keys $KEY -p $PASSWORD | grep "Secret key" )
+# cd $HOME/massa/massa-client && generate_address=$(./massa-client wallet_add_secret_keys $PRIVKEY -p $PASSWORD | grep "Secret Key" | awk '{ print $2 }')
 sleep 60
 clear
 
