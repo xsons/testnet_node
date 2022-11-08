@@ -1,3 +1,25 @@
+#!/bin/bash
+clear
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo -e "\033[0;35m"
+echo " :;:;:;:;:; :;:;:;:;:;         :;:;      :;:     :;:;:     :;:;:;:;:;:    :;:;:;:;:; "; 
+echo " :+:     +: :+:                :+::+:    :+:   :+:   :+:   :+:       :+:  :+:        ";
+echo " +;+     :+ +;+                +;+ +;+   +;+ +;+      +;+  +;+        +;+ +;+        ";
+echo " +#:+#:+#:  +#:        #=#=#=# +#:  +#:  +#: +#:       +#: +#:        +#: +#:+#:+#:+ ";
+echo " #+#     +# #+#                #+#   #+# #+#  #+#     #+#  #+#       #+#  #+#        ";
+echo " +#+     #+ +#+                +#+    +#+#+    +#+   +#+   +#+      +#+   +#+        ";
+echo " #########  ##########         ###     ####      #####     ##########     ########## ";
+echo -e "\e[0m"
+
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++" 
+
+echo -e '\e[33mGarapan :\e[35m' Register Testnet
+echo -e '\e[33mAuthor :\e[35m' BeritaCryptoo
+echo -e '\e[33mTelegram Channel :\e[35m' https://t.me/BeritaCryptoo
+echo -e '\e[33mTelegram Group :\e[35m' https://t.me/BeritaaCryptooGroup
+echo -e '\e[33mTwitter :\e[35m' https://twitter.com/BeritaCryptoo
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+
 sleep 1
 
 # set vars
@@ -41,10 +63,10 @@ cd $HOME
 wget https://github.com/massalabs/massa/releases/download/TEST.16.0/massa_TEST.16.0_release_linux.tar.gz
 tar xvzf massa_TEST.16.0_release_linux.tar.gz
 # cd massa/massa-node/base_config && rm -rf config.toml
-# wget https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/config.toml
+# wget https://raw.githubusercontent.com/xsons/testnet_node/main/config.toml
 cd $HOME
 cd massa/massa-node/config && rm -rf config.toml
-wget https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/massa/config.toml
+wget https://raw.githubusercontent.com/xsons/testnet_node/main/massalabs/config.toml
 sed -i -e "s/^routable_ip *=.*/routable_ip = \"$IP_SERVER\"/" $HOME/massa/massa-node/config/config.toml
 
 sudo tee /root/massa/massa-node/run.sh > /dev/null <<EOF
@@ -94,4 +116,4 @@ sleep 30
 
 clear
 cd $HOME
-wget -O buyrolls.sh https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/massa/buyrolls.sh && chmod +x buyrolls.sh && screen -xR -S buyrolls ./buyrolls.sh
+wget -O buyrolls.sh https://raw.githubusercontent.com/xsons/testnet_node/main/massalabs/buyrolls.sh && chmod +x buyrolls.sh && screen -xR -S buyrolls ./buyrolls.sh
