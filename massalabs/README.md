@@ -7,6 +7,7 @@
 
 Guide Source :
 >- [@massacaptain](https://medium.com/@massacaptain/tutorial-praktis-testnet-berinsentif-massa-eps-13-d7d5f19f1462)
+>- [mdlog](https://github.com/mdlog/testnet-mdlog/tree/main/massa)
 
 Dokumentasi Ofisial:
 >- [Official](https://massa.readthedocs.io/en/latest/testnet/install.html)
