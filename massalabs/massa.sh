@@ -24,16 +24,16 @@ sleep 1
 
 # set vars
 if [ ! $IP_VPS ]; then
-read -p "Input IP VPS: " IP_VPS
+read -p "IP VPS: " IP_VPS
 echo 'export IP_VPS='\"${IP_VPS}\" >> $HOME/.bash_profile
-read -p "Password: " PASSWORD
+read -p "PASSWORD: " PASSWORD
 echo 'export PASSWORD='\"${PASSWORD}\" >> $HOME/.bash_profile
 fi
 echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
 . $HOME/.bash_profile
 
-echo -e "IP VPS: \e[1m\e[32m${IP_VPS}\e[0m"
-echo -e "Password: \e[1m\e[32m${PASSWORD}\e[0m"
+echo -e "IP VPS: \e[1m\e[32m${IP_SERVER}\e[0m"
+echo -e "PASSWORD: \e[1m\e[32m${PASSWORD}\e[0m"
 echo '================================================='
 sleep 1
 
@@ -63,10 +63,10 @@ cd $HOME
 wget https://github.com/massalabs/massa/releases/download/TEST.16.0/massa_TEST.16.0_release_linux.tar.gz
 tar xvzf massa_TEST.16.0_release_linux.tar.gz
 # cd massa/massa-node/base_config && rm -rf config.toml
-# wget https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/config.toml
+# wget https://raw.githubusercontent.com/xsons/testnet_node/main/config.toml
 cd $HOME
 cd massa/massa-node/config && rm -rf config.toml
-wget https://raw.githubusercontent.com/mdlog/testnet-mdlog/main/massa/config.toml
+wget https://raw.githubusercontent.com/xsons/testnet_node/main/massalabs/config.toml
 sed -i -e "s/^routable_ip *=.*/routable_ip = \"$IP_VPS\"/" $HOME/massa/massa-node/config/config.toml
 
 sudo tee /root/massa/massa-node/run.sh > /dev/null <<EOF
@@ -97,13 +97,13 @@ systemctl restart massad
 
 #!/bin/bash
 if [ ! $PASSWORD ]; then
-read -p "Password: " PASSWORD
+read -p "PASSWORD: " PASSWORD
 echo 'export PASSWORD='\"${PASSWORD}\" >> $HOME/.bash_profile
 fi
 echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
 . $HOME/.bash_profile
 
-echo -e "Password: \e[1m\e[32m${PASSWORD}\e[0m"
+echo -e "PASSWORD: \e[1m\e[32m${PASSWORD}\e[0m"
 echo '================================================='
 PASSWORD=$PASSWORD
 sleep 1
@@ -111,7 +111,7 @@ sleep 1
 
 chmod +x $HOME/massa/massa-client/massa-client
 cd $HOME/massa/massa-client && wallet_pss=$(./massa-client -p $PASSWORD | grep Address )
-cd $HOME/massa/massa-client && generate_address=$(./massa-client wallet_generate_secret_key -p $PASSWORDKU | grep Address | awk '{ print $2 }')
+cd $HOME/massa/massa-client && generate_address=$(./massa-client wallet_generate_secret_key -p $PASSWORD | grep Address | awk '{ print $2 }')
 sleep 30
 
 clear
