@@ -35,7 +35,7 @@ Selanjutnya Anda harus memastikan validator Anda menyinkronkan blok. Anda dapat 
 ```console
 sourced status 2>&1 | jq .SyncInfo
 ```
-## SnapShot 28.10.22 (0.1 GB) block height --> 2981026
+## SnapShot 28.10.22 (0.1 GB) block height --> 2981026 by [obajay](https://github.com/obajay/nodes-Guides/tree/main/Source#snapshot-281022-01-gb-block-height----2981026)
 ```
 # install the node as standard, but do not launch. Then we delete the .data directory and create an empty directory
 sudo systemctl stop sourced
