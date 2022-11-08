@@ -1,0 +1,222 @@
+[logging]
+    # Logging level. High log levels might impact performance. 0: ERROR, 1: WARN, 2: INFO, 3: DEBUG, 4: TRACE
+    level = 2
+
+[api]
+    # max number of future periods considered during requests
+    draw_lookahead_period_count = 10
+    # port on which the node API listens for admin and node management requests. Dangerous if publicly exposed.
+    bind_private = "127.0.0.1:33034"
+    # port on which the node API listens for public requests. Can be exposed to the Internet.
+    bind_public = "0.0.0.0:33035"
+    # max number of arguments per RPC call
+    max_arguments = 128
+
+[execution]
+    # max number of generated events kept in RAM
+    max_final_events = 10000
+    # maximum length of the read-only execution requests queue
+    readonly_queue_length = 10
+    # by how many milliseconds shoud the execution lag behind real time
+    # higher values increase speculative execution lag but improve performance
+    cursor_delay = 2000
+    # duration of the statistics time window in milliseconds
+    stats_time_window_duration = 60000
+
+[ledger]
+    # path to the initial ledger
+    initial_ledger_path = "base_config/initial_ledger.json"
+    # path to the disk ledger db directory
+    disk_ledger_path = "storage/ledger/rocks_db"
+    # length of the changes history. Higher values allow bootstrapping nodes with slower connections
+    final_history_length = 100
+
+[consensus]
+    # max number of previously discarded blocks kept in RAM
+    max_discarded_blocks = 100
+    # if a block is at least future_block_processing_max_periods periods in the future, it is just discarded
+    future_block_processing_max_periods = 100
+    # max number of blocks in the future kept in RAM
+    max_future_processing_blocks = 400
+    # max number of blocks waiting for dependencies
+    max_dependency_blocks = 2048
+    # number of final periods that must be kept at all times (increase to more resilience to short network disconnections, high values will increase RAM usage.)
+    force_keep_final_periods = 20
+
+    # max milliseconds to wait while sending an event before dropping it
+    max_send_wait = 0
+    # useless blocks are pruned every block_db_prune_interval ms
+    block_db_prune_interval = 5000
+    
+    # considered timespan for stats info
+    stats_timespan = 60000
+    # max number of item returned per query
+    max_item_return_count = 100
+
+[protocol]
+    # timeout after which without answer a hanshake is ended
+    message_timeout = 5000
+    # timeout after whick we consider a node does not have the block we asked for
+    ask_block_timeout = 10000
+    # max cache size for which blocks our node knows about
+    max_known_blocks_size = 1024
+    # max cache size for which blocks a foreign node knows about
+    max_node_known_blocks_size = 1024
+    # max cache size for which blocks a foreign node asked for
+    max_node_wanted_blocks_size = 1024
+    # max number of blocks we can ask simultaneously per node
+    max_simultaneous_ask_blocks_per_node = 128
+    # max milliseconds to wait while sending an event before dropping it
+    max_send_wait = 0
+    # max cache size for which operations your node knows about
+    max_known_ops_size = 200000
+    # max cache size for which operations a foreign node knows about
+    max_node_known_ops_size = 20000
+    # max cache size for which endorsements our node knows about
+    max_known_endorsements_size = 1024
+    # max cache size for which endorsements a foreign node knows about
+    max_node_known_endorsements_size = 1024
+    # Maximum number of batches in the memory buffer.
+    # Dismiss the new batches if overflow
+    operation_batch_buffer_capacity = 10024
+    # Start processing batches in the buffer each `operation_batch_proc_period` in millisecond
+    operation_batch_proc_period = 500
+    # All operations asked are prune each `operation_asked_pruning_period` millisecond
+    asked_operations_pruning_period = 100000
+    # Max number of operation per message, same as network param but can be smaller
+    max_operations_per_message = 1024
+
+[network]
+    # port on which to listen for protocol communication
+    bind = "[::]:31244"
+    # port used by protocol
+    protocol_port = 31244
+    # timeout for connection establishment
+    connect_timeout = 3000
+    # attempt a connection to available peers when needed every wakeup_interval milliseconds
+    wakeup_interval = 5000
+    # path to the local peers storage file
+    peers_file = "storage/peers.json"
+    # path to the initial peers file
+    initial_peers_file = "base_config/initial_peers.json"
+    # max number of inbound connections per ip
+    max_in_connections_per_ip = 5
+    # max number of stored idle peers
+    max_idle_peers = 10000
+    # max number of stored banned peers
+    max_banned_peers = 100
+    # max number of advertized peers
+    max_advertise_length = 10000
+    # peers are dumped to file every peers_file_dump_interval milliseconds
+    peers_file_dump_interval = 10000
+    # max size of sent messages
+    max_message_size = 1048576000
+    # timeout when waiting for a message from a foreign node
+    message_timeout = 5000
+    # interval in milliseconds for asking peer lists from peers we are connected to
+    ask_peer_list_interval = 30000
+    # path to the node key (not the staking key)
+    keypair_file = "config/node_privkey.key"
+    # max number of asked blocks per message
+    max_ask_blocks_per_message = 128
+    # max number of operations per message
+    max_operations_per_message = 1024
+    # max number of endorsements per message
+    max_endorsements_per_message = 1024
+    # max milliseconds to wait while sending an event before dropping it
+    max_send_wait = 0
+    # we forget we banned a node after ban_timeout milliseconds
+    ban_timeout = 3600000
+    # Timeout duration when in handshake we respond with a PeerList
+    # (on max in connection reached we send a list of peers)
+    peer_list_send_timeout = 100
+    # Max number of in connection overflowed managed by the handshake
+    # that send a list of peers
+    max_in_connection_overflow = 100
+    # Read limitation for a connection in bytes per seconds
+    max_bytes_read = 20_000_000.0
+    # Write limitation for a connection in bytes per seconds
+    max_bytes_write = 20_000_000.0
+
+    [network.peer_types_config]
+    Standard = { target_out_connections = 10, max_out_attempts = 10, max_in_connections = 15}
+    Bootstrap = { target_out_connections = 1, max_out_attempts = 1, max_in_connections = 1}
+    WhiteListed = { target_out_connections = 2, max_out_attempts = 2, max_in_connections = 3}
+
+[bootstrap]
+    # list of bootstrap (ip, node id)
+    bootstrap_list = [["51.75.60.228:31245", "P13Ykon8Zo73PTKMruLViMMtE2rEG646JQ4sCcee2DnopmVM3P5"],
+	["149.202.86.103:31245", "P12UbyLJDS7zimGWf3LTHe8hYY67RdLke1iDRZqJbQQLHQSKPW8j"],
+	["54.36.174.177:31245", "P1gEdBVEbRFbBxBtrjcTDDK9JPbJFDay27uiJRE3vmbFAFDKNh7"],
+	["31.222.227.91:31245", "P1ZqGgwavNQhZCo47y2mhFZqqags8A6R5WG3sf47Tnuyv7qurcz"],
+	["45.135.92.85:31245", "P1ziBfWzcXzj3B3NPsquzGwiV3zcj7X1F6KjLzM4UWrYgaasv5x"],
+	["80.234.37.83:31245", "P1BqrZD1YaH7BzFcwYC7PU6Urkq5RxANdVTtDiYPqX6AnqUCADB"],
+	["185.217.127.86:31245", "P1hgDbGKvtHz78W4vAYG1ASRcpVqXaieQBtZbRQrwGhwKFojaJY"],
+	["77.40.50.164:31245", "P1eNDEywNTJDByV7XQE9UG4o1x2JoY9YZTtqDNNUbhRHY9EVmvR"],
+	["141.94.218.103:31245", "P1VRyXjUaHeJd4Rmr3waVmpZDFzzH5ARRi3f5ye5BYgxBmxHC7X"],
+	["80.85.143.244:31245", "P1VqfkS88D7jSqJVUT3iQD6FiLdzpefze1iq8r7qPDhjfYPYGTR"],
+	["34.88.31.129:31245", "P1VetnDMnKaYMV7PNpre3uxa7xoi8Htu64UfRHP5b71JKaTvvDi"],
+	["149.202.89.125:31245", "P12vxrYTQzS5TRzxLfFNYxn6PyEsphKWkdqx2mVfEuvJ9sPF43uq"],
+	["45.82.71.185:31245", "P1TEgXRAeV5HfdbFRLnN2YBQSpGgVtV2oYdFTd1D5MLgThGSUnH"],
+	["45.159.251.26:31245", "P1mtJFdKNybFuskuVqGuoHDZ6HTZXBgUwYVpqmXK95R9C1nJHAc"],
+	["178.54.78.180:31245", "P1cNvM69dB2nV5EuMeHmiMFTNU6TbrzB5yhYWwC6unGG32vCEzL"],
+	["198.27.74.52:31245", "P1hdgsVsd4zkNp8cF1rdqqG6JPRQasAmx12QgJaJHBHFU1fRHEH"],
+	["185.216.75.122:31245", "P1eUYtRzuAZE3QQZNc3eSuE5AwTEXUzf6bNCQeZydmDiGahky4h"],
+	["38.242.138.184:31245", "P18aMP5jiaMtWgPGLAMxa41wxR9A483pM2tasy7kf5Yb9DfFCfc"],
+	["154.53.42.187:31245", "P1SrKpu3mTubzYFGpd5AhC7XqRcWWVMN1p9RpUwfVpCuewrpnj5"],
+	["198.27.74.5:31245", "P1qxuqNnx9kyAMYxUfsYiv2gQd5viiBX126SzzexEdbbWd2vQKu"],
+	["135.181.115.115:31245", "P154oxSVjR7dWE2VtD1cPYmfCGu5NmDxMwARzbij4Gz29bNQvoT"],
+	["173.82.188.120:31245", "P1EPDtSJvyzoB2vT36cxQzUVb1gCkT9upV5K1RV6qP4nrmETM6Y"],
+	["158.69.23.120:31245", "P1XxexKa3XNzvmakNmPawqFrE9Z2NFhfq1AhvV1Qx4zXq5p1Bp9"],
+	["158.69.120.215:31245", "P12rPDBmpnpnbECeAKDjbmeR19dYjAUwyLzsa8wmYJnkXLCNF28E"],
+	["77.201.74.4:31245", "P197mHT52G6DXqXKCwesYeRW4sGsrGLvXagkUuB6TdkdHuovNtv"]]
+    # [optionnal] port on which to listen for incoming bootstrap requests
+    bind = "[::]:31245"
+    # timeout to establish a bootstrap connection
+    connect_timeout = 15000
+    # delay in milliseconds to wait between consecutive bootstrap attempts
+    retry_delay = 60000
+    # if ping is too high bootstrap will be interrupted after max_ping milliseconds
+    max_ping = 10000
+    # timeout for incoming message readout
+    read_timeout = 100000
+    # timeout for message sending
+    write_timeout = 100000
+    # timeout for incoming error message readout
+    read_error_timeout = 200
+    # timeout for message error sending
+    write_error_timeout = 200
+    # when enabled, apply a correction to the local computer clock to match bootstrap server time
+    enable_clock_synchronization = false
+    # [server] data is cached for cache duration milliseconds
+    cache_duration = 15000
+    # max number of simulataneous bootstraps for server
+    max_simultaneous_bootstraps = 2
+    # max size of recently bootstrapped IP cache
+    ip_list_max_size = 10000
+    # refuse consecutive bootstrap attempts from a given IP when the interval between them is lower than per_ip_min_interval milliseconds
+    per_ip_min_interval = 180000
+    # Read-Write limitation for a connection in bytes per seconds (about the bootstrap specifically)
+    max_bytes_read_write = 20_000_000.0
+
+[pool]
+    # max number of operations kept per thread
+    max_pool_size_per_thread = 25000
+    # if an operation is too much in the future it will be ignored
+    max_operation_future_validity_start_periods = 100
+    # max number of endorsements kept
+    max_endorsement_count = 10000
+    # max number of items returned per query
+    max_item_return_count = 100
+
+[selector]
+    # Maximum number of computed cycle's draws we keep in cache
+    max_draw_cache = 10
+    # Path to the initial roll distribution
+    initial_rolls_path = "base_config/initial_rolls.json"
+
+[factory]
+    # initial delay in milliseconds to wait before starting productin to avoid double staking on node restart
+    initial_delay = 100
+    # path to your staking wallet
+    staking_wallet_path = "config/staking_wallet.dat"
