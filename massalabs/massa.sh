@@ -13,7 +13,7 @@ echo -e "\e[0m"
 
 echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++" 
 
-echo -e '\e[33mGarapan :\e[35m' Register Testnet
+echo -e '\e[33mGarapan :\e[35m' Register Massalabs Testnet
 echo -e '\e[33mAuthor :\e[35m' BeritaCryptoo
 echo -e '\e[33mTelegram Channel :\e[35m' https://t.me/BeritaCryptoo
 echo -e '\e[33mTelegram Group :\e[35m' https://t.me/BeritaaCryptooGroup
