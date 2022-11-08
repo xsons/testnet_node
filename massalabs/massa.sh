@@ -24,9 +24,9 @@ sleep 1
 
 # set vars
 if [ ! $IP_SERVER ]; then
-read -p "Input IP Server Kamu: " IP_SERVER
+read -p "Input IP Server: " IP_SERVER
 echo 'export IP_SERVER='\"${IP_SERVER}\" >> $HOME/.bash_profile
-read -p "Input Password Kamu: " PASSWORD
+read -p "Input Password: " PASSWORD
 echo 'export PASSWORD='\"${PASSWORD}\" >> $HOME/.bash_profile
 fi
 echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
@@ -97,7 +97,7 @@ systemctl restart massad
 
 #!/bin/bash
 if [ ! $PASSWORD ]; then
-read -p "Input Password Client Kamu: " PASSWORD
+read -p "Input Password Client: " PASSWORD
 echo 'export PASSWORD='\"${PASSWORD}\" >> $HOME/.bash_profile
 fi
 echo 'source $HOME/.bashrc' >> $HOME/.bash_profile
