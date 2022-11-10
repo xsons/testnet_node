@@ -53,15 +53,12 @@ noisd status 2>&1 | jq .SyncInfo
 Anda dapat menyatakan sinkronisasi simpul Anda dalam hitungan menit dengan menjalankan perintah di bawah ini
 ```
 sudo systemctl stop noisd && noisd tendermint unsafe-reset-all --home $HOME/.noisd --keep-addr-book
-peers="6e128ad6151f5be3d38c9ac5a960d4d0448169af@130.255.170.151:36656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.noisd/config/config.toml
-
-RPC="http://130.255.170.151:36657"; \
+RPC="http://130.255.170.151:36657"
 LATEST_HEIGHT=$(curl -s $RPC/block | jq -r .result.block.header.height); \
 BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
-TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) \
-echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-
+TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+peers="6e128ad6151f5be3d38c9ac5a960d4d0448169af@130.255.170.151:36656"
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.noisd/config/config.toml
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
 s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC,$RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
