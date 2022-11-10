@@ -14,7 +14,8 @@ Dokumentasi resmi:
 >- [Validator setup instructions](https://docs.nois.network/use-cases/for-validators)
 
 Explorer:
->-  N/A
+>- https://explorer.stavr.tech/nois/staking
+>- https://explorer.kjnodes.com/nois
 
 ## Perangkat Keras
 
