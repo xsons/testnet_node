@@ -52,23 +52,22 @@ noisd status 2>&1 | jq .SyncInfo
 ### (OPSIONAL) Sinkronisasi Status
 Anda dapat menyatakan sinkronisasi simpul Anda dalam hitungan menit dengan menjalankan perintah di bawah ini
 ```
-peers="8073bd66d5fa581c7b3d0a08d0df1fe318d70d99@135.181.35.46:55656"; \
+sudo systemctl stop noisd && noisd tendermint unsafe-reset-all --home $HOME/.noisd --keep-addr-book
+peers="6e128ad6151f5be3d38c9ac5a960d4d0448169af@130.255.170.151:36656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.noisd/config/config.toml
 
-SNAP_RPC="http://135.181.35.46:55657"; \
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash); \
+RPC="http://130.255.170.151:36657"; \
+LATEST_HEIGHT=$(curl -s $RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
+TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash) \
 echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
 
-sed -i -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC,$RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" ~/.noisd/config/config.toml
-
-sudo systemctl stop noisd && \
-noisd tendermint unsafe-reset-all --home $HOME/.noisd && \
-sudo systemctl restart noisd
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.noisd/config/config.toml
+sudo systemctl restart noisd && sudo journalctl -u noisd -f --no-hostname -o cat
 ```
 
 ### Buat dompet
