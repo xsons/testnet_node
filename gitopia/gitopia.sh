@@ -35,7 +35,7 @@ echo "╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬�
 
 echo "╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬"
 
-echo -e '\e[33mProject =\e[37m' Q-Blockchain Testnet
+echo -e '\e[33mProject =\e[37m' Gitopia Testnet
 echo -e '\e[33mCommunity =\e[37m' BeritaCryptoo
 echo -e '\e[33mDiscord =\e[37m' https://discord.gg/beritacryptoonode
 echo -e '\e[33mTelegram Channel =\e[37m' https://t.me/BeritaCryptoo
