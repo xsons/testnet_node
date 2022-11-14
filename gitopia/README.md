@@ -5,17 +5,16 @@
 </p><hr>
 
 <p align="center">
-  <img height="100" height="auto" src="https://user-images.githubusercontent.com/50621007/192454529-b8070948-6592-4022-96d9-b2adf7169243.png">
+  <img height="100" height="auto" src="https://user-images.githubusercontent.com/108946833/201699963-0398094b-330b-465b-b3ad-252ae93bc5ad.png">
 </p>
 
-# nois node setup for testnet — nois-testnet-003
+# penyiapan node gitopia untuk testnet — gitopia-janus-testnet-2
 
 Dokumentasi resmi:
->- [Validator setup instructions](https://docs.nois.network/use-cases/for-validators)
+>- [Instruksi penyiapan validator](https://docs.gitopia.com/installation/index.html)
 
 Explorer:
->- https://explorer.stavr.tech/nois/staking
->- https://explorer.kjnodes.com/nois
+>- https://gitopia.explorers.guru/
 
 ## Perangkat Keras
 
@@ -34,7 +33,7 @@ Explorer:
 ## Siapkan fullnode Mande Anda
 Anda dapat mengatur nois fullnode Anda dalam beberapa menit dengan menggunakan skrip otomatis di bawah ini. Ini akan meminta Anda untuk memasukkan nama node validator Anda!
 ```
-wget -O nois.sh https://raw.githubusercontent.com/xsons/testnet_node/main/nois/nois.sh && chmod +x nois.sh && ./nois.sh
+wget -O https://raw.githubusercontent.com/xsons/testnet_node/main/gitopia/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
 ```
 
 ## Pasca instalasi
@@ -46,83 +45,82 @@ source $HOME/.bash_profile
 
 Next you have to make sure your validator is syncing blocks. You can use command below to check synchronization status
 ```
-noisd status 2>&1 | jq .SyncInfo
+gitopiad status 2>&1 | jq .SyncInfo
 ```
 
 ### (OPSIONAL) Sinkronisasi Status
 Anda dapat menyatakan sinkronisasi simpul Anda dalam hitungan menit dengan menjalankan perintah di bawah ini
 ```
-sudo systemctl stop noisd && noisd tendermint unsafe-reset-all --home $HOME/.noisd --keep-addr-book
-RPC="http://130.255.170.151:36657"
-LATEST_HEIGHT=$(curl -s $RPC/block | jq -r .result.block.header.height); \
-BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)); \
-TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-peers="6e128ad6151f5be3d38c9ac5a960d4d0448169af@130.255.170.151:36656"
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.noisd/config/config.toml
+SNAP_RPC=https://gitopia-testnet-rpc.polkachu.com:443
+
+peers="fbe3b1e34e1dfe9ae2cd0db471b0a807bbb3c5f2@65.109.90.178:11356"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.gitopia/config/config.toml
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+
 sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC,$RPC\"| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
 s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
-s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.noisd/config/config.toml
-sudo systemctl restart noisd && sudo journalctl -u noisd -f --no-hostname -o cat
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.gitopia/config/config.toml
+gitopiad tendermint unsafe-reset-all --home /root/.gitopia
+systemctl restart gitopiad && journalctl -u gitopiad -f -o cat
 ```
 
 ### Buat dompet
 Untuk membuat dompet baru Anda dapat menggunakan perintah di bawah ini. Jangan lupa simpan mnemonicnya
 ```
-noisd keys add $WALLET
+gitopiad keys add $WALLET
 ```
 
 (OPSIONAL) Untuk memulihkan dompet Anda menggunakan frase seed
 ```
-noisd keys add $WALLET --recover
+gitopiad keys add $WALLET --recover
 ```
 
 Untuk mendapatkan daftar dompet saat ini
 ```
-noisd keys list
+gitopiad keys list
 ```
 
 ### Simpan info dompet
 Tambahkan dompet dan alamat valoper ke dalam variabel
 ```
-NOIS_WALLET_ADDRESS=$(noisd keys show $WALLET -a)
-NOIS_VALOPER_ADDRESS=$(noisd keys show $WALLET --bech val -a)
-echo 'export NOIS_WALLET_ADDRESS='${NOIS_WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export NOIS_VALOPER_ADDRESS='${NOIS_VALOPER_ADDRESS} >> $HOME/.bash_profile
+GITOPIA_WALLET_ADDRESS=$(gitopiad keys show $WALLET -a)
+GITOPIA_VALOPER_ADDRESS=$(gitopiad keys show $WALLET --bech val -a)
+echo 'export GITOPIA_WALLET_ADDRESS='${GITOPIA_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export GITOPIA_VALOPER_ADDRESS='${GITOPIA_VALOPER_ADDRESS} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
 ### Danai dompet Anda
 Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet.
-```
-curl --header "Content-Type: application/json" \
---request POST \
---data '{"denom":"unois","address":"'$NOIS_WALLET_ADDRESS'"}' \
-http://faucet.noislabs.com/credit
-```
+>-https://gitopia.com/home
 
 ### Buat validator
-Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 strd (1 strd sama dengan 1000000 unois) dan simpul Anda disinkronkan
+Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 tlore (1 tlore sama dengan 1000000 tlore) dan simpul Anda disinkronkan
 
 Untuk memeriksa saldo dompet Anda:
 ```
-noisd query bank balances $NOIS_WALLET_ADDRESS
+gitopiad query bank balances $GITOPIA_WALLET_ADDRESS
 ```
 > Jika dompet Anda tidak menunjukkan saldo apa pun, kemungkinan simpul Anda masih disinkronkan. Silahkan tunggu sampai selesai untuk sinkronisasi lalu lanjutkan
 
 Untuk membuat perintah jalankan validator Anda di bawah ini:
 ```
-noisd tx staking create-validator \
-  --amount 100000000unois \
+gitopiad tx staking create-validator \
+  --amount 1000000utlore \
   --from $WALLET \
   --commission-max-change-rate "0.01" \
   --commission-max-rate "0.2" \
   --commission-rate "0.07" \
   --min-self-delegation "1" \
-  --pubkey  $(noisd tendermint show-validator) \
+  --pubkey  $(gitopiad tendermint show-validator) \
   --moniker $NODENAME \
-  --chain-id $NOIS_CHAIN_ID
+  --chain-id $GITOPIA_CHAIN_ID
 ```
 
 ## Keamanan
@@ -143,7 +141,7 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw allow ssh/tcp
 sudo ufw limit ssh/tcp
-sudo ufw allow ${NOIS_PORT}656,${NOIS_PORT}660/tcp
+sudo ufw allow ${GITOPIA_PORT}656,${GITOPIA_PORT}660/tcp
 sudo ufw enable
 ```
 
@@ -152,159 +150,143 @@ Untuk memantau dan mendapatkan peringatan tentang status kesehatan validator And
 
 ### Periksa kunci validator Anda
 ```
-[[ $(noisd q staking validator $NOIS_VALOPER_ADDRESS -oj | jq -r .consensus_pubkey.key) = $(noisd status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+gitopiad q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
 ```
 
 ### Dapatkan daftar validator
 ```
-noisd q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
+gitopiad q staking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
 ```
 
 ## Dapatkan daftar rekan yang saat ini terhubung dengan id
 ```
-curl -sS http://localhost:${NOIS_PORT}657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+curl -sS http://localhost:${GITOPIA_PORT}657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
 ```
 
 ## Perintah yang berguna
 ### Manajemen Pelayanan
 Periksa log
 ```
-journalctl -fu noisd -o cat
+journalctl -fu gitopiad -o cat
 ```
 
 Memulai layanan
 ```
-sudo systemctl start noisd
+sudo systemctl start gitopiad
 ```
 
 Hentikan layanan
 ```
-sudo systemctl stop noisd
+sudo systemctl stop gitopiad
 ```
 
 Mulai ulang layanan
 ```
-sudo systemctl restart noisd
+sudo systemctl restart gitopiad
 ```
 
 ### Informasi simpul
 Informasi sinkronisasi
 ```
-noisd status 2>&1 | jq .SyncInfo
+gitopiad status 2>&1 | jq .SyncInfo
 ```
 
 Info validator
 ```
-noisd status 2>&1 | jq .ValidatorInfo
+gitopiad status 2>&1 | jq .ValidatorInfo
 ```
 
 Informasi simpul
 ```
-noisd status 2>&1 | jq .NodeInfo
+gitopiad status 2>&1 | jq .NodeInfo
 ```
 
 Tampilkan id simpul
 ```
-noisd tendermint show-node-id
+gitopiad tendermint show-node-id
 ```
 
 ### Operasi dompet
 Daftar dompet
 ```
-noisd keys list
+gitopiad keys list
 ```
 
 Pulihkan dompet
 ```
-noisd keys add $WALLET --recover
+gitopiad keys add $WALLET --recover
 ```
 
 Hapus dompet
 ```
-noisd keys delete $WALLET
+gitopiad keys delete $WALLET
 ```
 
 Dapatkan saldo dompet
 ```
-noisd query bank balances $NOIS_WALLET_ADDRESS
+gitopiad query bank balances $GITOPIA_WALLET_ADDRESS
 ```
 
 Transfer dana
 ```
-noisd tx bank send $NOIS_WALLET_ADDRESS <TO_NOIS_WALLET_ADDRESS> 10000000unois
+gitopiad tx bank send $GITOPIA_WALLET_ADDRESS <TO_GITOPIA_WALLET_ADDRESS> 10000000utlore
 ```
 
 ### Pemungutan suara
 ```
-noisd tx gov vote 1 yes --from $WALLET --chain-id=$NOIS_CHAIN_ID
+gitopiad tx gov vote 1 yes --from $WALLET --chain-id=$GITOPIA_CHAIN_ID
 ```
 
 ### Staking, Delegasi, dan Hadiah
 Delegasikan saham
 ```
-noisd tx staking delegate $NOIS_VALOPER_ADDRESS 10000000unois --from=$WALLET --chain-id=$NOIS_CHAIN_ID --gas=auto
+gitopiad tx staking delegate $GITOPIA_VALOPER_ADDRESS 10000000utlore --from=$WALLET --chain-id=$GITOPIA_CHAIN_ID --gas=auto
 ```
 
 Delegasikan ulang stake dari validator ke validator lain
 ```
-noisd tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000unois --from=$WALLET --chain-id=$NOIS_CHAIN_ID --gas=auto
+gitopiad tx staking redelegate <srcValidatorAddress> <destValidatorAddress> 10000000utlore --from=$WALLET --chain-id=$GITOPIA_CHAIN_ID --gas=auto
 ```
 
 Tarik semua hadiah
 ```
-noisd tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$NOIS_CHAIN_ID --gas=auto
+gitopiad tx distribution withdraw-all-rewards --from=$WALLET --chain-id=$GITOPIA_CHAIN_ID --gas=auto
 ```
 
 Tarik hadiah dengan komisi
 ```
-noisd tx distribution withdraw-rewards $NOIS_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$NOIS_CHAIN_ID
+gitopiad tx distribution withdraw-rewards $GITOPIA_VALOPER_ADDRESS --from=$WALLET --commission --chain-id=$GITOPIA_CHAIN_ID
 ```
 
 ### Manajemen validator
 Edit validator
 ```
-noisd tx staking edit-validator \
+gitopiad tx staking edit-validator \
   --moniker=$NODENAME \
   --identity=<your_keybase_id> \
   --website="<your_website>" \
   --details="<your_validator_description>" \
-  --chain-id=$NOIS_CHAIN_ID \
+  --chain-id=$GITOPIA_CHAIN_ID \
   --from=$WALLET
 ```
 
 Unjail validator
 ```
-noisd tx slashing unjail \
+gitopiad tx slashing unjail \
   --broadcast-mode=block \
   --from=$WALLET \
-  --chain-id=$NOIS_CHAIN_ID \
+  --chain-id=$GITOPIA_CHAIN_ID \
   --gas=auto
 ```
 
 ### Hapus simpul
 Perintah ini akan sepenuhnya menghapus node dari server. Gunakan dengan risiko Anda sendiri!
 ```
-sudo systemctl stop noisd
-sudo systemctl disable noisd
-sudo rm /etc/systemd/system/nois* -rf
-sudo rm $(which noisd) -rf
-sudo rm $HOME/.noisd* -rf
-sudo rm $HOME/nois -rf
-sed -i '/NOIS_/d' ~/.bash_profile
-```
-
-### Pemangkasan untuk simpul sinkronisasi negara
-```
-pruning="custom"
-pruning_keep_recent="100"
-pruning_keep_every="2000"
-pruning_interval="50"
-snapshot_interval="2000"
-snapshot_keep_recent="5"
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.noisd/config/app.toml
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.noisd/config/app.toml
-sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.noisd/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.noisd/config/app.toml
-sed -i -e "s/^snapshot-interval *=.*/snapshot-interval = \"$snapshot_interval\"/" $HOME/.noisd/config/app.toml
-sed -i -e "s/^snapshot-keep-recent *=.*/snapshot-keep-recent = \"$snapshot_keep_recent\"/" $HOME/.noisd/config/app.toml
+sudo systemctl stop gitopiad
+sudo systemctl disable gitopiad
+sudo rm /etc/systemd/system/gitopia* -rf
+sudo rm $(which gitopiad) -rf
+sudo rm $HOME/.gitopia* -rf
+sudo rm $HOME/gitopia -rf
+sed -i '/GITOPIA_/d' ~/.bash_profile
 ```
