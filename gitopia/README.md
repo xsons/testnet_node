@@ -98,7 +98,7 @@ source $HOME/.bash_profile
 
 ### Danai dompet Anda
 Untuk membuat validator terlebih dahulu, Anda perlu mendanai dompet Anda dengan token testnet.
->-https://gitopia.com/home
+>- https://gitopia.com/home
 
 ### Buat validator
 Sebelum membuat validator, pastikan Anda memiliki setidaknya 1 tlore (1 tlore sama dengan 1000000 tlore) dan simpul Anda disinkronkan
