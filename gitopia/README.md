@@ -30,7 +30,7 @@ Explorer:
 | ------------ | ------------ |
 | OS | Ubuntu 20.04 |
 
-## Siapkan fullnode Mande Anda
+## Siapkan fullnode Gitopia Anda
 Anda dapat mengatur nois fullnode Anda dalam beberapa menit dengan menggunakan skrip otomatis di bawah ini. Ini akan meminta Anda untuk memasukkan nama node validator Anda!
 ```
 wget -O gitopia.sh https://raw.githubusercontent.com/Megumiiiiii/Gitopia/main/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
