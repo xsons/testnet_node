@@ -85,6 +85,10 @@ Untuk mendapatkan daftar dompet saat ini
 ```
 gitopiad keys list
 ```
+Export Privekey
+```
+gitopiad keys export namawallet --unarmored-hex --unsafe
+```
 
 ### Simpan info dompet
 Tambahkan dompet dan alamat valoper ke dalam variabel
