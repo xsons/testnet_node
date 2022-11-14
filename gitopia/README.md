@@ -33,7 +33,7 @@ Explorer:
 ## Siapkan fullnode Mande Anda
 Anda dapat mengatur nois fullnode Anda dalam beberapa menit dengan menggunakan skrip otomatis di bawah ini. Ini akan meminta Anda untuk memasukkan nama node validator Anda!
 ```
-wget -O https://raw.githubusercontent.com/xsons/testnet_node/main/gitopia/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
+wget -O gitopia.sh https://raw.githubusercontent.com/Megumiiiiii/Gitopia/main/gitopia.sh && chmod +x gitopia.sh && ./gitopia.sh
 ```
 
 ## Pasca instalasi
