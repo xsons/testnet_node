@@ -85,7 +85,7 @@ Untuk mendapatkan daftar dompet saat ini
 ```
 gitopiad keys list
 ```
-Export Privekey
+Export Privkey
 ```
 gitopiad keys export namawallet --unarmored-hex --unsafe
 ```
