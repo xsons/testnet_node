@@ -69,14 +69,8 @@ cd inery-node
 
 ```
 cd inery.setup
-```
-```
 chmod +x ine.py
-```
-```
 ./ine.py --export
-```
-```
 cd; source .bashrc; cd -
 ```
 <p align="center">
