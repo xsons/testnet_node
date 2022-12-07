@@ -163,6 +163,7 @@ sudo systemctl restart $SRC
 
 echo '=============== SETUP FINISHED ==================='
 echo -e 'To check logs: \e[1m\e[32mjournalctl -fu sourced -o cat\e[0m'
+echo -e "\e[1m\e[31mSpecial Thanks Nodeist for Original Script <3\e[0m"
 echo -e "To check sync status: \e[1m\e[32mcurl -s localhost:${SRC_PORT}657/status | jq .result.sync_info\e[0m"
 
 source $HOME/.bash_profile
